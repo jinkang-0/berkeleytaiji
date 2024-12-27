@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 128px 20%;
+  gap: 205px;
+
+  & > section {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+  }
+}
+
+.practice {
+  width: 70%;
+}
+
+.scheduleTable {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .scheduleBlock {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.25fr;
+  }
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 88px;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}

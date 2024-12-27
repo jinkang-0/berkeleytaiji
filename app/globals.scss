@@ -1,0 +1,46 @@
+@use "lib/colors";
+@use "lib/fonts";
+
+body {
+  color: white;
+  background: colors.$bg;
+  font-family: fonts.$sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: fonts.$display;
+  font-size: 6rem;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: colors.$gold;
+}
+
+h6 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+p,
+span,
+a {
+  font-family: fonts.$sans;
+  font-size: 1.25rem;
+}

@@ -1,0 +1,31 @@
+@use "lib/colors";
+
+.footer {
+  padding: 32px 88px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: colors.$footer;
+
+  & > a {
+    color: colors.$link;
+    transition: 200ms;
+
+    &:hover {
+      color: colors.$linkHover;
+    }
+  }
+
+  & > div {
+    display: flex;
+    gap: 24px;
+
+    a {
+      transition: 200ms;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+}
