@@ -12,3 +12,9 @@ export interface CarouselItem {
   image: StaticImageData;
   caption: string;
 }
+
+export interface Form {
+  name: string;
+  chinese: string;
+  link: string;
+}

@@ -9,7 +9,7 @@ export const LINKS = {
 
 export const EMAIL = "taiji@ucmap.org";
 
-export const SCHEDULE = [
+export const PRACTICE_SCHEDULE = [
   {
     day: "Sunday",
     time: "9:00am - 11:00pm",

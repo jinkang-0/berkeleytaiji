@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import OrientalDoor from "@/assets/hero_images/oriental_door_taiji.jpg";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import { LINKS, SCHEDULE } from "@/lib/config";
+import { LINKS, PRACTICE_SCHEDULE } from "@/lib/config";
 import ExternalIcon from "@/icons/external";
 import { LinkButton } from "@/components/button";
 import EventCard from "@/components/event-card";
@@ -30,7 +30,7 @@ export default function Home() {
             also a one week free trial period for new members to try it out.
           </p>
           <div className={styles.scheduleTable}>
-            {SCHEDULE.map((sched) => (
+            {PRACTICE_SCHEDULE.map((sched) => (
               <div
                 key={sched.day + sched.time}
                 className={styles.scheduleBlock}

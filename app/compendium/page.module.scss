@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 128px 10%;
+  gap: 205px;
+
+  & > section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
