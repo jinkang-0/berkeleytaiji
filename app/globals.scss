@@ -45,3 +45,11 @@ b {
   font-family: fonts.$sans;
   font-size: 1.25rem;
 }
+
+a {
+  color: colors.$gold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

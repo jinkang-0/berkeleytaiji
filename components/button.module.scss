@@ -11,4 +11,8 @@
   border-radius: 8px;
   width: fit-content;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

@@ -18,99 +18,104 @@ export default function Home() {
     <main>
       <Hero image={OrientalDoor} />
       <Navbar />
-      <article className={styles.container}>
-        <section className={styles.practice}>
-          <h5>Practice</h5>
-          <p>
-            Practice is held at the{" "}
-            <Link href={LINKS.location}>
-              Recreational Sports Facility (RSF)
-            </Link>{" "}
-            on the UC Berkeley campus. All skill levels are welcome! There is
-            also a one week free trial period for new members to try it out.
-          </p>
-          <div className={styles.scheduleTable}>
-            {PRACTICE_SCHEDULE.map((sched) => (
-              <div
-                key={sched.day + sched.time}
-                className={styles.scheduleBlock}
-              >
-                <p>{sched.day}</p>
-                <span>{sched.time}</span>
-                <p>{sched.location}</p>
-              </div>
-            ))}
-          </div>
-          <LinkButton href={LINKS.registration} target="_blank">
-            Register <ExternalIcon />
-          </LinkButton>
-        </section>
-
-        <section className={styles.events}>
-          <h5>Upcoming Events</h5>
-          {/* hardcoded for now */}
-          <div className={styles.eventsList}>
-            <EventCard
-              event={{
-                month: "Jan",
-                date: "25",
-                name: "Martial Arts Open House",
-                time: "10:00 AM - 4:00 PM",
-                location: "RSF, Combatives Room"
-              }}
-            />
-            <EventCard
-              event={{
-                month: "Jan",
-                date: "26",
-                name: "Chinese New Years Demonstration",
-                time: "11:00 AM - 4:00 PM",
-                location: "SF Chinatown"
-              }}
-            />
-            <EventCard
-              event={{
-                month: "Feb",
-                date: "16",
-                name: "Chinese Martial Arts Tournament",
-                time: "11:00 AM - 4:00 PM",
-                location: "Sunnyvale, CA"
-              }}
-            />
-          </div>
-        </section>
-
-        <section className={styles.about}>
-          <h5>About</h5>
-          <div className={styles.aboutContent}>
-            <div>
-              <p>
-                What is Taiji? Congue ante tellus eget ac vel diam vel. Eget ut
-                risus arcu aliquam lorem egestas commodo amet porttitor.
-                <br /> <br />
-                Sollicitudin integer viverra penatibus elementum. Ut quam leo in
-                vel odio. Id nisl pulvinar consectetur neque massa a eu. Egestas
-                a iaculis mattis proin egestas fringilla elementum lectus.
-                <br /> <br />
-                Tincidunt euismod proin nulla nulla sapien nisi quis sed.
-                Faucibus ornare fermentum posuere parturient nisl ut tortor
-                integer. Felis facilisis egestas morbi aenean donec maecenas ac
-                aliquet condimentum.
-                <br /> <br />
-                At CalTaiji, we focus on teaching Taiji with health and wellness
-                in mind. Self-defense aspects will be practiced as well.
-              </p>
+      <div className={styles.container}>
+        <article>
+          <section className={styles.practice}>
+            <h5>Practice</h5>
+            <p>
+              Practice is held at the{" "}
+              <Link href={LINKS.location}>
+                Recreational Sports Facility (RSF)
+              </Link>{" "}
+              on the UC Berkeley campus. All skill levels are welcome! There is
+              also a one week free trial period for new members to try it out.
+            </p>
+            <div className={styles.scheduleTable}>
+              {PRACTICE_SCHEDULE.map((sched) => (
+                <div
+                  key={sched.day + sched.time}
+                  className={styles.scheduleBlock}
+                >
+                  <p>{sched.day}</p>
+                  <span>{sched.time}</span>
+                  <p>{sched.location}</p>
+                </div>
+              ))}
             </div>
-            <Image src={YinYang} alt="Yin Yang" />
-          </div>
-        </section>
+            <footer>
+              <LinkButton href={LINKS.registration} target="_blank">
+                Register <ExternalIcon />
+              </LinkButton>
+              <p>
+                Online only members, students, and UC Berkeley alumni/faculty
+                can receive discounts. Regular members can attend both in person
+                and online classes.
+              </p>
+            </footer>
+          </section>
 
-        <section className={styles.community}>
-          <h5>Community</h5>
-          <ImageCarousel items={communityImages} />
-        </section>
-      </article>
+          <section className={styles.events}>
+            <h5>Upcoming Events</h5>
+            {/* hardcoded for now */}
+            <div className={styles.eventsList}>
+              <EventCard
+                event={{
+                  month: "Jan",
+                  date: "25",
+                  name: "Martial Arts Open House",
+                  time: "10:00 AM - 4:00 PM",
+                  location: "RSF, Combatives Room"
+                }}
+              />
+              <EventCard
+                event={{
+                  month: "Jan",
+                  date: "26",
+                  name: "Chinese New Years Demonstration",
+                  time: "11:00 AM - 4:00 PM",
+                  location: "SF Chinatown"
+                }}
+              />
+              <EventCard
+                event={{
+                  month: "Feb",
+                  date: "16",
+                  name: "Chinese Martial Arts Tournament",
+                  time: "11:00 AM - 4:00 PM",
+                  location: "Sunnyvale, CA"
+                }}
+              />
+            </div>
+          </section>
 
+          <section className={styles.about}>
+            <h5>About</h5>
+            <div className={styles.aboutContent}>
+              <p>
+                At CalTaiji, we practice Taiji with the spirit of health,
+                wellness, and community.
+                <br /> <br />
+                We build internal strength through exercises like qigong,
+                stretches, and Taijiquan forms. These exercises help strengthen
+                the tendons and ligaments, improve skeletal integrity, declutter
+                blood vessels, and increase mindfulness.
+                <br /> <br />
+                Outside of class, you can expect to find us performing at local
+                events, including the EAU Night Market on campus and the SF
+                Chinese New Years Parade. If you would like us to perform at an
+                event, feel free to reach out to us at{" "}
+                <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link>
+              </p>
+              <Image src={YinYang} alt="Yin Yang" />
+            </div>
+          </section>
+
+          <section className={styles.community}>
+            <h5>Community</h5>
+            <ImageCarousel items={communityImages} />
+          </section>
+        </article>
+      </div>
       <Footer />
     </main>
   );

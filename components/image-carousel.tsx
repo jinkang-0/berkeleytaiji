@@ -1,47 +1,70 @@
 "use client";
 
-import Carousel, { CarouselProps } from "react-multi-carousel";
 import Image from "next/image";
-import styles from "./image-carousel.module.scss";
 import { CarouselItem } from "@/lib/types";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import LeftCaret from "@/icons/left-caret";
+import RightCaret from "@/icons/right-caret";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/scss";
+import "swiper/scss/pagination";
+import "swiper/scss/navigation";
+import styles from "./image-carousel.module.scss";
 
-const responsive = {
-  any: {
-    breakpoint: {
-      max: 5000,
-      min: 200
-    },
-    items: 1
-  }
+const ButtonGroup = () => {
+  const swiper = useSwiper();
+
+  return (
+    <div className={styles.buttonGroup}>
+      <button
+        onClick={() => {
+          swiper.slidePrev();
+        }}
+      >
+        <LeftCaret />
+      </button>
+      <button
+        onClick={() => {
+          swiper.slideNext();
+        }}
+      >
+        <RightCaret />
+      </button>
+    </div>
+  );
 };
 
-type ImageCarouselProps = {
+interface ImageCarouselProps {
   items: CarouselItem[];
-} & Omit<CarouselProps, "responsive" | "children">;
+}
 
-export default function ImageCarousel({ items, ...rest }: ImageCarouselProps) {
+export default function ImageCarousel({ items }: ImageCarouselProps) {
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      arrows={false}
-      responsive={responsive}
-      className={styles.carousel}
-      showDots
-      infinite
-      autoPlay
-      autoPlaySpeed={5000}
-      transitionDuration={500}
-      sliderClass={styles.items}
-      dotListClass={styles.dots}
-      {...rest}
-    >
-      {items.map((i) => (
-        <div key={i.image.src} className={styles.carouselItem}>
-          <Image src={i.image} alt={i.caption} />
-          <p>{i.caption}</p>
+    <div className={styles.container}>
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        className={styles.carousel}
+        spaceBetween={24}
+        slidesPerView={1}
+        loop
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false
+        }}
+        pagination={{ clickable: true }}
+      >
+        <div slot="container-start">
+          <ButtonGroup />
         </div>
-      ))}
-    </Carousel>
+        {items.map((i) => (
+          <SwiperSlide key={i.image.src} className={styles.carouselItemWrapper}>
+            <div className={styles.carouselItem}>
+              <Image src={i.image} alt={i.caption} />
+              <p>{i.caption}</p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }

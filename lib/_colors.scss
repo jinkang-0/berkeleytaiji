@@ -14,9 +14,16 @@ $cardBorder: #333336;
 $interactiveLink: #a1b7df;
 
 $caption: #e6e6e6;
-$carouselDot: #636363;
+$carouselDot: #424242;
 $carouselDotActive: #9c9c9c;
 
 $grayText: #c3c3c3;
 
 $footer: #19191a;
+
+$iframePlaceholder: #485a82;
+$gradientOverlay: linear-gradient(
+  200deg,
+  rgba(0, 0, 0, 0.2) 0%,
+  rgba(0, 0, 0, 0.5) 100%
+);

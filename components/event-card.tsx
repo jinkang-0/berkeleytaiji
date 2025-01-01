@@ -12,15 +12,15 @@ export default function EventCard({ event }: EventCardProps) {
         <p>{event.month}</p>
         <strong>{event.date}</strong>
       </header>
-      <section>
+      <div>
         <div>
-          <h6>{event.name}</h6>
+          <p>{event.name}</p>
           <span>{event.time}</span>
         </div>
         <div>
           <p>{event.location}</p>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

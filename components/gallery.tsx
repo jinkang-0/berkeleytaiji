@@ -17,6 +17,7 @@ export default function Gallery({ forms }: GalleryProps) {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
+          {/* <div className={styles.placeholder}></div> */}
           <div>
             <p>{form.name}</p>
             <span>{form.chinese}</span>

@@ -1,19 +1,33 @@
+@use "lib/colors";
+
 .container {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  padding: 128px 20%;
-  gap: 205px;
+  justify-content: center;
+  padding: 128px 0;
 
-  & > section {
+  article {
+    width: clamp(600px, 50%, 800px);
+    display: flex;
+    flex-direction: column;
+    gap: 128px;
+  }
+
+  section {
     display: flex;
     flex-direction: column;
     gap: 42px;
   }
 }
 
-.practice {
-  width: 70%;
+.practice > footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  p {
+    color: colors.$grayText;
+  }
 }
 
 .scheduleTable {
@@ -30,17 +44,22 @@
 .eventsList {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .aboutContent {
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 88px;
+  place-items: center;
 
   img {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
   }
+}
+
+.community {
+  gap: 12px !important;
 }
