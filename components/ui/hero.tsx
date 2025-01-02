@@ -9,6 +9,7 @@ import Link from "next/link";
 import { LINKS } from "@/data/links";
 import ImageOrientalDoor from "@/assets/hero_images/oriental_door_taiji.jpg";
 import ImageBook from "@/assets/hero_images/book.jpg";
+import ImageClouds from "@/assets/hero_images/clouds.jpg";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -19,8 +20,10 @@ export default function Hero() {
   useEffect(() => {
     if (pathname === "/") {
       setImage(ImageOrientalDoor);
-    } else {
+    } else if (pathname === "/compendium") {
       setImage(ImageBook);
+    } else {
+      setImage(ImageClouds);
     }
   }, [pathname]);
 

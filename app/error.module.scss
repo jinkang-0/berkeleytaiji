@@ -1,0 +1,41 @@
+@use "lib/breakpoints";
+
+.container {
+  width: 100%;
+  padding: 128px 0;
+  display: grid;
+  place-items: center;
+
+  article {
+    width: clamp(600px, 60%, 1200px);
+    display: flex;
+    gap: 64px;
+    align-items: center;
+
+    img {
+      width: 256px;
+      height: 256px;
+      border-radius: 8px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .container > article {
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    img {
+      width: clamp(128px, 50%, 256px);
+      height: auto;
+    }
+  }
+}
