@@ -1,7 +1,7 @@
 import FacebookIcon from "@/icons/facebook";
 import InstagramIcon from "@/icons/instagram";
 import YoutubeIcon from "@/icons/youtube";
-import { EMAIL, LINKS } from "@/lib/config";
+import { EMAIL, LINKS } from "@/data/links";
 import Link from "next/link";
 import styles from "./footer.module.scss";
 

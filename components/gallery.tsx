@@ -19,8 +19,8 @@ export default function Gallery({ forms }: GalleryProps) {
           ></iframe>
           {/* <div className={styles.placeholder}></div> */}
           <div>
-            <p>{form.name}</p>
-            <span>{form.chinese}</span>
+            <h6>{form.name}</h6>
+            <p>{form.chinese}</p>
           </div>
         </div>
       ))}

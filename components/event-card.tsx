@@ -1,5 +1,6 @@
 import { Event } from "@/lib/types";
 import styles from "./event-card.module.scss";
+import MapIcon from "@/icons/map";
 
 interface EventCardProps {
   event: Event;
@@ -18,6 +19,7 @@ export default function EventCard({ event }: EventCardProps) {
           <span>{event.time}</span>
         </div>
         <div>
+          <MapIcon />
           <p>{event.location}</p>
         </div>
       </div>

@@ -1,4 +1,5 @@
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .hero {
   width: 100%;
@@ -34,8 +35,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-left: 88px;
-  padding-bottom: 66px;
+  padding-left: clamp(10px, 7%, 88px);
+  padding-bottom: clamp(33px, 6vw, 66px);
   gap: 16px;
 
   h1 {
@@ -55,9 +56,24 @@
     -ms-transition: 200ms -ms-filter;
     -o-transition: 200ms -o-filter;
     transition: 200ms;
+    line-height: 0;
 
     &:hover {
       filter: brightness(1.2);
+    }
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .content {
+    gap: 8px;
+  }
+
+  .links {
+    gap: 8px;
+
+    a {
+      transform: scale(0.75);
     }
   }
 }

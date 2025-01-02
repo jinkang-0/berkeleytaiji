@@ -4,7 +4,7 @@ import InstagramIcon from "@/icons/instagram";
 import FacebookIcon from "@/icons/facebook";
 import YoutubeIcon from "@/icons/youtube";
 import Link from "next/link";
-import { LINKS } from "@/lib/config";
+import { LINKS } from "@/data/links";
 import { StaticImageData } from "next/image";
 
 interface HeroProps {

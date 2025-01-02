@@ -1,4 +1,4 @@
-import { Form } from "./types";
+import { Form } from "../lib/types";
 
 const Sun12: Form = {
   name: "Sun 12",

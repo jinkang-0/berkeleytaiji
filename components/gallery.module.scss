@@ -1,4 +1,5 @@
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .gallery {
   display: grid;
@@ -27,14 +28,25 @@
     gap: 4px;
   }
 
-  p {
+  h6 {
     font-weight: 500;
-    font-size: 1.5rem;
   }
 
-  span {
-    font-size: 1.25rem;
+  p {
     font-weight: 200;
     color: colors.$grayText;
+  }
+}
+
+@media (max-width: breakpoints.$lg) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .gallery {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
   }
 }

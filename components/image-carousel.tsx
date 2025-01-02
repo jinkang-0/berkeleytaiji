@@ -48,8 +48,7 @@ export default function ImageCarousel({ items }: ImageCarouselProps) {
         slidesPerView={1}
         loop
         autoplay={{
-          delay: 3000,
-          disableOnInteraction: false
+          delay: 3000
         }}
         pagination={{ clickable: true }}
       >

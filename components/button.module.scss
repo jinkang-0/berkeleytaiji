@@ -1,3 +1,5 @@
+@use "lib/breakpoints";
+
 .button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -7,12 +9,23 @@
   color: white;
   border: none;
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: inherit;
   border-radius: 8px;
   width: fit-content;
   cursor: pointer;
 
   &:hover {
     text-decoration: none;
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .button {
+    padding: 0.75rem 1rem;
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 }

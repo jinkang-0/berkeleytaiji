@@ -1,10 +1,12 @@
 @use "lib/colors";
 @use "lib/fonts";
+@use "lib/breakpoints";
 
 body {
   color: white;
   background: colors.$bg;
   font-family: fonts.$sans;
+  font-size: 1.25rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,18 +40,25 @@ h6 {
   font-weight: 500;
 }
 
-p,
-span,
-a,
-b {
-  font-family: fonts.$sans;
-  font-size: 1.25rem;
-}
-
 a {
   color: colors.$gold;
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  body {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h5,
+  h6 {
+    font-size: 1.25rem;
   }
 }

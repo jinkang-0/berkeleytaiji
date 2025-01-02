@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import OrientalDoor from "@/assets/hero_images/oriental_door_taiji.jpg";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import { LINKS, PRACTICE_SCHEDULE } from "@/lib/config";
+import { LINKS } from "@/data/links";
 import ExternalIcon from "@/icons/external";
 import { LinkButton } from "@/components/button";
 import EventCard from "@/components/event-card";
@@ -12,6 +12,8 @@ import YinYang from "@/assets/graphics/yinyang.png";
 import ImageCarousel from "@/components/image-carousel";
 import { communityImages } from "@/lib/images";
 import Footer from "@/components/footer";
+import PRACTICE_SCHEDULE from "@/data/schedule";
+import UPCOMING_EVENTS from "@/data/events";
 
 export default function Home() {
   return (
@@ -38,7 +40,7 @@ export default function Home() {
                 >
                   <p>{sched.day}</p>
                   <span>{sched.time}</span>
-                  <p>{sched.location}</p>
+                  <div>{sched.location}</div>
                 </div>
               ))}
             </div>
@@ -58,33 +60,9 @@ export default function Home() {
             <h5>Upcoming Events</h5>
             {/* hardcoded for now */}
             <div className={styles.eventsList}>
-              <EventCard
-                event={{
-                  month: "Jan",
-                  date: "25",
-                  name: "Martial Arts Open House",
-                  time: "10:00 AM - 4:00 PM",
-                  location: "RSF, Combatives Room"
-                }}
-              />
-              <EventCard
-                event={{
-                  month: "Jan",
-                  date: "26",
-                  name: "Chinese New Years Demonstration",
-                  time: "11:00 AM - 4:00 PM",
-                  location: "SF Chinatown"
-                }}
-              />
-              <EventCard
-                event={{
-                  month: "Feb",
-                  date: "16",
-                  name: "Chinese Martial Arts Tournament",
-                  time: "11:00 AM - 4:00 PM",
-                  location: "Sunnyvale, CA"
-                }}
-              />
+              {UPCOMING_EVENTS.map((ev) => (
+                <EventCard event={ev} key={ev.name} />
+              ))}
             </div>
           </section>
 
