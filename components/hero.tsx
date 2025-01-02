@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./hero.module.scss";
 import Image from "next/image";
 import InstagramIcon from "@/icons/instagram";
@@ -5,13 +7,23 @@ import FacebookIcon from "@/icons/facebook";
 import YoutubeIcon from "@/icons/youtube";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
-import { StaticImageData } from "next/image";
+import ImageOrientalDoor from "@/assets/hero_images/oriental_door_taiji.jpg";
+import ImageBook from "@/assets/hero_images/book.jpg";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
-interface HeroProps {
-  image: StaticImageData;
-}
+export default function Hero() {
+  const pathname = usePathname();
+  const [image, setImage] = useState(ImageOrientalDoor);
 
-export default function Hero({ image }: HeroProps) {
+  useEffect(() => {
+    if (pathname === "/") {
+      setImage(ImageOrientalDoor);
+    } else {
+      setImage(ImageBook);
+    }
+  }, [pathname]);
+
   return (
     <div className={styles.hero}>
       <Image className={styles.image} src={image} alt="hero image" />

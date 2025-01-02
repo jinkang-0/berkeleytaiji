@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Kaushan_Script, Sen } from "next/font/google";
+import ProgressBar from "@/components/progress-bar";
+import Hero from "@/components/hero";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import "./globals.scss";
 
 // import fonts
@@ -28,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${kaushanScript.variable} ${sen.variable}`}>
+        <ProgressBar />
+        <Hero />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
