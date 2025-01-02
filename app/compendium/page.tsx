@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
-import Gallery from "@/components/gallery";
+import Gallery from "@/components/compendium/gallery";
 import COMPENDIUM from "@/data/compendium";
 
 export default function Page() {
@@ -50,7 +50,7 @@ export default function Page() {
           <p>
             The Chinese broadsword and miao dao, or dao (刀) in general, is a
             single blade sword designed for the battlefield, made to effectively
-            cut and slash, but can just as easily block and parry.
+            slash and block.
           </p>
           <Gallery forms={COMPENDIUM.broadsword} />
         </section>

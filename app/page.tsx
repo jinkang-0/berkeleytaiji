@@ -2,12 +2,12 @@ import styles from "./page.module.scss";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
 import ExternalIcon from "@/icons/external";
-import { LinkButton } from "@/components/button";
-import EventCard from "@/components/event-card";
+import { LinkButtonPrimary } from "@/components/ui/button";
+import EventCard from "@/components/home/event-card";
 import Image from "next/image";
 import YinYang from "@/assets/graphics/yinyang.png";
-import ImageCarousel from "@/components/image-carousel";
-import { communityImages } from "@/lib/images";
+import ImageCarousel from "@/components/home/image-carousel";
+import { communityImages } from "@/data/images";
 import PRACTICE_SCHEDULE from "@/data/schedule";
 import UPCOMING_EVENTS from "@/data/events";
 
@@ -38,9 +38,9 @@ export default function Home() {
             ))}
           </div>
           <footer>
-            <LinkButton href={LINKS.registration} target="_blank">
+            <LinkButtonPrimary href={LINKS.registration} target="_blank">
               Register <ExternalIcon />
-            </LinkButton>
+            </LinkButtonPrimary>
             <p>
               Online only members, students, and UC Berkeley alumni/faculty can
               receive discounts. Regular members can attend both in person and
@@ -63,19 +63,19 @@ export default function Home() {
           <h5>About</h5>
           <div className={styles.aboutContent}>
             <p>
-              At CalTaiji, we practice Taiji with the spirit of health,
-              wellness, and community.
+              At CalTaiji, we practice Taiji with the spirit of health and
+              wellness, as well as culture and community.
               <br /> <br />
-              We build internal strength through exercises like qigong,
-              stretches, and Taijiquan forms. These exercises help strengthen
-              the tendons and ligaments, improve skeletal integrity, declutter
-              blood vessels, and increase mindfulness.
+              We develop physical health and spiritual wellness through
+              practice, which has the benefit of healing as well as
+              self-defense. As participants in our community, we share the art
+              that we practice, and share also the culture from whence it came.
               <br /> <br />
               Outside of class, you can expect to find us performing at local
               events, including the EAU Night Market on campus and the SF
               Chinese New Years Parade. If you would like us to perform at an
               event, feel free to reach out to us at{" "}
-              <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link>
+              <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link>.
             </p>
             <Image src={YinYang} alt="Yin Yang" />
           </div>

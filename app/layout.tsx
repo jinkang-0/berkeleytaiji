@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Kaushan_Script, Sen } from "next/font/google";
-import ProgressBar from "@/components/progress-bar";
-import Hero from "@/components/hero";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import ProgressBar from "@/components/ui/progress-bar";
+import Hero from "@/components/ui/hero";
+import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 import "./globals.scss";
 
 // import fonts

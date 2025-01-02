@@ -1,0 +1,85 @@
+@use "lib/colors";
+@use "lib/breakpoints";
+
+.galleryWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  button {
+    width: fit-content;
+    color: colors.$link;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  grid-auto-rows: 0px;
+  column-gap: 28px;
+  overflow: hidden;
+  margin-top: -32px;
+  transition: 200ms;
+
+  &.expanded {
+    grid-auto-rows: auto;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 48px;
+
+  iframe {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 16 / 9;
+    border: none;
+    background: colors.$iframePlaceholder colors.$gradientOverlay;
+  }
+
+  .placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    background: gray;
+    animation: placeholder-glow 2s infinite;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h6 {
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 200;
+    color: colors.$grayText;
+  }
+}
+
+@media (max-width: breakpoints.$lg) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .gallery {
+    grid-template-columns: 1fr;
+    // row-gap: 24px;
+  }
+}
+
+@keyframes placeholder-glow {
+  50% {
+    opacity: 0.6;
+  }
+}

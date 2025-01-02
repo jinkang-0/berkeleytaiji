@@ -18,3 +18,5 @@ export interface Form {
   chinese: string;
   link: string;
 }
+
+export type Breakpoint = "sm" | "md" | "lg" | "xl";

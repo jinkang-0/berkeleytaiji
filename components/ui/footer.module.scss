@@ -1,0 +1,40 @@
+@use "lib/colors";
+@use "lib/breakpoints";
+
+.footer {
+  padding: 32px clamp(10px, 7%, 88px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: colors.$footer;
+
+  & > a {
+    color: colors.$link;
+    transition: 200ms;
+
+    &:hover {
+      color: colors.$linkHover;
+    }
+  }
+
+  & > div {
+    display: flex;
+    gap: clamp(4px, 2vw, 24px); // 24px
+    align-items: center;
+
+    a {
+      transition: 200ms;
+      line-height: 0;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .footer > div a {
+    transform: scale(0.75);
+  }
+}
