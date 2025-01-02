@@ -7,9 +7,9 @@ import Image from "next/image";
 import YinYang from "@/assets/graphics/yinyang.png";
 import ImageCarousel from "@/components/home/image-carousel";
 import { communityImages } from "@/data/images";
-import PRACTICE_SCHEDULE from "@/data/schedule";
-import { getTime } from "@/lib/utils";
-import EventList from "@/components/home/event-list";
+import EventList, { EventListPlaceholder } from "@/components/home/event-list";
+import { Suspense } from "react";
+import Schedule, { SchedulePlaceholder } from "@/components/home/schedule";
 
 export default function Home() {
   return (
@@ -25,20 +25,9 @@ export default function Home() {
             on the UC Berkeley campus. All skill levels are welcome! There is
             also a one week free trial period for new members to try it out.
           </p>
-          <div className={styles.scheduleTable}>
-            {PRACTICE_SCHEDULE.map((sched) => (
-              <div
-                key={sched.day + getTime(sched.from) + getTime(sched.to)}
-                className={styles.scheduleBlock}
-              >
-                <p>{sched.day}</p>
-                <span>
-                  {getTime(sched.from)} - {getTime(sched.to)}
-                </span>
-                <div>{sched.location}</div>
-              </div>
-            ))}
-          </div>
+          <Suspense fallback={<SchedulePlaceholder />}>
+            <Schedule />
+          </Suspense>
           <footer>
             <LinkButtonPrimary href={LINKS.registration} target="_blank">
               Register <ExternalIcon />
@@ -53,7 +42,9 @@ export default function Home() {
 
         <section className={styles.events}>
           <h5>Upcoming Events</h5>
-          <EventList />
+          <Suspense fallback={<EventListPlaceholder />}>
+            <EventList />
+          </Suspense>
         </section>
 
         <section className={styles.about}>

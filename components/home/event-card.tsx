@@ -1,7 +1,7 @@
 import { Event } from "@/lib/types";
 import styles from "./event-card.module.scss";
 import MapIcon from "@/icons/map";
-import { getMonth, getTime } from "@/lib/utils";
+import { getDate, getMonth } from "@/lib/utils";
 
 interface EventCardProps {
   event: Event;
@@ -9,9 +9,7 @@ interface EventCardProps {
 
 export default function EventCard({ event }: EventCardProps) {
   const month = getMonth(event.date);
-  const date = event.date.getDate();
-  const startTime = getTime(event.from);
-  const endTime = getTime(event.to);
+  const date = getDate(event.date);
 
   return (
     <div className={styles.card}>
@@ -23,7 +21,7 @@ export default function EventCard({ event }: EventCardProps) {
         <div>
           <p>{event.name}</p>
           <span>
-            {startTime} - {endTime}
+            {event.from} - {event.to}
           </span>
         </div>
         <div>

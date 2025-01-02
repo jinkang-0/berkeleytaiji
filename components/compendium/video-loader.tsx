@@ -7,7 +7,7 @@ export default function VideoLoader({ videoUrl }: VideoLoaderProps) {
     <iframe
       src={videoUrl}
       title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; web-share;"
       referrerPolicy="strict-origin-when-cross-origin"
       loading="lazy"
       allowFullScreen

@@ -1,5 +1,6 @@
 @use "lib/colors";
 @use "lib/breakpoints";
+@use "lib/keyframes";
 
 .container {
   width: 100%;
@@ -39,6 +40,14 @@
   .scheduleBlock {
     display: grid;
     grid-template-columns: 1fr 1.25fr 1.25fr;
+
+    .placeholder {
+      width: 80%;
+      height: 1.25rem;
+      border-radius: 8px;
+      background: gray;
+      animation: glow 2s infinite;
+    }
   }
 }
 
@@ -50,6 +59,13 @@
   button {
     width: fit-content;
     color: colors.$link;
+  }
+
+  .placeholder {
+    height: 6rem;
+    border-radius: 8px;
+    background: darkslategray;
+    animation: glow 2s infinite;
   }
 }
 
