@@ -1,22 +1,26 @@
 const PRACTICE_SCHEDULE = [
   {
     day: "Sunday",
-    time: "9:00am - 11:00pm",
+    from: new Date("Jan 1, 2025, 9:30 AM"),
+    to: new Date("Jan 1, 2025, 11:00 PM"),
     location: "Online"
   },
   {
     day: "Tuesday",
-    time: "6:00pm - 7:30pm",
+    from: new Date("Jan 1, 2025, 6:00 PM"),
+    to: new Date("Jan 1, 2025, 7:30 PM"),
     location: "Online"
   },
   {
     day: "Wednesday",
-    time: "7pm - 9pm",
+    from: new Date("Jan 1, 2025, 7:00 PM"),
+    to: new Date("Jan 1, 2025, 9:00 PM"),
     location: "RSF 135 (Combatives)"
   },
   {
     day: "Friday",
-    time: "7pm - 9pm",
+    from: new Date("Jan 1, 2025, 7:00 PM"),
+    to: new Date("Jan 1, 2025, 9:00 PM"),
     location: "RSF 135 (Combatives)"
   }
 ];

@@ -3,13 +3,13 @@ import Link from "next/link";
 import { LINKS } from "@/data/links";
 import ExternalIcon from "@/icons/external";
 import { LinkButtonPrimary } from "@/components/ui/button";
-import EventCard from "@/components/home/event-card";
 import Image from "next/image";
 import YinYang from "@/assets/graphics/yinyang.png";
 import ImageCarousel from "@/components/home/image-carousel";
 import { communityImages } from "@/data/images";
 import PRACTICE_SCHEDULE from "@/data/schedule";
-import UPCOMING_EVENTS from "@/data/events";
+import { getTime } from "@/lib/utils";
+import EventList from "@/components/home/event-list";
 
 export default function Home() {
   return (
@@ -28,11 +28,13 @@ export default function Home() {
           <div className={styles.scheduleTable}>
             {PRACTICE_SCHEDULE.map((sched) => (
               <div
-                key={sched.day + sched.time}
+                key={sched.day + getTime(sched.from) + getTime(sched.to)}
                 className={styles.scheduleBlock}
               >
                 <p>{sched.day}</p>
-                <span>{sched.time}</span>
+                <span>
+                  {getTime(sched.from)} - {getTime(sched.to)}
+                </span>
                 <div>{sched.location}</div>
               </div>
             ))}
@@ -51,12 +53,7 @@ export default function Home() {
 
         <section className={styles.events}>
           <h5>Upcoming Events</h5>
-          {/* hardcoded for now */}
-          <div className={styles.eventsList}>
-            {UPCOMING_EVENTS.map((ev) => (
-              <EventCard event={ev} key={ev.name} />
-            ))}
-          </div>
+          <EventList />
         </section>
 
         <section className={styles.about}>

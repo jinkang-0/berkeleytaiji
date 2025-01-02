@@ -46,6 +46,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  button {
+    width: fit-content;
+    color: colors.$link;
+  }
 }
 
 .aboutContent {
