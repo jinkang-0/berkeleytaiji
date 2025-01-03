@@ -4,6 +4,8 @@ import { Form } from "@/lib/types";
 import { toBool } from "@/lib/utils";
 import styles from "./page.module.scss";
 
+export const revalidate = 3600;
+
 export default async function Page() {
   const [categories, compendiumForms] = await Promise.all([
     getCategories(),

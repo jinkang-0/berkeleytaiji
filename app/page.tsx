@@ -12,6 +12,8 @@ import EventList, { EventListPlaceholder } from "@/components/home/event-list";
 import { Suspense } from "react";
 import Schedule, { SchedulePlaceholder } from "@/components/home/schedule";
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <main className={styles.container}>
