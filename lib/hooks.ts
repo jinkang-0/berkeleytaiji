@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BREAKPOINTS from "./breakpoints";
+import BREAKPOINTS from "../data/breakpoints";
 import { remToPx } from "./utils-client";
 import { Breakpoint } from "./types";
 

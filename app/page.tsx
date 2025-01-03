@@ -25,8 +25,8 @@ export default function Home() {
             <Link href={LINKS.location}>
               Recreational Sports Facility (RSF)
             </Link>{" "}
-            on the UC Berkeley campus. All skill levels are welcome! There is
-            also a one week free trial period for new members to try it out.
+            on the UC Berkeley campus. All skill levels are welcome! New members
+            can try out their first week of classes for free.
           </p>
           <Suspense fallback={<SchedulePlaceholder />}>
             <Schedule />
