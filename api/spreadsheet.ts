@@ -1,8 +1,13 @@
-import CONFIG from "@/lib/config";
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { serviceAccountAuth } from "./google-auth";
 
-const doc = new GoogleSpreadsheet(CONFIG.spreadsheet_id, serviceAccountAuth);
+if (!process.env.SPREADSHEET_ID)
+  throw new Error("Spreadsheet ID is not specified in environment variables.");
+
+const doc = new GoogleSpreadsheet(
+  process.env.SPREADSHEET_ID,
+  serviceAccountAuth
+);
 let initialized: boolean | Promise<void> = false;
 
 const loadDoc = async () => {
