@@ -1,4 +1,5 @@
 @use "lib/colors";
+@use "lib/keyframes";
 
 .container {
   width: 100%;
@@ -101,4 +102,13 @@
   .rightArrow {
     right: 0;
   }
+}
+
+.placeholder {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: gray;
+  border-radius: 8px;
+  animation: glow 2s infinite;
 }

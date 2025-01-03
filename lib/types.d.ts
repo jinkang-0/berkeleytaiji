@@ -1,5 +1,3 @@
-import { StaticImageData } from "next/image";
-
 export interface Event {
   name: string;
   date: string;
@@ -9,7 +7,7 @@ export interface Event {
 }
 
 export interface CarouselItem {
-  image: StaticImageData;
+  imageUrl: string;
   caption: string;
 }
 

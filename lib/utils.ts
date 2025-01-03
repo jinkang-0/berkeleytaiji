@@ -15,6 +15,17 @@ export const getDate = (date: string) => {
 };
 
 /**
+ * Returns true if A comes before the date of B and time of T.
+ * a: Date object
+ * b: "Jan 1, 2024"
+ * t: "11:00 PM"
+ */
+export const compareDate = (a: Date, b: string, t: string) => {
+  const d = new Date(`${b} ${t}`);
+  return a < d;
+};
+
+/**
  * Convert a string to a bool. Any capital variation of "false" will be false.
  * Anything else is true.
  */
@@ -39,4 +50,25 @@ export const getYTEmbed = (link: string) => {
 
   if (!videoId) return "";
   return `https://www.youtube.com/embed/${videoId}?mute=1`;
+};
+
+/**
+ * Get the file ID of a Google Drive file.
+ * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
+ * Output: d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ */
+export const getFileId = (link: string) => {
+  const url = new URL(link);
+  if (url.hostname !== "drive.google.com") return "";
+  if (!url.pathname.startsWith("/file/d/")) return "";
+  return url.pathname.split("/")[3];
+};
+
+/**
+ * Transform a Google Drive share link to a user content download link.
+ * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
+ * Output: https://drive.usercontent.google.com/download?id=1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ */
+export const gDriveToDownload = (link: string) => {
+  return `https://drive.usercontent.google.com/download?id=${getFileId(link)}`;
 };

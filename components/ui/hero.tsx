@@ -29,7 +29,13 @@ export default function Hero() {
 
   return (
     <div className={styles.hero}>
-      <Image className={styles.image} src={image} alt="hero image" />
+      <Image
+        className={styles.image}
+        src={image}
+        blurDataURL={image.blurDataURL}
+        placeholder="blur"
+        alt="hero image"
+      />
       <div className={styles.imageCover}></div>
       <div className={styles.content}>
         <h1>Cal Taiji</h1>

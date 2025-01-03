@@ -5,8 +5,9 @@ import ExternalIcon from "@/icons/external";
 import { LinkButtonPrimary } from "@/components/ui/button";
 import Image from "next/image";
 import YinYang from "@/assets/graphics/yinyang.png";
-import ImageCarousel from "@/components/home/image-carousel";
-import { communityImages } from "@/data/images";
+import ImageCarousel, {
+  ImageCarouselPlaceholder
+} from "@/components/home/image-carousel";
 import EventList, { EventListPlaceholder } from "@/components/home/event-list";
 import { Suspense } from "react";
 import Schedule, { SchedulePlaceholder } from "@/components/home/schedule";
@@ -71,7 +72,9 @@ export default function Home() {
 
         <section className={styles.community}>
           <h5>Community</h5>
-          <ImageCarousel items={communityImages} />
+          <Suspense fallback={<ImageCarouselPlaceholder />}>
+            <ImageCarousel />
+          </Suspense>
         </section>
       </article>
     </main>

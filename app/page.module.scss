@@ -69,6 +69,12 @@
   }
 }
 
+.emptyAnnouncer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
 .aboutContent {
   display: grid;
   grid-template-columns: 3fr 2fr;
