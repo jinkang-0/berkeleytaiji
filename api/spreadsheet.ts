@@ -18,6 +18,7 @@ const loadDoc = async () => {
 loadDoc();
 
 export const getSheet = async (sheetTitle: string, headerRow = 2) => {
+  "use server";
   await loadDoc();
   const sheet = doc.sheetsByTitle[sheetTitle];
   await sheet.loadHeaderRow(headerRow);
