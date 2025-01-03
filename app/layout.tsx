@@ -31,6 +31,8 @@ export const metadata: Metadata = {
   title: CONFIG.siteName,
   description: CONFIG.siteDescription,
   keywords: [
+    "CalTaiji",
+    "Cal",
     "Taiji",
     "Tai Chi",
     "UC Berkeley",
