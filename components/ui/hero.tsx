@@ -41,7 +41,7 @@ export default function Hero() {
         <h1>Cal Taiji</h1>
         <div>
           <p>Official Taiji club at UC Berkeley</p>
-          <p>Founded 1987</p>
+          <p>Founded 1969</p>
         </div>
         <div className={styles.links}>
           <Link href={LINKS.instagram} target="_blank">
