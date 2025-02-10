@@ -3,8 +3,9 @@
 import { GalleryItem } from "@/lib/types";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Mousewheel } from "swiper/modules";
 import "swiper/scss";
+import "swiper/scss/mousewheel";
 import styles from "./gallery.module.scss";
 
 interface GalleryProps {
@@ -15,7 +16,7 @@ export default function Gallery({ items }: GalleryProps) {
   return (
     <div className={styles.container}>
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay, Mousewheel]}
         className={styles.carousel}
         spaceBetween={42}
         slidesPerView="auto"
@@ -26,6 +27,10 @@ export default function Gallery({ items }: GalleryProps) {
         }}
         speed={500}
         pagination={{ clickable: true }}
+        mousewheel={{
+          enabled: true,
+          forceToAxis: true
+        }}
       >
         {items.map((i) => (
           <SwiperSlide key={i.image.src} className={styles.carouselItemWrapper}>
@@ -39,7 +44,8 @@ export default function Gallery({ items }: GalleryProps) {
                 className={styles.ambiance}
                 src={i.image}
                 placeholder="blur"
-                alt={i.caption ?? "alt"}
+                alt={"ambiance image"}
+                aria-hidden
               />
               <p className={styles.caption}>{i.caption}</p>
             </div>

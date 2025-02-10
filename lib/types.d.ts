@@ -8,11 +8,6 @@ export interface Event {
   location: string;
 }
 
-export interface CarouselItem {
-  imageUrl: string;
-  caption: string;
-}
-
 export interface GalleryItem {
   image: StaticImageData;
   caption: string;
