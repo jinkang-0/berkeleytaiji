@@ -32,35 +32,6 @@
   }
 }
 
-.practice > footer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  p {
-    color: colors.$gray;
-  }
-}
-
-.scheduleTable {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  .scheduleBlock {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr 1.25fr;
-
-    .placeholder {
-      width: 80%;
-      height: 1.25rem;
-      border-radius: 8px;
-      background: gray;
-      animation: glow 2s infinite;
-    }
-  }
-}
-
 .eventsList {
   display: flex;
   flex-direction: column;
