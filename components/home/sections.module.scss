@@ -1,0 +1,10 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.625rem;
+
+  h3 {
+    width: 100%;
+    text-align: center;
+  }
+}

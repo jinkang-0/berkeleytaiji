@@ -3,15 +3,14 @@ import Link from "next/link";
 import { LINKS } from "@/data/links";
 import ExternalIcon from "@/icons/external";
 import { LinkButtonPrimary } from "@/components/ui/button";
-import Image from "next/image";
-import YinYang from "@/assets/graphics/yinyang.png";
-import EventList, { EventListPlaceholder } from "@/components/home/event-list";
+import EventList, { EventListPlaceholder } from "@/components/ui/event-list";
 import { Suspense } from "react";
 import Schedule, { SchedulePlaceholder } from "@/components/home/schedule";
 import Footer from "@/components/ui/footer";
 import Hero from "@/components/ui/hero";
-import Gallery from "@/components/home/gallery";
+import Gallery from "@/components/ui/gallery";
 import { COMMUNITY_PHOTOS } from "@/data/images";
+import AboutSection from "@/components/home/about-section";
 
 export const revalidate = 3600;
 
@@ -24,6 +23,8 @@ export default function Home() {
 
       <div className={styles.content}>
         <article>
+          <AboutSection />
+
           <section className={styles.practice}>
             <h5>Practice</h5>
             <p>
@@ -54,29 +55,6 @@ export default function Home() {
             <Suspense fallback={<EventListPlaceholder />}>
               <EventList />
             </Suspense>
-          </section>
-
-          <section className={styles.about}>
-            <h5>About</h5>
-            <div className={styles.aboutContent}>
-              <p>
-                At CalTaiji, we practice Taiji with the spirit of health and
-                wellness, as well as culture and community.
-                <br /> <br />
-                We develop physical health and spiritual wellness through
-                practice, which has the benefit of healing as well as
-                self-defense. As participants in our community, we share the art
-                that we practice, and share also the culture from whence it
-                came.
-                <br /> <br />
-                Outside of class, you can expect to find us performing at local
-                events, including the EAU Night Market on campus and the SF
-                Chinese New Years Parade. If you would like us to perform at an
-                event, feel free to reach out to us at{" "}
-                <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link>.
-              </p>
-              <Image src={YinYang} alt="Yin Yang" />
-            </div>
           </section>
         </article>
       </div>
