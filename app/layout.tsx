@@ -1,9 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Kaushan_Script, Sen } from "next/font/google";
-import ProgressBar from "@/components/ui/progress-bar";
-import Hero from "@/components/ui/hero";
-import Navbar from "@/components/ui/navbar";
-import Footer from "@/components/ui/footer";
 import "./globals.scss";
 import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
@@ -44,13 +40,6 @@ export const metadata: Metadata = {
     "UC Martial Arts Program",
     "Club"
   ],
-  authors: [
-    {
-      name: "jinkang-0",
-      url: "https://jfang.dev"
-    }
-  ],
-  creator: "jinkang-0",
   metadataBase: new URL(CONFIG.siteUrl),
   openGraph: {
     siteName: CONFIG.siteName,
@@ -89,11 +78,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${kaushanScript.variable} ${sen.variable}`}>
-        <ProgressBar />
-        <Hero />
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

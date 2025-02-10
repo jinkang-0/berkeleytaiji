@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./hero.module.scss";
 import Image from "next/image";
 import InstagramIcon from "@/icons/instagram";
@@ -7,32 +5,15 @@ import FacebookIcon from "@/icons/facebook";
 import YoutubeIcon from "@/icons/youtube";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
-import ImageOrientalDoor from "@/assets/hero_images/oriental_door_taiji.jpg";
-import ImageBook from "@/assets/hero_images/book.jpg";
-import ImageClouds from "@/assets/hero_images/clouds.jpg";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import HeroImage from "@/assets/hero.jpg";
 
 export default function Hero() {
-  const pathname = usePathname();
-  const [image, setImage] = useState(ImageOrientalDoor);
-
-  useEffect(() => {
-    if (pathname === "/") {
-      setImage(ImageOrientalDoor);
-    } else if (pathname === "/compendium") {
-      setImage(ImageBook);
-    } else {
-      setImage(ImageClouds);
-    }
-  }, [pathname]);
-
   return (
     <div className={styles.hero}>
       <Image
         className={styles.image}
-        src={image}
-        blurDataURL={image.blurDataURL}
+        src={HeroImage}
+        blurDataURL={HeroImage.blurDataURL}
         placeholder="blur"
         alt="hero image"
       />
@@ -55,6 +36,7 @@ export default function Hero() {
           </Link>
         </div>
       </div>
+      <div className={styles.transition}></div>
     </div>
   );
 }

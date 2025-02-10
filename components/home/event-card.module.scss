@@ -6,8 +6,8 @@
   padding: 20px 24px;
   gap: 20px;
   width: 100%;
-  border: 2px colors.$cardBorder solid;
-  background: colors.$cardBg;
+  border: 2px colors.$grayDark solid;
+  background: colors.$bg;
   border-radius: 8px;
 
   header {
@@ -41,7 +41,7 @@
     }
 
     span {
-      color: colors.$grayText;
+      color: colors.$gray;
     }
   }
 }

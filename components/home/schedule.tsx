@@ -22,7 +22,8 @@ export const SchedulePlaceholder = () => {
 };
 
 export default async function Schedule() {
-  const schedule = await getSchedule();
+  // const schedule = await getSchedule();
+  const schedule = PRACTICE_SCHEDULE;
 
   return (
     <div className={styles.scheduleTable}>

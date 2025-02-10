@@ -17,25 +17,6 @@
   & > :global(.swiper-wrapper) {
     height: auto;
   }
-
-  & > :global(.swiper-pagination) {
-    position: static;
-    margin-top: 8px;
-
-    :global(.swiper-pagination-bullet) {
-      width: 1rem;
-      height: 1rem;
-      border-radius: 100%;
-      border: none;
-      margin: 0 6px;
-      background: colors.$carouselDot;
-      opacity: 1;
-
-      &:global(.swiper-pagination-bullet-active) {
-        background: colors.$carouselDotActive;
-      }
-    }
-  }
 }
 
 .carouselItem {
@@ -54,8 +35,8 @@
 
   p {
     padding: 0.5rem 1rem;
-    color: colors.$grayText;
-    background: colors.$cardBg;
+    color: colors.$gray;
+    background: colors.$card;
   }
 }
 

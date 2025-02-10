@@ -3,7 +3,7 @@
 @use "lib/breakpoints";
 
 body {
-  color: white;
+  color: colors.$fg;
   background: colors.$bg;
   font-family: fonts.$sans;
   font-size: 1.25rem;
@@ -26,13 +26,14 @@ h1 {
   font-family: fonts.$display;
   font-size: 6rem;
   font-weight: normal;
+  color: colors.$goldLight;
 }
 
 h5 {
   font-size: 1.5rem;
   font-weight: 500;
   text-transform: uppercase;
-  color: colors.$gold;
+  color: colors.$goldLight;
 }
 
 h6 {
@@ -41,7 +42,7 @@ h6 {
 }
 
 a {
-  color: colors.$gold;
+  color: colors.$link;
 
   &:hover {
     text-decoration: underline;
