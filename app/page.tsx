@@ -1,12 +1,11 @@
 import styles from "./page.module.scss";
-import EventList, { EventListPlaceholder } from "@/components/ui/event-list";
-import { Suspense } from "react";
 import Footer from "@/components/ui/footer";
 import Hero from "@/components/ui/hero";
 import Gallery from "@/components/ui/gallery";
 import { COMMUNITY_PHOTOS } from "@/data/images";
 import AboutSection from "@/components/home/about-section";
 import ScheduleSection from "@/components/home/schedule-section";
+import EventsSection from "@/components/home/events-section";
 
 export const revalidate = 3600;
 
@@ -21,13 +20,7 @@ export default function Home() {
         <article>
           <AboutSection />
           <ScheduleSection />
-
-          <section className={styles.events}>
-            <h5>Upcoming Events</h5>
-            <Suspense fallback={<EventListPlaceholder />}>
-              <EventList />
-            </Suspense>
-          </section>
+          <EventsSection />
         </article>
       </div>
 

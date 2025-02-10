@@ -1,5 +1,6 @@
 @use "./sections.module.scss";
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .schedule {
   display: flex;
@@ -32,6 +33,26 @@
       border-radius: 8px;
       background: gray;
       animation: glow 2s infinite;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .scheduleTable > .scheduleBlock {
+    grid-template-columns: 3fr 2fr;
+    row-gap: 4px;
+
+    span {
+      grid-row: 2 / 3;
+      color: colors.$gray;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: right;
+      grid-row: 1 / 3;
     }
   }
 }

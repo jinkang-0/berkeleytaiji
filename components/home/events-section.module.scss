@@ -1,0 +1,27 @@
+@use "./sections.module.scss";
+@use "lib/colors";
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  button {
+    width: fit-content;
+    color: colors.$link;
+  }
+
+  .placeholder {
+    height: 6rem;
+    border-radius: 8px;
+    background: darkslategray;
+    animation: glow 2s infinite;
+  }
+}
+
+.emptyAnnouncer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin: 0 auto;
+}

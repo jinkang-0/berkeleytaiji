@@ -1,0 +1,40 @@
+@use "lib/colors";
+@use "lib/breakpoints";
+
+.card {
+  display: flex;
+  padding: 20px 24px;
+  gap: 20px;
+  width: 100%;
+  border: 2px colors.$grayDark solid;
+  background: colors.$bg;
+  border-radius: 8px;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    span {
+      color: colors.$gray;
+    }
+
+    div {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+  }
+}

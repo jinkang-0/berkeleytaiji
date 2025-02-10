@@ -32,30 +32,6 @@
   }
 }
 
-.eventsList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  button {
-    width: fit-content;
-    color: colors.$link;
-  }
-
-  .placeholder {
-    height: 6rem;
-    border-radius: 8px;
-    background: darkslategray;
-    animation: glow 2s infinite;
-  }
-}
-
-.emptyAnnouncer {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
 .aboutContent {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -76,31 +52,5 @@
 @media (max-width: breakpoints.$md) {
   .container > article {
     width: 90%;
-  }
-
-  .scheduleTable > .scheduleBlock {
-    grid-template-columns: 3fr 2fr;
-    row-gap: 4px;
-
-    span {
-      grid-row: 2 / 3;
-      color: colors.$gray;
-    }
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      text-align: right;
-      grid-row: 1 / 3;
-    }
-  }
-
-  .aboutContent {
-    grid-template-columns: 1fr;
-
-    & > img {
-      display: none;
-    }
   }
 }

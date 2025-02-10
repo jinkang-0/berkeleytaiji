@@ -1,7 +1,7 @@
 import { getEvents } from "@/api/spreadsheet";
 import EventListClient from "./event-list-client";
 import { Event } from "@/lib/types";
-import styles from "@/app/page.module.scss";
+import styles from "./events-section.module.scss";
 import LeavesIcon from "@/icons/leaves";
 import { compareDate } from "@/lib/utils";
 import { SAMPLE_EVENTS } from "@/data/sample";

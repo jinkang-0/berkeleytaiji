@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "@/app/page.module.scss";
+import styles from "./events-section.module.scss";
 import { useMemo, useState } from "react";
 import EventCard from "./event-card";
-import { ButtonGhost } from "./button";
+import { ButtonGhost } from "../ui/button";
 import { Event } from "@/lib/types";
 
 interface EventListClientProps {
