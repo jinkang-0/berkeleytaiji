@@ -6,6 +6,7 @@ import { COMMUNITY_PHOTOS } from "@/data/images";
 import AboutSection from "@/components/home/about-section";
 import ScheduleSection from "@/components/home/schedule-section";
 import EventsSection from "@/components/home/events-section";
+import FAQSection from "@/components/home/faq-section";
 
 export const revalidate = 3600;
 
@@ -13,7 +14,6 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <Hero />
-
       <Gallery items={COMMUNITY_PHOTOS} />
 
       <div className={styles.content}>
@@ -21,6 +21,7 @@ export default function Home() {
           <AboutSection />
           <ScheduleSection />
           <EventsSection />
+          <FAQSection />
         </article>
       </div>
 
