@@ -1,5 +1,6 @@
 @use "./sections.module.scss";
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .container {
   display: flex;
@@ -26,12 +27,12 @@
 
   .desc {
     $lines: 8;
-    $lh: 1.5rem;
     $maxh: 93.75rem;
+    --line-height: 1.5rem;
 
     .textbox {
       position: relative;
-      max-height: $lh * $lines;
+      max-height: calc(var(--line-height) * $lines);
       overflow: hidden;
       transition: max-height 300ms ease-in-out;
 
@@ -77,6 +78,37 @@
 
     button {
       color: colors.$gray;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$xl) {
+  .card {
+    .desc {
+      .textbox {
+        p.truncated {
+          background: colors.$bg;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .card {
+    flex-direction: column;
+    gap: 16px;
+
+    .content {
+      padding-top: 0;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .card {
+    .desc {
+      --line-height: 1.2rem;
     }
   }
 }

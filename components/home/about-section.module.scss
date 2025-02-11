@@ -28,11 +28,29 @@
 }
 
 @media (max-width: breakpoints.$md) {
-  .aboutContent {
-    grid-template-columns: 1fr;
+  .about {
+    margin-bottom: 100px;
 
-    & > img {
-      display: none;
+    .yinyang {
+      transform: translate(-60%, -90%);
+    }
+
+    .singlewhip {
+      transform: translate(40%, 80%);
+    }
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .about {
+    margin-bottom: 100px;
+
+    .yinyang {
+      transform: translate(-60%, -90%) scale(0.8);
+    }
+
+    .singlewhip {
+      transform: translate(40%, 80%) scale(0.8);
     }
   }
 }

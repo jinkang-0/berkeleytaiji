@@ -2,7 +2,7 @@ import Image from "next/image";
 import SifuFong from "@/assets/instructors/sifu_fong.jpg";
 import Mason from "@/assets/instructors/mason.jpg";
 import styles from "./instructors-section.module.scss";
-import InstructorDescription from "./instructor-card";
+import InstructorDescription from "./instructor-desc";
 
 export default function InstructorsSection() {
   return (
