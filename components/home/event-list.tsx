@@ -5,6 +5,7 @@ import styles from "./events-section.module.scss";
 import LeavesIcon from "@/icons/leaves";
 import { compareDate } from "@/lib/utils";
 import { SAMPLE_EVENTS } from "@/data/sample";
+import EventCard from "./event-card";
 
 export const EventListPlaceholder = () => {
   return (
@@ -30,9 +31,21 @@ export default async function EventList() {
   //   .filter((ev) => compareDate(today, ev.date, ev.to))
   //   .slice(0, 10);
   const events = SAMPLE_EVENTS;
+  const hasOverflow = events.length > 3;
 
   return events.length > 0 ? (
-    <EventListClient events={events} />
+    <div className={styles.eventsList}>
+      {events.slice(0, 3).map((ev, idx) => (
+        <EventCard event={ev} key={ev.name + idx} />
+      ))}
+      {hasOverflow ? (
+        <EventListClient>
+          {events.slice(3, 10).map((ev, idx) => (
+            <EventCard event={ev} key={ev.name + idx} />
+          ))}
+        </EventListClient>
+      ) : null}
+    </div>
   ) : (
     <div className={styles.emptyAnnouncer}>
       <LeavesIcon />

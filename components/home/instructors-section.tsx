@@ -17,20 +17,13 @@ export default function InstructorsSection() {
             <h5>Bryant Fong</h5>
             <h6>Head Instructor</h6>
             <InstructorDescription>
-              Sifu Bryant Fong is the coach for the San Francisco Wushu Team. He
-              was trained by the Beijing Wushu Team, and is a 2nd generation Hun
-              Yuan Chen Taiji master and a 5th generation Bagua master. Sifu
-              Fong has competed nationally and internationally, and served as
-              the US Wushu Team Coach at the 1st World Wushu championships.
+              Sifu Bryant Fong is a 2nd generation Hun Yuan Cheng Taiji master
+              and a 5th generation Bagua master. Sifu Fong has competed
+              nationally and internationally, and served as the coach for the US
+              Wushu Team at the 1st World Wushu Championships. Currently, he is
+              the coach for the San Francisco Wushu Team.
               <br /> <br />
-              Sifu Bryant Fong graduated from the University of California,
-              Berkeley with a BA degree in Social Sciences in 1971. He was a
-              California Artist in Residence from 1985-1988, and was assigned to
-              teach Wushu to teenagers at Newcomer High School. He was awarded
-              his International Wushu Coaching Certificate in 1987, by the
-              Chinese Wushu Research Institute of PRC.
-              <br /> <br />
-              Sifu Fong is proficient in both traidtional as well as modern
+              Sifu Fong is proficient in both traditional as well as modern
               Wushu. He is a graduate of the San Francisco Jing-Wu Academy,
               under the instruction of the famous Grandmaster Jackman Wong, a
               master of Taijiquan, Xingyiquan, and Northern Shaolin, well known
@@ -67,12 +60,12 @@ export default function InstructorsSection() {
               In 2019, Mason was invited to train in Beijing at the Baguazhang
               Wushu Culture Museum, Renmin University of China, and the Capital
               University of Physical Education and Sports Medicine, meeting his
-              teacher&apos;s Baguazhang master Zhao Dayuan, the 4th generation
+              teacher&apos;s Baguazhang master, Zhao Dayuan, the 4th generation
               grandmaster of Liang style Baguazhang.
               <br /> <br />
               Mason became a Certified Trainer of Medical Taiji under the US
               Collegiate Taiji Federation (USCTF) in 2022 and has since served
-              as a teacher for the USCTF, at the behest of Dr. Daniel Chi-Hsing
+              as a teacher for the USCTF at the behest of Dr. Daniel Chi-Hsing
               Weng, in their ongoing training courses for therapists and
               instructors.
               <br /> <br />

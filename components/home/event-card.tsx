@@ -1,7 +1,7 @@
 import { Event } from "@/lib/types";
-import styles from "./event-card.module.scss";
 import MapIcon from "@/icons/map";
 import { getDate, getMonth } from "@/lib/utils";
+import styles from "./events-section.module.scss";
 
 interface EventCardProps {
   event: Event;

@@ -25,19 +25,48 @@
   }
 
   .desc {
-    p {
-      $lines: 8;
+    $lines: 8;
+    $lh: 1.5rem;
+    $maxh: 93.75rem;
 
-      display: -webkit-box;
-      -webkit-line-clamp: $lines;
-      line-clamp: $lines;
-      -webkit-box-orient: vertical;
+    .textbox {
+      position: relative;
+      max-height: $lh * $lines;
       overflow: hidden;
+      transition: max-height 300ms ease-in-out;
+
+      p.truncated {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        background: colors.$card;
+        z-index: 1;
+      }
+
+      p.text {
+        position: relative;
+        opacity: 0;
+        transition: opacity 200ms linear;
+      }
 
       &.expanded {
-        -webkit-line-clamp: 99999;
-        line-clamp: 99999;
-        max-height: 100%;
+        max-height: $maxh;
+
+        p.truncated {
+          opacity: 0;
+          transition: opacity 0ms;
+        }
+
+        p.text {
+          opacity: 1;
+          transition: opacity 0ms;
+        }
       }
     }
 

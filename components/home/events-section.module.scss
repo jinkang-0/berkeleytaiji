@@ -1,5 +1,6 @@
 @use "./sections.module.scss";
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .eventsList {
   display: flex;
@@ -8,7 +9,8 @@
 
   button {
     width: fit-content;
-    color: colors.$link;
+    color: colors.$gray;
+    margin: 0 auto;
   }
 
   .placeholder {
@@ -19,9 +21,60 @@
   }
 }
 
+.extras {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 0;
+  overflow: hidden;
+  transition: 300ms ease-in-out;
+
+  &.expanded {
+    max-height: 62.5rem;
+  }
+}
+
 .emptyAnnouncer {
   display: flex;
   gap: 24px;
   align-items: center;
   margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  padding: 20px 24px;
+  gap: 20px;
+  width: 100%;
+  border: 2px colors.$grayDark solid;
+  background: colors.$bg;
+  border-radius: 8px;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  .cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    span {
+      color: colors.$gray;
+    }
+
+    div {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+  }
 }
