@@ -11,24 +11,19 @@ export default function AboutSection() {
         <p>
           Taijiquan (太极拳), or tai chi, is a traditional Chinese martial art
           where practitioners practice with slow, deliberate movements to focus
-          on the internal movements on their body.
+          on the internal movements of their body.
           <br /> <br />
           At Cal Taiji, we teach tai chi with an emphasis on health and
-          wellness. Tai chi can improve your physical health, in muscular
-          strength, flexibility, and balance. It can also aid with your mental
-          health, as exercises can help ease the mind and relax tension in the
-          muscles.
+          wellness. This means we practice with the intent to improve physical
+          fitness and to relax the mind.
           <br /> <br />
-          We focus on Sun style tai chi, as it very easily applies to the
-          purpose of health and wellness. That said, we also mix in elements
-          from Yang and Chen to work on flexibility and strength.
+          We focus on Sun style tai chi, as it is most applicable to the purpose
+          of health and wellness. That said, we also mix in elements from Yang
+          and Chen styles to work on flexibility and strength.
           <br /> <br />
-          Advanced members may choose to hone in and perfect a specific style
-          and form after completing 3 semesters. This can be a long tai chi hand
-          form, a tai chi weapon form, or other styles of tai chi.
-          Alternatively, members can also learn from different martial arts,
-          like Xingyi, Bagua, or Shaolin, to further advance their
-          understanding.
+          Advanced members can try honing their craft in a specific style of tai
+          chi, or explore other internal martial arts like Xingyi and Bagua,
+          under the advisory of Sifu Fong.
         </p>
         <SingleWhip className={styles.singlewhip} />
       </div>

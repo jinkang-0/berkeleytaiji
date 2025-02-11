@@ -1,0 +1,51 @@
+@use "./sections.module.scss";
+@use "lib/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.card {
+  display: flex;
+  gap: 24px;
+
+  img {
+    border-radius: 8px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 24px;
+  }
+
+  .desc {
+    p {
+      $lines: 8;
+
+      display: -webkit-box;
+      -webkit-line-clamp: $lines;
+      line-clamp: $lines;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      &.expanded {
+        -webkit-line-clamp: 99999;
+        line-clamp: 99999;
+        max-height: 100%;
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      color: colors.$gray;
+    }
+  }
+}

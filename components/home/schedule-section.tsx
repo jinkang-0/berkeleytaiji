@@ -35,8 +35,8 @@ export default function ScheduleSection() {
             Register <ExternalIcon />
           </LinkButtonPrimary>
           <p className={styles.note}>
-            Online only members, students, and UC Berkeley alumni/faculty can
-            receive discounts. Regular members can attend both in person and
+            Online-only members and UC Berkeley students, alumni, and faculty
+            can receive discounts. Regular members can attend both in person and
             online classes.
           </p>
         </footer>

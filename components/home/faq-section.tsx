@@ -20,12 +20,14 @@ export default function FAQSection() {
             <br /> <br />
             While our focus is to teach tai chi for health and wellness, our
             instructors can also demonstrate how the forms practitioners
-            practice can be applied for self-defense as well. If you&apos;d like
-            to see a demonstration, feel free to ask!
+            practice can be applied for self-defense as well. If you&apos;re
+            curious to see how a move can be applied for self-defense, feel free
+            to ask!
           </FAQCard>
           <FAQCard question="What are the health benefits of tai chi?">
-            Tai chi practitioners perform exercises like squats and kicks and
-            are asked to do so without momentum. This helps{" "}
+            Tai chi practitioners perform hard-to-hold exercises like squats and
+            kicks and are asked to do so without the aid of momentum. Alongside
+            structural stability, this also helps{" "}
             <Link
               href="https://www.health.harvard.edu/staying-healthy/the-health-benefits-of-tai-chi"
               target="_blank"
@@ -54,7 +56,8 @@ export default function FAQSection() {
             >
               reduced chance of dementia
             </Link>
-            .
+            . If you or your loved ones might be at risk of dementia, tai chi
+            can be a good supplement to delay the onset of dementia.
             <br /> <br />
             For readers curious in learning more, you can find more sources
             online discussing the health benefits of tai chi. A good source to

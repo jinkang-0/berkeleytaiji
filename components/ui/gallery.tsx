@@ -23,7 +23,7 @@ export default function Gallery({ items }: GalleryProps) {
         centeredSlides
         loop
         autoplay={{
-          delay: 3000
+          delay: 2000
         }}
         speed={500}
         pagination={{ clickable: true }}
