@@ -10,11 +10,11 @@
   margin-top: 50px;
 
   & > a {
-    color: colors.$link;
+    color: colors.$gray;
     transition: 200ms;
 
     &:hover {
-      color: colors.$linkHover;
+      color: colors.$grayLight;
     }
   }
 

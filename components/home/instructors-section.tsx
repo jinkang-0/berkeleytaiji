@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SifuFong from "@/assets/instructors/sifu_fong.jpg";
-import Mason from "@/assets/instructors/mason.png";
+import Mason from "@/assets/instructors/mason.jpg";
 import styles from "./instructors-section.module.scss";
 import InstructorDescription from "./instructor-card";
 
@@ -10,7 +10,9 @@ export default function InstructorsSection() {
       <h3>Instructors</h3>
       <div className={styles.container}>
         <div className={styles.card}>
-          <Image src={SifuFong} alt="Sifu Fong" />
+          <div>
+            <Image src={SifuFong} alt="Sifu Fong" />
+          </div>
           <div className={styles.content}>
             <h5>Bryant Fong</h5>
             <h6>Head Instructor</h6>
@@ -47,7 +49,9 @@ export default function InstructorsSection() {
           </div>
         </div>
         <div className={styles.card}>
-          <Image src={Mason} alt="Mason Tong" />
+          <div>
+            <Image src={Mason} alt="Mason Tong" />
+          </div>
           <div className={styles.content}>
             <h5>Mason Tong</h5>
             <h6>Assistant Instructor</h6>
