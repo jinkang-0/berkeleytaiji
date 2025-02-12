@@ -4,6 +4,40 @@ import Link from "next/link";
 import { LinkButtonPrimary } from "../ui/button";
 import ExternalIcon from "@/icons/external";
 import PRACTICE_SCHEDULE from "@/data/schedule";
+import { getSchedule } from "@/api/spreadsheet";
+import { Suspense } from "react";
+
+function DefaultSchedule() {
+  return PRACTICE_SCHEDULE.map((sched) => (
+    <div
+      key={sched.Day + sched.From + sched.To}
+      className={styles.scheduleBlock}
+    >
+      <p>{sched.Day}</p>
+      <span>
+        {sched.From} - {sched.To}
+      </span>
+      <div>{sched.Location}</div>
+    </div>
+  ));
+}
+
+async function Schedule() {
+  const schedule = await getSchedule();
+
+  return schedule.map((sched) => (
+    <div
+      key={sched.Day + sched.From + sched.To}
+      className={styles.scheduleBlock}
+    >
+      <p>{sched.Day}</p>
+      <span>
+        {sched.From} - {sched.To}
+      </span>
+      <div>{sched.Location}</div>
+    </div>
+  ));
+}
 
 export default function ScheduleSection() {
   return (
@@ -17,18 +51,9 @@ export default function ScheduleSection() {
           can try out their first week of classes for free.
         </p>
         <div className={styles.scheduleTable}>
-          {PRACTICE_SCHEDULE.map((sched) => (
-            <div
-              key={sched.Day + sched.From + sched.To}
-              className={styles.scheduleBlock}
-            >
-              <p>{sched.Day}</p>
-              <span>
-                {sched.From} - {sched.To}
-              </span>
-              <div>{sched.Location}</div>
-            </div>
-          ))}
+          <Suspense fallback={<DefaultSchedule />}>
+            <Schedule />
+          </Suspense>
         </div>
         <footer>
           <LinkButtonPrimary href={LINKS.registration} target="_blank">
