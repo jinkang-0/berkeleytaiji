@@ -2,18 +2,19 @@
 @use "lib/breakpoints";
 
 .footer {
+  width: 100%;
   padding: 32px clamp(10px, 7%, 88px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: colors.$footer;
+  margin-top: 50px;
 
   & > a {
-    color: colors.$link;
+    color: colors.$gray;
     transition: 200ms;
 
     &:hover {
-      color: colors.$linkHover;
+      color: colors.$grayLight;
     }
   }
 

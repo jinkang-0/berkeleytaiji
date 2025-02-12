@@ -1,0 +1,115 @@
+@use "./sections.module.scss";
+@use "lib/colors";
+@use "lib/breakpoints";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.card {
+  display: flex;
+  gap: 24px;
+
+  img {
+    border-radius: 8px;
+    width: 240px;
+    height: auto;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 24px;
+  }
+
+  .desc {
+    $lines: 8;
+    $maxh: 93.75rem;
+    --line-height: 1.5rem;
+
+    .textbox {
+      position: relative;
+      max-height: calc(var(--line-height) * $lines);
+      overflow: hidden;
+      transition: max-height 300ms ease-in-out;
+
+      p.truncated {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        background: colors.$card;
+        z-index: 1;
+      }
+
+      p.text {
+        position: relative;
+        opacity: 0;
+        transition: opacity 200ms linear;
+      }
+
+      &.expanded {
+        max-height: $maxh;
+
+        p.truncated {
+          opacity: 0;
+          transition: opacity 0ms;
+        }
+
+        p.text {
+          opacity: 1;
+          transition: opacity 0ms;
+        }
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+
+    button {
+      color: colors.$gray;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$xl) {
+  .card {
+    .desc {
+      .textbox {
+        p.truncated {
+          background: colors.$bg;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .card {
+    flex-direction: column;
+    gap: 16px;
+
+    .content {
+      padding-top: 0;
+    }
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .card {
+    .desc {
+      --line-height: 1.2rem;
+    }
+  }
+}

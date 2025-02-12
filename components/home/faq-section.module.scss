@@ -1,0 +1,85 @@
+@use "./sections.module.scss";
+@use "lib/colors";
+
+.faq {
+  & > span {
+    color: colors.$gray;
+
+    a {
+      color: colors.$linkDark;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .card {
+    border: 1px solid colors.$border;
+    border-radius: 8px;
+
+    button {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px;
+      font-size: inherit;
+      font-family: inherit;
+      color: colors.$fg;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        transition: 200ms ease;
+      }
+
+      &[data-state="open"] svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .accordionContent {
+      overflow: hidden;
+      border-top: 1px solid colors.$border;
+
+      &[data-state="open"] {
+        animation: slideDown 300ms ease-out;
+      }
+
+      &[data-state="closed"] {
+        animation: slideUp 300ms ease-in;
+      }
+    }
+
+    .content {
+      padding: 16px;
+      background: colors.$grayDark;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

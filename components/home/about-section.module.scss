@@ -1,0 +1,56 @@
+@use "sections.module.scss";
+@use "lib/breakpoints";
+
+.about {
+  position: relative;
+
+  .yinyang {
+    --yinyang-dark: #242424;
+    --yinyang-light: #414141;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-70%, -30%);
+    z-index: 1;
+  }
+
+  p {
+    position: relative;
+    z-index: 2;
+  }
+
+  .singlewhip {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(60%, 50%);
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .about {
+    margin-bottom: 100px;
+
+    .yinyang {
+      transform: translate(-60%, -90%);
+    }
+
+    .singlewhip {
+      transform: translate(40%, 80%);
+    }
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .about {
+    margin-bottom: 100px;
+
+    .yinyang {
+      transform: translate(-60%, -90%) scale(0.8);
+    }
+
+    .singlewhip {
+      transform: translate(40%, 80%) scale(0.8);
+    }
+  }
+}

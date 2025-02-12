@@ -1,34 +1,24 @@
 "use client";
 
-import styles from "@/app/page.module.scss";
-import { useMemo, useState } from "react";
-import EventCard from "./event-card";
+import { useState } from "react";
 import { ButtonGhost } from "../ui/button";
-import { Event } from "@/lib/types";
+import styles from "./events-section.module.scss";
 
 interface EventListClientProps {
-  events: Event[];
+  children: React.ReactNode;
 }
 
-export default function EventListClient({ events }: EventListClientProps) {
+export default function EventListClient({ children }: EventListClientProps) {
   const [expanded, setExpanded] = useState(false);
-  const isOverflowing = useMemo(() => events.length > 3, [events.length]);
 
   return (
-    <div className={styles.eventsList}>
-      {events.slice(0, 3).map((ev, idx) => (
-        <EventCard event={ev} key={ev.name + idx} />
-      ))}
-      {isOverflowing && expanded
-        ? events
-            .slice(3)
-            .map((ev, idx) => <EventCard event={ev} key={ev.name + idx} />)
-        : null}
-      {isOverflowing && (
-        <ButtonGhost onClick={() => setExpanded((prev) => !prev)}>
-          {expanded ? "show less" : "show more"}
-        </ButtonGhost>
-      )}
-    </div>
+    <>
+      <div className={`${styles.extras} ${expanded ? styles.expanded : ""}`}>
+        {children}
+      </div>
+      <ButtonGhost onClick={() => setExpanded((prev) => !prev)}>
+        {expanded ? "show less" : "show more"}
+      </ButtonGhost>
+    </>
   );
 }

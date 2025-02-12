@@ -3,16 +3,27 @@
 @use "lib/keyframes";
 
 .container {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 128px 0;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 
-  article {
-    width: clamp(600px, 50%, 800px);
+  .content {
     display: flex;
     flex-direction: column;
-    gap: 128px;
+    align-items: center;
+    background: colors.$card;
+    border-radius: 16px;
+    width: clamp(750px, 83%, 1200px);
+    box-shadow: 0 4px 8px 2px rgba(255, 255, 255, 0.1);
+    padding: 100px 0;
+
+    article {
+      width: clamp(600px, 60%, 800px);
+      display: flex;
+      flex-direction: column;
+      gap: 128px;
+    }
   }
 
   section {
@@ -20,59 +31,6 @@
     flex-direction: column;
     gap: 42px;
   }
-}
-
-.practice > footer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  p {
-    color: colors.$grayText;
-  }
-}
-
-.scheduleTable {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  .scheduleBlock {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr 1.25fr;
-
-    .placeholder {
-      width: 80%;
-      height: 1.25rem;
-      border-radius: 8px;
-      background: gray;
-      animation: glow 2s infinite;
-    }
-  }
-}
-
-.eventsList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  button {
-    width: fit-content;
-    color: colors.$link;
-  }
-
-  .placeholder {
-    height: 6rem;
-    border-radius: 8px;
-    background: darkslategray;
-    animation: glow 2s infinite;
-  }
-}
-
-.emptyAnnouncer {
-  display: flex;
-  gap: 24px;
-  align-items: center;
 }
 
 .aboutContent {
@@ -92,34 +50,21 @@
   gap: 12px !important;
 }
 
+@media (max-width: breakpoints.$xl) {
+  .container .content {
+    background: colors.$bg;
+    box-shadow: none;
+  }
+}
+
 @media (max-width: breakpoints.$md) {
-  .container > article {
-    width: 90%;
-  }
+  .container {
+    .content {
+      width: 100%;
 
-  .scheduleTable > .scheduleBlock {
-    grid-template-columns: 3fr 2fr;
-    row-gap: 4px;
-
-    span {
-      grid-row: 2 / 3;
-      color: colors.$grayText;
-    }
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      text-align: right;
-      grid-row: 1 / 3;
-    }
-  }
-
-  .aboutContent {
-    grid-template-columns: 1fr;
-
-    & > img {
-      display: none;
+      article {
+        width: 85%;
+      }
     }
   }
 }
