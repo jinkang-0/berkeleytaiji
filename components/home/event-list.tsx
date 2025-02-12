@@ -4,7 +4,6 @@ import { Event } from "@/lib/types";
 import styles from "./events-section.module.scss";
 import LeavesIcon from "@/icons/leaves";
 import { compareDate } from "@/lib/utils";
-import { SAMPLE_EVENTS } from "@/data/sample";
 import EventCard from "./event-card";
 
 export const EventListPlaceholder = () => {
@@ -18,19 +17,18 @@ export const EventListPlaceholder = () => {
 };
 
 export default async function EventList() {
-  // const eventsData = await getEvents();
-  // const today = new Date();
-  // const events: Event[] = eventsData
-  //   .map((ev) => ({
-  //     date: ev.Date,
-  //     from: ev.From,
-  //     to: ev.To,
-  //     location: ev.Location,
-  //     name: ev.Name
-  //   }))
-  //   .filter((ev) => compareDate(today, ev.date, ev.to))
-  //   .slice(0, 10);
-  const events = SAMPLE_EVENTS;
+  const eventsData = await getEvents();
+  const today = new Date();
+  const events: Event[] = eventsData
+    .map((ev) => ({
+      date: ev.Date,
+      from: ev.From,
+      to: ev.To,
+      location: ev.Location,
+      name: ev.Name
+    }))
+    .filter((ev) => compareDate(today, ev.date, ev.to))
+    .slice(0, 10);
   const hasOverflow = events.length > 3;
 
   return events.length > 0 ? (
