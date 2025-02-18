@@ -47,6 +47,8 @@
     margin-top: 12px;
     display: flex;
     gap: 1rem;
+    position: relative;
+    z-index: 1;
 
     a {
       -webkit-transition: 200ms -webkit-filter;
