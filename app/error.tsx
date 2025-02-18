@@ -3,6 +3,7 @@
 import Image from "next/image";
 import ImageSorryCat from "@/assets/graphics/sorry_cat.jpg";
 import styles from "./error.module.scss";
+import Footer from "@/components/ui/footer";
 
 export default function ErrorPage() {
   return (
@@ -10,13 +11,14 @@ export default function ErrorPage() {
       <article>
         <Image src={ImageSorryCat} alt="Sorry Cat" />
         <div>
-          <h5>Whoops</h5>
+          <h3>Error 500</h3>
           <p>
             Whoops, something went wrong on our end. Please try again later or
             contact us if the error persists.
           </p>
         </div>
       </article>
+      <Footer />
     </main>
   );
 }

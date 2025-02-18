@@ -1,16 +1,22 @@
 @use "lib/breakpoints";
+@use "lib/colors";
 
 .container {
   width: 100%;
-  padding: 128px 0;
+  height: 100svh;
   display: grid;
   place-items: center;
+  position: relative;
 
   article {
-    width: clamp(600px, 60%, 1200px);
+    width: clamp(640px, 60%, 800px);
     display: flex;
     gap: 64px;
     align-items: center;
+    background: colors.$card;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 2px rgba(255, 255, 255, 0.1);
 
     img {
       width: 256px;
@@ -22,7 +28,16 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+
+      a {
+        margin-top: 8px;
+      }
     }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
   }
 }
 
