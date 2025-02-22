@@ -1,14 +1,11 @@
-"use client";
-
 import styles from "./button.module.scss";
 import Link from "next/link";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  className?: string;
-}
-
-export function ButtonPrimary({ children, className, ...rest }: ButtonProps) {
+export function ButtonPrimary({
+  children,
+  className,
+  ...rest
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button className={`${styles.button} ${className}`} {...rest}>
       {children}
@@ -16,7 +13,11 @@ export function ButtonPrimary({ children, className, ...rest }: ButtonProps) {
   );
 }
 
-export function ButtonGhost({ children, className, ...rest }: ButtonProps) {
+export function ButtonGhost({
+  children,
+  className,
+  ...rest
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button className={`${styles.buttonGhost} ${className}`} {...rest}>
       {children}
@@ -24,16 +25,11 @@ export function ButtonGhost({ children, className, ...rest }: ButtonProps) {
   );
 }
 
-interface LinkButtonProps extends React.ComponentProps<typeof Link> {
-  children?: React.ReactNode;
-  className?: string;
-}
-
 export function LinkButtonPrimary({
   children,
   className,
   ...rest
-}: LinkButtonProps) {
+}: React.ComponentProps<typeof Link>) {
   return (
     <Link className={`${styles.button} ${className}`} {...rest}>
       {children}
