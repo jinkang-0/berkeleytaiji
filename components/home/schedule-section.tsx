@@ -6,9 +6,14 @@ import ExternalIcon from "@/icons/external";
 import PRACTICE_SCHEDULE from "@/data/schedule";
 import { getSchedule } from "@/api/spreadsheet";
 import { Suspense } from "react";
+import { ScheduleItem } from "@/lib/types";
 
-function DefaultSchedule() {
-  return PRACTICE_SCHEDULE.map((sched) => (
+interface ScheduleProps {
+  items: ScheduleItem[];
+}
+
+function ScheduleTemplate({ items }: ScheduleProps) {
+  return items.map((sched) => (
     <div
       key={sched.Day + sched.From + sched.To}
       className={styles.scheduleBlock}
@@ -17,26 +22,22 @@ function DefaultSchedule() {
       <span>
         {sched.From} - {sched.To}
       </span>
-      <div>{sched.Location}</div>
+      <div>
+        <p>{sched.Location}</p>
+        {sched.Alternative ? <p>({sched.Alternative})</p> : null}
+      </div>
     </div>
   ));
 }
 
-async function Schedule() {
-  const schedule = await getSchedule();
+function DefaultSchedule() {
+  return <ScheduleTemplate items={PRACTICE_SCHEDULE} />;
+}
 
-  return schedule.map((sched) => (
-    <div
-      key={sched.Day + sched.From + sched.To}
-      className={styles.scheduleBlock}
-    >
-      <p>{sched.Day}</p>
-      <span>
-        {sched.From} - {sched.To}
-      </span>
-      <div>{sched.Location}</div>
-    </div>
-  ));
+async function Schedule() {
+  const schedule = (await getSchedule()) as ScheduleItem[];
+
+  return <ScheduleTemplate items={schedule} />;
 }
 
 export default function ScheduleSection() {

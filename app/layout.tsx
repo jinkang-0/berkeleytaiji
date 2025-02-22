@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "Martial Arts",
     "Chinese Martial Arts",
     "Kungfu",
+    "kung fu",
     "UCMAP",
     "UC Martial Arts Program",
     "Club"

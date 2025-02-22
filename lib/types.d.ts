@@ -20,3 +20,11 @@ export interface Form {
 }
 
 export type Breakpoint = "sm" | "md" | "lg" | "xl";
+
+export interface ScheduleItem {
+  Day: string;
+  From: string;
+  To: string;
+  Location: string;
+  Alternative?: string;
+}
