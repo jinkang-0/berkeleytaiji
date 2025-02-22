@@ -8,12 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1
-    },
-    {
-      url: `${CONFIG.siteUrl}/compendium`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9
     }
   ];
 

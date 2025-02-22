@@ -15,13 +15,15 @@ const PRACTICE_SCHEDULE = [
     Day: "Wednesday",
     From: "7:00 PM",
     To: "9:00 PM",
-    Location: "RSF 135 (Combatives)"
+    Location: "RSF 135",
+    Alternative: "Combatives Room"
   },
   {
     Day: "Friday",
     From: "7:00 PM",
     To: "9:00 PM",
-    Location: "RSF 135 (Combatives)"
+    Location: "RSF 135",
+    Alternative: "Combatives Room"
   }
 ];
 

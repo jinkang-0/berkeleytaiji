@@ -18,6 +18,12 @@
   &:hover {
     text-decoration: none;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: rgb(35, 35, 35);
+    opacity: 0.9;
+  }
 }
 
 .buttonGhost {
