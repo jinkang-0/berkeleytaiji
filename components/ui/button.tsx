@@ -36,3 +36,15 @@ export function LinkButtonPrimary({
     </Link>
   );
 }
+
+export function LinkButtonGhost({
+  children,
+  className,
+  ...rest
+}: LinkButtonProps) {
+  return (
+    <Link className={`${styles.buttonGhost} ${className}`} {...rest}>
+      {children}
+    </Link>
+  );
+}

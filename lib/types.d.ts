@@ -6,6 +6,7 @@ export interface Event {
   from: string;
   to: string;
   location: string;
+  attachments: string[];
 }
 
 export interface GalleryItem {

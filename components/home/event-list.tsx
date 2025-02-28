@@ -3,7 +3,7 @@ import EventListClient from "./event-list-client";
 import { Event } from "@/lib/types";
 import styles from "./events-section.module.scss";
 import LeavesIcon from "@/icons/leaves";
-import { compareDate } from "@/lib/utils";
+import { compareDate, getTime } from "@/lib/utils";
 import EventCard from "./event-card";
 
 export const EventListPlaceholder = () => {
@@ -25,9 +25,11 @@ export default async function EventList() {
       from: ev.From,
       to: ev.To,
       location: ev.Location,
-      name: ev.Name
+      name: ev.Name,
+      attachments: ev.Attachments ? ev.Attachments.split("\n") : []
     }))
     .filter((ev) => compareDate(today, ev.date, ev.to))
+    .sort((e1, e2) => getTime(e1.date) - getTime(e2.date))
     .slice(0, 10);
   const hasOverflow = events.length > 3;
 
@@ -38,7 +40,7 @@ export default async function EventList() {
       ))}
       {hasOverflow ? (
         <EventListClient>
-          {events.slice(3, 10).map((ev, idx) => (
+          {events.slice(3).map((ev, idx) => (
             <EventCard event={ev} key={ev.name + idx} />
           ))}
         </EventListClient>
