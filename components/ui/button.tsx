@@ -41,7 +41,7 @@ export function LinkButtonGhost({
   children,
   className,
   ...rest
-}: LinkButtonProps) {
+}: React.ComponentProps<typeof Link>) {
   return (
     <Link className={`${styles.buttonGhost} ${className}`} {...rest}>
       {children}
