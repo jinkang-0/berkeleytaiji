@@ -18,9 +18,9 @@ export default function AboutSection() {
           fitness and to relax the mind.
           <br /> <br />
           We focus on Sun style tai chi, as it is most applicable to this
-          purpose, and the simplest style to get started. Albeit, it is more of
-          a holistic view, as many exercises are mixed with elements from Yang
-          and Chen styles to work on flexibility and strength.
+          purpose, and the simplest style to get started. That said, this is
+          more of a holistic view, as many exercises are mixed with elements
+          from Yang and Chen styles to work on flexibility and strength.
           <br /> <br />
           After grasping the basics, members are encouraged to further hone
           their craft. This can mean mastering complete forms, trying out
