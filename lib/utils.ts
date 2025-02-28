@@ -14,6 +14,11 @@ export const getDate = (date: string) => {
   return dateObj.getDate();
 };
 
+export const getTime = (date: string) => {
+  const dateObj = new Date(date);
+  return dateObj.getTime();
+};
+
 /**
  * Returns true if A comes before the date of B and time of T.
  * a: Date object

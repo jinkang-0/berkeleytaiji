@@ -17,11 +17,12 @@ export default function InstructorsSection() {
             <h5>Bryant Fong</h5>
             <h6>Head Instructor</h6>
             <InstructorDescription>
-              Sifu Bryant Fong is a 2nd generation Hun Yuan Cheng Taiji master
+              Sifu Bryant Fong is a 2nd generation Chen Hunyuan Taijiquan master
               and a 5th generation Bagua master. Sifu Fong has competed
               nationally and internationally, and served as the coach for the US
               Wushu Team at the 1st World Wushu Championships. Currently, he is
-              the coach for the San Francisco Wushu Team.
+              the coach for the San Francisco Wushu Team and head instructor of
+              both Cal Taiji and Cal Wushu at UC Berkeley.
               <br /> <br />
               Sifu Fong is proficient in both traditional as well as modern
               Wushu. He is a graduate of the San Francisco Jing-Wu Academy,
