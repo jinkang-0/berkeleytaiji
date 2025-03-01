@@ -19,7 +19,7 @@ export default function Hero() {
       />
       <div className={styles.imageCover}></div>
       <div className={styles.content}>
-        <h1>Cal Taiji</h1>
+        <h1>Berkeley Taiji</h1>
         <div>
           <p>Official Taiji club at UC Berkeley</p>
           <p>Founded 1969</p>

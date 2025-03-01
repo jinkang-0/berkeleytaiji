@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   description: CONFIG.siteDescription,
   keywords: [
     "CalTaiji",
-    "Cal",
+    "Berkeley",
+    "Berkeley Taiji",
     "Taiji",
     "Tai Chi",
     "UC Berkeley",
@@ -49,14 +50,6 @@ export const metadata: Metadata = {
     url: CONFIG.siteUrl,
     type: "website",
     locale: "en_US"
-  },
-  robots: {
-    index: true,
-    follow: true,
-    "max-image-preview": "large",
-    "max-snippet": -1,
-    "max-video-preview": -1,
-    googleBot: "index, follow"
   },
   icons: {
     icon: "/favicon.ico",
