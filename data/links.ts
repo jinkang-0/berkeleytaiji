@@ -4,6 +4,10 @@ export const LINKS = {
   youtube: "https://youtube.com/@TsanoVideos/",
   location: "https://maps.app.goo.gl/GpMWC5rYSyyKmeB27",
   registration:
+    "https://shop.rs.berkeley.edu/Program/GetProgramDetails?courseId=515b4fa9-bde1-47f3-9394-81d30e854c2a",
+  registration_online_only:
+    "https://shop.rs.berkeley.edu/Program/GetProgramDetails?courseId=deeacd60-1636-4e00-a991-ec76f8250667",
+  ucmap:
     "https://recwell.berkeley.edu/competitive-programs/martial-arts/adult-martial-arts/"
 };
 

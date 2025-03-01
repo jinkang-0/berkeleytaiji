@@ -2,18 +2,28 @@
 @use "lib/colors";
 
 .button {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
   display: flex;
   gap: 0.625rem;
-  background: black;
-  color: white;
-  border: 1px solid colors.$border;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 8px;
-  width: fit-content;
   cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  color: white;
+  background: none;
+  border: none;
+  border-radius: 8px;
+}
+
+a.button:global(.disabled) {
+  pointer-events: none;
+}
+
+.buttonPrimary {
+  background: black;
+  border: 1px solid colors.$buttonBorder;
 
   &:hover {
     text-decoration: none;
@@ -26,17 +36,17 @@
   }
 }
 
+a.buttonPrimary:global(.disabled) {
+  background: colors.$buttonBorder;
+  color: colors.$gray;
+
+  :global(.fill) {
+    fill: colors.$gray;
+  }
+}
+
 .buttonGhost {
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
   padding: 0;
-  position: relative;
-  color: white;
-  font-size: inherit;
-  font-family: inherit;
 
   &::after {
     $padding: 8px;
@@ -55,6 +65,10 @@
     z-index: 10;
   }
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &:hover,
   &:focus-visible {
     &::after {
@@ -66,6 +80,38 @@
     &::after {
       filter: brightness(0.7);
     }
+  }
+}
+
+a.buttonGhost:global(.disabled) {
+  color: lightgray;
+}
+
+.buttonOutline {
+  border: 1px solid colors.$border;
+  transition: 200ms;
+
+  :global(.fill) {
+    transition: 200ms;
+  }
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+    background: colors.$border;
+    color: black;
+
+    :global(.fill) {
+      fill: black;
+    }
+  }
+}
+
+a.buttonOutline:global(.disabled) {
+  color: colors.$gray;
+
+  :global(.fill) {
+    fill: colors.$gray;
   }
 }
 

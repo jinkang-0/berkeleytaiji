@@ -1,6 +1,8 @@
 import SingleWhip from "@/icons/single-whip";
 import styles from "./about-section.module.scss";
 import YinYang from "@/icons/yinyang";
+import Link from "next/link";
+import { LINKS } from "@/data/links";
 
 export default function AboutSection() {
   return (
@@ -10,7 +12,11 @@ export default function AboutSection() {
         <YinYang className={styles.yinyang} />
         <p>
           Berkeley Taiji is the official taiji club at UC Berkeley, one of the
-          many programs offered at the UC Martial Arts Program (UCMAP).
+          many programs offered at the{" "}
+          <Link href={LINKS.ucmap} about="_blank">
+            UC Martial Arts Program (UCMAP)
+          </Link>
+          .
           <br /> <br />
           We teach tai chi with an emphasis on health and wellness. This means
           we practice with the intent to improve physical fitness and to relax
