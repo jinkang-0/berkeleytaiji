@@ -9,7 +9,7 @@ import { GalleryItem } from "@/lib/types";
 export const COMMUNITY_PHOTOS: GalleryItem[] = [
   {
     image: PhotoGuangbo,
-    caption: "CalTaiji performing at the Clark Kerr campus"
+    caption: "Performing at the Clark Kerr campus"
   },
   {
     image: PhotoLunch,
@@ -21,7 +21,7 @@ export const COMMUNITY_PHOTOS: GalleryItem[] = [
   },
   {
     image: PhotoRuler,
-    caption: "CalTaiji performing at the SF Tenderloin Community Center"
+    caption: "Performing at the SF Tenderloin Community Center"
   },
   {
     image: PhotoBanquet,

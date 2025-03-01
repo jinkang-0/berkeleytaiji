@@ -12,10 +12,25 @@
   display: flex;
   gap: 24px;
 
-  img {
-    border-radius: 8px;
-    width: 240px;
-    height: auto;
+  .portrait {
+    position: relative;
+
+    img {
+      position: relative;
+      border-radius: 8px;
+      width: 240px;
+      height: auto;
+      z-index: 1;
+    }
+
+    .ambiance {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(0.98);
+      filter: blur(6px);
+      z-index: 0;
+    }
   }
 
   .content {

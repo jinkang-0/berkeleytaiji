@@ -1,7 +1,7 @@
 import { LINKS } from "@/data/links";
 import styles from "./schedule-section.module.scss";
 import Link from "next/link";
-import { LinkButtonPrimary } from "../ui/button";
+import { LinkButtonOutline, LinkButtonPrimary } from "../ui/button";
 import ExternalIcon from "@/icons/external";
 import PRACTICE_SCHEDULE from "@/data/schedule";
 import { getSchedule } from "@/api/spreadsheet";
@@ -57,9 +57,22 @@ export default function ScheduleSection() {
           </Suspense>
         </div>
         <footer>
-          <LinkButtonPrimary href={LINKS.registration} target="_blank">
-            Register <ExternalIcon />
-          </LinkButtonPrimary>
+          <div>
+            <LinkButtonPrimary
+              // className="disabled"
+              href={LINKS.registration}
+              target="_blank"
+            >
+              Register <ExternalIcon />
+            </LinkButtonPrimary>
+            <LinkButtonOutline
+              // className="disabled"
+              href={LINKS.registration_online_only}
+              target="_blank"
+            >
+              Register for Online-only <ExternalIcon />
+            </LinkButtonOutline>
+          </div>
           <p className={styles.note}>
             Online-only members and UC Berkeley students, alumni, and faculty
             can receive discounts. Regular members can attend both in person and

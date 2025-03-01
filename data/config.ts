@@ -1,6 +1,6 @@
 const CONFIG = {
-  siteUrl: "https://caltaiji.vercel.app",
-  siteName: "CalTaiji",
+  siteUrl: "https://berkeleytaiji.vercel.app",
+  siteName: "Berkeley Taiji",
   siteDescription: "The official Taiji club at UC Berkeley."
 };
 

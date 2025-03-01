@@ -68,14 +68,20 @@ a {
   }
 }
 
+@media (max-width: breakpoints.$md) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+
 @media (max-width: breakpoints.$sm) {
   body {
     font-size: 1rem;
   }
 
-  h1 {
-    font-size: 4rem;
-  }
+  // h1 {
+  //   font-size: 4rem;
+  // }
 
   h3 {
     font-size: 2rem;

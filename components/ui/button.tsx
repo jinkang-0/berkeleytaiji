@@ -7,7 +7,10 @@ export function ButtonPrimary({
   ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button className={`${styles.button} ${className}`} {...rest}>
+    <button
+      className={`${styles.button} ${styles.buttonPrimary} ${className}`}
+      {...rest}
+    >
       {children}
     </button>
   );
@@ -19,7 +22,10 @@ export function ButtonGhost({
   ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button className={`${styles.buttonGhost} ${className}`} {...rest}>
+    <button
+      className={`${styles.button} ${styles.buttonGhost} ${className}`}
+      {...rest}
+    >
       {children}
     </button>
   );
@@ -31,7 +37,10 @@ export function LinkButtonPrimary({
   ...rest
 }: React.ComponentProps<typeof Link>) {
   return (
-    <Link className={`${styles.button} ${className}`} {...rest}>
+    <Link
+      className={`${styles.button} ${styles.buttonPrimary} ${className}`}
+      {...rest}
+    >
       {children}
     </Link>
   );
@@ -43,7 +52,25 @@ export function LinkButtonGhost({
   ...rest
 }: React.ComponentProps<typeof Link>) {
   return (
-    <Link className={`${styles.buttonGhost} ${className}`} {...rest}>
+    <Link
+      className={`${styles.button} ${styles.buttonGhost} ${className}`}
+      {...rest}
+    >
+      {children}
+    </Link>
+  );
+}
+
+export function LinkButtonOutline({
+  children,
+  className,
+  ...rest
+}: React.ComponentProps<typeof Link>) {
+  return (
+    <Link
+      className={`${styles.button} ${styles.buttonOutline} ${className}`}
+      {...rest}
+    >
       {children}
     </Link>
   );

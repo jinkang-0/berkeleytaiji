@@ -10,8 +10,9 @@ export default function InstructorsSection() {
       <h3>Instructors</h3>
       <div className={styles.container}>
         <div className={styles.card}>
-          <div>
+          <div className={styles.portrait}>
             <Image src={SifuFong} alt="Sifu Fong" />
+            <Image className={styles.ambiance} src={SifuFong} alt="ambiance" />
           </div>
           <div className={styles.content}>
             <h5>Bryant Fong</h5>
@@ -43,8 +44,9 @@ export default function InstructorsSection() {
           </div>
         </div>
         <div className={styles.card}>
-          <div>
+          <div className={styles.portrait}>
             <Image src={Mason} alt="Mason Tong" />
+            <Image className={styles.ambiance} src={Mason} alt="ambiance" />
           </div>
           <div className={styles.content}>
             <h5>Mason Tong</h5>

@@ -1,6 +1,8 @@
 import SingleWhip from "@/icons/single-whip";
 import styles from "./about-section.module.scss";
 import YinYang from "@/icons/yinyang";
+import Link from "next/link";
+import { LINKS } from "@/data/links";
 
 export default function AboutSection() {
   return (
@@ -9,13 +11,16 @@ export default function AboutSection() {
       <div className={styles.about}>
         <YinYang className={styles.yinyang} />
         <p>
-          Taijiquan (太极拳), or tai chi, is a traditional Chinese martial art
-          where practitioners practice with slow, deliberate movements on the
-          outside to focus on what&apos;s happening on the inside.
+          Berkeley Taiji is the official taiji club at UC Berkeley, one of the
+          many programs offered at the{" "}
+          <Link href={LINKS.ucmap} about="_blank">
+            UC Martial Arts Program (UCMAP)
+          </Link>
+          .
           <br /> <br />
-          At Cal Taiji, we teach tai chi with an emphasis on health and
-          wellness. This means we practice with the intent to improve physical
-          fitness and to relax the mind.
+          We teach tai chi with an emphasis on health and wellness. This means
+          we practice with the intent to improve physical fitness and to relax
+          the mind.
           <br /> <br />
           We focus on Sun style tai chi, as it is most applicable to this
           purpose, and the simplest style to get started. That said, this is
