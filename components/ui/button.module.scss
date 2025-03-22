@@ -46,7 +46,7 @@ a.buttonPrimary:global(.disabled) {
 }
 
 .buttonGhost {
-  padding: 0;
+  padding: 0 !important;
 
   &::after {
     $padding: 8px;
