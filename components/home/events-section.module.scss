@@ -95,6 +95,7 @@
 .cardAttachments {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 @media (max-width: breakpoints.$xl) {
