@@ -20,24 +20,27 @@ export default function EventCard({ event }: EventCardProps) {
         <span>{date}</span>
       </div>
       <div className={styles.cardBody}>
-        <b>{event.name}</b>
-        <span>
-          {event.from} - {event.to}
-        </span>
-        <div>
-          <MapIcon />
-          <p>{event.location}</p>
+        <div className={styles.cardDetails}>
+          <b>{event.name}</b>
+          <span>
+            {event.from} - {event.to}
+          </span>
+          <div>
+            <div>
+              <MapIcon />
+            </div>
+            <p>{event.location}</p>
+          </div>
+        </div>
+        <div className={styles.cardAttachments}>
+          {event.attachments.length > 0 &&
+            event.attachments.map((att) => (
+              <LinkButtonGhost key={att} href={att} target="_blank">
+                <AttachmentIcon />
+              </LinkButtonGhost>
+            ))}
         </div>
       </div>
-      {event.attachments.length > 0 ? (
-        <div className={styles.cardAttachments}>
-          {event.attachments.map((att) => (
-            <LinkButtonGhost key={att} href={att} target="_blank">
-              <AttachmentIcon />
-            </LinkButtonGhost>
-          ))}
-        </div>
-      ) : null}
     </div>
   );
 }

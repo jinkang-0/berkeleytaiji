@@ -57,7 +57,7 @@ export default function ScheduleSection() {
           </Suspense>
         </div>
         <footer>
-          <div>
+          <div className={styles.buttonGroup}>
             <LinkButtonPrimary
               // className="disabled"
               href={LINKS.registration}
