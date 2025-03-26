@@ -109,4 +109,8 @@
     flex-direction: column;
     align-items: flex-end;
   }
+
+  .cardAttachments {
+    flex-direction: row-reverse;
+  }
 }

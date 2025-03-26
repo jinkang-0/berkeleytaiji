@@ -2,6 +2,10 @@
 @use "lib/fonts";
 @use "lib/breakpoints";
 
+:root {
+  color-scheme: dark;
+}
+
 body {
   color: colors.$fg;
   background: colors.$bg;
