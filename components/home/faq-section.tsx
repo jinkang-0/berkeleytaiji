@@ -25,22 +25,22 @@ export default function FAQSection() {
             to ask!
           </FAQCard>
           <FAQCard question="What are the health benefits of tai chi?">
-            Tai chi practitioners perform hard-to-hold exercises like squats and
-            kicks and are asked to do so without the aid of momentum. Alongside
-            structural stability, this also helps{" "}
+            Tai chi has been linked to more resistant tendons, stronger muscles,
+            better flexibility, increased spatial awareness, improved balancing,
+            and some degree of aerobic conditioning without raising the
+            heartbeat (see{" "}
             <Link
               href="https://www.health.harvard.edu/staying-healthy/the-health-benefits-of-tai-chi"
               target="_blank"
             >
-              develop muscular strength, balance, flexibility, and promote blood
-              flow
+              this article from Harvard Medical School
             </Link>
-            , all without needing to raise the heart rate.
+            ).
             <br /> <br />
-            Some exercises are designed to help loosen up the joints, helping to
-            release stress and tension built up during the day, which many find
-            therapeutic. Many students and adults reportedly find this helpful
-            to manage stress, especially if one leads a busy lifestyle.
+            We start each class with a set of joint loosening exercises, which
+            helps release stress and tension built up during the day. Many
+            students reportedly find this helpful to manage stress, especially
+            for those who adopt a sedentary lifestyle.
             <br /> <br />
             Tai chi is also positively linked to{" "}
             <Link
@@ -54,10 +54,9 @@ export default function FAQSection() {
               href="https://www.health.harvard.edu/mind-and-mood/a-sharper-mind-tai-chi-can-improve-cognitive-function"
               target="_blank"
             >
-              reduced chance of dementia
+              reduced chances of dementia
             </Link>
-            . If you or your loved ones might be at risk of dementia, tai chi
-            can be a good supplement to delay the onset of dementia.
+            .
             <br /> <br />
             For readers curious in learning more, you can find more sources
             online discussing the health benefits of tai chi. A good source to
@@ -65,40 +64,60 @@ export default function FAQSection() {
             <Link href="https://a.co/d/eGcBFL1" target="_blank">
               The Harvard Medical School Guide to Tai Chi
             </Link>
-            , first published in 2013, which goes over a basic tai chi program,
-            the traditional principles of tai chi, and a summary of health
-            benefits up to date to its time. That said, you are also welcome to
-            email us or join in for the first week for free to learn more.
+            , published in 2013, which discusses the benefits of tai chi from
+            studies. That said, you are also welcome to email us or join in for
+            the first week for free to learn more.
           </FAQCard>
-          <FAQCard question="Are members required to perform?">
-            Not at all! Although we encourage all members, new or old, to help
-            out at performances, it is not a requirement to join us for
-            practice.
+          <FAQCard question="Are members required to perform at events?">
+            Not at all!
+            <br />
+            <br />
+            For context, we schedule many performance events throughout the
+            year, organized to help spread the art and grow the martial arts
+            community. Sometimes, we may also host or participate in
+            tournaments!
+            <br />
+            <br />
+            We encourage members to attend and help out at these events because
+            they help spread the art and continue our long martial lineage!
+            Attending competitions are also a great chance to see how your form
+            merits among other practitioners, or to see what else is out there
+            in the kung fu world.
+            <br />
+            <br />
+            That said, we understand that many feel uncomfortable to perform or
+            attend competitions, so it is definitely not a requirement for
+            members to perform!
           </FAQCard>
           <FAQCard question="How are classes organized?">
             We start class with a joint loosening exercise to release stress
             built up during the day. After that, it is usually followed up with
             a stretch or qigong, which helps practitioners build sensitivity of
             &quot;qi.&quot;
+            <br />
+            <br />
+            For online classes, our time is limited, so we either do an extended
+            session of qigong or one of form practice each class.
             <br /> <br />
-            In the final hour of class, we split off into groups. Beginners will
+            For in person classes, we split off into groups. Beginners will
             practice the fundamental forms while advanced members work on their
             own projects under the guidance of Sifu Fong.
             <br /> <br />
             It&apos;s important to note that forms are taught piece by piece. No
             one is shown a complete form and expected to remember it.
             You&apos;re welcome to take as much time and repetitions as you need
-            to understand the core concepts.
+            to understand the core concepts. Don&apos;t be afraid to interrupt
+            and ask questions!
           </FAQCard>
           <FAQCard question="What forms are practiced?">
-            For practitioners who are new to tai chi, we start them off by
-            building their footwork and understanding of energy with three
-            fundamental forms. Sun 12 in the Fall, Sun Guangbo in the Spring,
-            and Bafa Wubu in the Summer.
+            If you are new to tai chi, we will start you off by working on your
+            footwork, your sensitivity towards energy, and how to express energy
+            with three fundamental forms. Sun 12 in the Fall, Sun Guangbo in the
+            Spring, and Bafa Wubu in the Summer.
             <br /> <br />
             For practitioners who already have experience in tai chi, or have
             completed their fundamentals, they can choose to work on perfecting
-            a form of their choice! Whether it&apos;s a long tai chi hand form,
+            a form of their choice. Whether it&apos;s a long tai chi hand form,
             a tai chi weapon form, or a form from another martial art like
             Xingyi or Bagua.
             <br /> <br />
