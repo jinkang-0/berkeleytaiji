@@ -12,3 +12,14 @@ export const LINKS = {
 };
 
 export const EMAIL = "taiji@ucmap.org";
+
+export const NAVBAR_LINKS = [
+  {
+    href: "/",
+    name: "Info"
+  },
+  {
+    href: "/blog",
+    name: "Blog"
+  }
+];

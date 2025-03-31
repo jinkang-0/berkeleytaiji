@@ -3,6 +3,9 @@ import { Kaushan_Script, Sen } from "next/font/google";
 import "./globals.scss";
 import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
+import Hero from "@/components/ui/hero";
+import styles from "./page.module.scss";
+import Navbar from "@/components/ui/navbar";
 
 // import fonts
 const kaushanScript = Kaushan_Script({
@@ -72,7 +75,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${kaushanScript.variable} ${sen.variable}`}>
-        {children}
+        <main className={styles.container}>
+          <Hero />
+          <Navbar />
+          {children}
+        </main>
       </body>
     </html>
   );
