@@ -24,8 +24,10 @@ a.button:global(.disabled) {
 .buttonPrimary {
   background: black;
   border: 1px solid colors.$buttonBorder;
+  transition: 200ms;
 
   &:hover {
+    border-color: colors.$border;
     text-decoration: none;
   }
 
@@ -98,12 +100,7 @@ a.buttonGhost:global(.disabled) {
   &:hover,
   &:focus-visible {
     text-decoration: none;
-    background: colors.$border;
-    color: black;
-
-    :global(.fill) {
-      fill: black;
-    }
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 

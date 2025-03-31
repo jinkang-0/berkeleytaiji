@@ -24,7 +24,7 @@ export function ButtonPrimarySingle({
 
   return (
     <button
-      className={`${styles.button} ${className}`}
+      className={`${styles.button} ${styles.buttonPrimary} ${className}`}
       onClick={clickFunction}
       disabled={disabled || isDisabled}
       {...rest}
