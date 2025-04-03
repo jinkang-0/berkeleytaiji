@@ -1,5 +1,5 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { serviceAccountAuth } from "./google-auth";
+import { serviceAccountAuth } from "./google";
 
 if (!process.env.SPREADSHEET_ID)
   throw new Error("Spreadsheet ID is not specified in environment variables.");

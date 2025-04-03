@@ -1,5 +1,4 @@
 import styles from "./page.module.scss";
-import Footer from "@/components/ui/footer";
 import Gallery from "@/components/ui/gallery";
 import { COMMUNITY_PHOTOS } from "@/data/images";
 import AboutSection from "@/components/home/about-section";
@@ -24,8 +23,6 @@ export default function Home() {
           <InstructorsSection />
         </article>
       </div>
-
-      <Footer />
     </>
   );
 }

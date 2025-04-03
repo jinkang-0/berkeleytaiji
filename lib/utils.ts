@@ -77,3 +77,20 @@ export const getFileId = (link: string) => {
 export const gDriveToDownload = (link: string) => {
   return `https://drive.usercontent.google.com/download?id=${getFileId(link)}`;
 };
+
+/**
+ * Formats a list of strings into a grammatically correct sentence.
+ *
+ * formatList(["Apple"]) => "Apple"
+ * formatList(["Apple", "Banana"]) => "Apple and Banana"
+ * formatList(["Apple", "Banana", "Citrus"]) => "Apple, Banana, and Citrus"
+ */
+export const formatList = (items: string[], joinTerm = " and "): string => {
+  if (items.length == 0) return "";
+  if (items.length == 1) return items[0];
+  if (items.length == 2) return items.join(joinTerm);
+
+  const firstTerms = items.slice(0, items.length - 1).join(", ");
+  const lastItem = items[items.length - 1];
+  return `${firstTerms},${joinTerm}${lastItem}`;
+};

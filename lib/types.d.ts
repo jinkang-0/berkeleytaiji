@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import type { DefaultSchemaOptions, Schema as SchemaType } from "mongoose";
 
 export interface Event {
   name: string;
@@ -29,3 +30,22 @@ export interface ScheduleItem {
   Location: string;
   Alternative?: string;
 }
+
+// utility types
+
+type ModelTypeFromSchema<S> = S extends SchemaType<unknown, infer Model>
+  ? Model
+  : never;
+
+type TypeFromSchema<S> = S extends SchemaType<
+  unknown,
+  ModelTypeFromSchema<S>,
+  object,
+  object,
+  object,
+  object,
+  DefaultSchemaOptions,
+  infer DocType
+>
+  ? DocType
+  : never;

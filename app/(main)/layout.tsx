@@ -1,6 +1,7 @@
 import Hero from "@/components/ui/hero";
 import styles from "./page.module.scss";
 import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 
 export default function MainLayout({
   children
@@ -12,6 +13,7 @@ export default function MainLayout({
       <Hero />
       <Navbar />
       {children}
+      <Footer />
     </main>
   );
 }

@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "www.ocf.berkeley.edu",
         port: "",
         pathname: "/hosting-logos/*"
+      },
+      {
+        protocol: "https",
+        hostname: "drive.usercontent.google.com",
+        pathname: "/download"
       }
     ]
   }
