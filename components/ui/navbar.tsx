@@ -9,7 +9,7 @@ import { useMemo } from "react";
 export default function Navbar() {
   const pathname = usePathname();
   const activeIdx = useMemo(
-    () => NAVBAR_LINKS.findIndex((v) => v.href === pathname),
+    () => NAVBAR_LINKS.findLastIndex((v) => pathname.startsWith(v.href)),
     [pathname]
   );
 

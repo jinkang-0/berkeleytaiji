@@ -16,11 +16,17 @@
   border: 1px solid colors.$borderDark;
   transition: border-color 200ms;
   overflow: hidden;
+  color: colors.$fg;
 
   cursor: pointer;
 
   &:hover {
     border-color: colors.$border;
+  }
+
+  &:hover,
+  & *:hover {
+    text-decoration: none;
   }
 
   img {

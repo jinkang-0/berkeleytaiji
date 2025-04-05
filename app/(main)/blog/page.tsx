@@ -1,7 +1,8 @@
 import Image from "next/image";
-import styles from "./blog.module.scss";
+import styles from "./feed.module.scss";
 import { formatList } from "@/lib/utils";
 import { getBlogs } from "@/api/db";
+import Link from "next/link";
 
 export default async function Page() {
   const blogs = await getBlogs();
@@ -9,7 +10,7 @@ export default async function Page() {
   return (
     <div className={styles.feed}>
       {blogs.map((b) => (
-        <div key={b.id} className={styles.blogCard}>
+        <Link key={b.id} className={styles.blogCard} href={`/blog/${b._id}`}>
           <Image
             src={b.image}
             width="400"
@@ -33,7 +34,7 @@ export default async function Page() {
             </header>
             <section>{b.content}</section>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

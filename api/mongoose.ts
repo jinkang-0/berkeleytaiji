@@ -24,7 +24,8 @@ const BlogSchema = new Schema(
     published: Date,
     visible: { type: Boolean, required: true },
     image: { type: String, required: true },
-    content: { type: String, required: true }
+    content: { type: String, required: true },
+    imageOffset: { type: Number, required: true, default: 0 }
   },
   { collection: "Blog" }
 );

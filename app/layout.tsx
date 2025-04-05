@@ -3,6 +3,7 @@ import { Kaushan_Script, Sen } from "next/font/google";
 import "./globals.scss";
 import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
+import ProgressBarProvider from "@/components/ui/progress-bar";
 
 // import fonts
 const kaushanScript = Kaushan_Script({
@@ -72,7 +73,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${kaushanScript.variable} ${sen.variable}`}>
-        {children}
+        <ProgressBarProvider>{children}</ProgressBarProvider>
       </body>
     </html>
   );

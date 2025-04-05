@@ -4,10 +4,11 @@
 .footer {
   width: 100%;
   padding: 32px clamp(10px, 7%, 88px);
+  padding-top: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 50px;
+  margin-top: auto;
 }
 
 .emailLink {

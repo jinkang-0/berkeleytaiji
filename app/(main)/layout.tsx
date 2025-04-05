@@ -1,7 +1,7 @@
-import Hero from "@/components/ui/hero";
 import styles from "./page.module.scss";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
+import ConditionalHero from "@/components/ui/conditional-hero";
 
 export default function MainLayout({
   children
@@ -10,7 +10,7 @@ export default function MainLayout({
 }>) {
   return (
     <main className={styles.container}>
-      <Hero />
+      <ConditionalHero />
       <Navbar />
       {children}
       <Footer />
