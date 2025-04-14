@@ -7,10 +7,11 @@ import styles from "./footer.module.scss";
 import EmailIcon from "@/icons/email";
 import OCFBadge from "../ocf/ocf-badge";
 
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footerIcons}>
+    <footer className={`${styles.footer} ${className}`}>
+      <Link href={`mailto:${EMAIL}`}>{EMAIL}</Link>
+      <div>
         <Link href={LINKS.instagram} target="_blank">
           <InstagramIcon />
         </Link>

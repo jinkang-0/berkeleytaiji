@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { searchFiles, updateImage, uploadImage } from "./google";
+import { searchFiles, updateImage, uploadImage } from "./files";
 
 /**
  * Revalidates a path

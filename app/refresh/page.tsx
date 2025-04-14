@@ -9,7 +9,8 @@ export default function RefreshPage() {
     <main className={styles.container}>
       <article>
         <ButtonPrimarySingle
-          onClick={() => {
+          onClick={async () => {
+            "use server";
             revalidate("/");
             revalidate("/blog");
           }}

@@ -4,6 +4,13 @@ import "./globals.scss";
 import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
 import ProgressBarProvider from "@/components/ui/progress-bar";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+// ensure environmental variables are imported
+if (!process.env.AUTH_GOOGLE_ID)
+  throw new Error(
+    "Google OAuth Client ID not included in environment variables."
+  );
 
 // import fonts
 const kaushanScript = Kaushan_Script({
@@ -73,7 +80,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${kaushanScript.variable} ${sen.variable}`}>
-        <ProgressBarProvider>{children}</ProgressBarProvider>
+        <GoogleOAuthProvider clientId={process.env.AUTH_GOOGLE_ID || ""}>
+          <ProgressBarProvider>{children}</ProgressBarProvider>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );

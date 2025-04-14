@@ -1,24 +1,6 @@
-import { JWT } from "google-auth-library";
+"use server";
 
-// check that environment variables are set
-if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL)
-  throw new Error("Google service account email not set.");
-
-if (!process.env.GOOGLE_PRIVATE_KEY)
-  throw new Error("Google service account private key not set.");
-
-if (!process.env.BLOG_FOLDER_ID)
-  throw new Error("Google Blog folder ID not set.");
-
-// service account auth
-export const serviceAccountAuth = new JWT({
-  email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-  key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-  scopes: [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-  ]
-});
+import { serviceAccountAuth } from "@/lib/google";
 
 /**
  * Uploads new image to blog image folder

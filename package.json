@@ -11,8 +11,10 @@
   "dependencies": {
     "@bprogress/next": "^3.2.10",
     "@radix-ui/react-accordion": "^1.2.3",
+    "@react-oauth/google": "^0.12.1",
     "google-auth-library": "^9.15.0",
     "google-spreadsheet": "^4.1.4",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.1",
     "next": ">=15.2.4",
     "react": "^19.0.0",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
