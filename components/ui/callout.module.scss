@@ -1,0 +1,11 @@
+@use "lib/colors";
+
+.callout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: colors.$callout;
+  border-radius: 8px;
+}
