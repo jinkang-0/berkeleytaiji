@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image";
 import type { DefaultSchemaOptions, Schema as SchemaType } from "mongoose";
 
+// types for home page data
 export interface Event {
   name: string;
   date: string;
@@ -14,14 +15,6 @@ export interface GalleryItem {
   image: StaticImageData;
   caption: string;
 }
-
-export interface Form {
-  name: string;
-  chinese: string;
-  link: string;
-}
-
-export type Breakpoint = "sm" | "md" | "lg" | "xl";
 
 export interface ScheduleItem {
   Day: string;

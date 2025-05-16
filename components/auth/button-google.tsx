@@ -3,7 +3,7 @@
 import { loginWithGoogle } from "@/api/auth";
 import { CodeResponse, useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
-import { ButtonPrimary } from "./button";
+import { ButtonPrimary } from "@/components/ui/button";
 import GoogleIcon from "@/icons/google";
 
 export function ButtonGoogleSignIn() {

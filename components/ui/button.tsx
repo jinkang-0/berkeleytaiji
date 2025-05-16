@@ -16,6 +16,21 @@ export function ButtonPrimary({
   );
 }
 
+export function ButtonSecondary({
+  children,
+  className,
+  ...rest
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      className={`${styles.button} ${styles.buttonSecondary} ${className}`}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
 export function ButtonGhost({
   children,
   className,

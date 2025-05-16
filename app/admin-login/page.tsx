@@ -1,16 +1,16 @@
-// import { getSession } from "@/api/auth";
-import { ButtonGoogleSignIn } from "@/components/ui/button-google";
+import { ButtonGoogleSignIn } from "@/components/auth/button-google";
 import styles from "./login.module.scss";
 import Footer from "@/components/ui/footer";
+import { getSession } from "@/api/auth";
+import { redirect } from "next/navigation";
 
 export default async function AdminLoginPage() {
-  // const session = await getSession();
+  const session = await getSession();
+  const hasSession = session.success;
 
-  // if (session.success) {
-  //   console.log(session.user);
-  // } else {
-  //   console.log(session.message);
-  // }
+  if (hasSession) {
+    redirect("/");
+  }
 
   return (
     <main className={styles.container}>

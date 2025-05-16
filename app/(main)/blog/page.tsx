@@ -1,14 +1,26 @@
 import Image from "next/image";
 import styles from "./feed.module.scss";
 import { formatList } from "@/lib/utils";
-import { getBlogs } from "@/api/db";
+import { checkAdmin, getBlogs } from "@/api/db";
 import Link from "next/link";
+import { getSession } from "@/api/auth";
+import { ButtonSecondary } from "@/components/ui/button";
+import NewBlogIcon from "@/icons/new-blog";
 
 export default async function Page() {
   const blogs = await getBlogs();
+  const session = await getSession();
+  const user = session.success && session.user;
+  const isAdmin = user && (await checkAdmin(user.email));
 
   return (
     <div className={styles.feed}>
+      {isAdmin && (
+        <ButtonSecondary>
+          <NewBlogIcon />
+          Create new blog
+        </ButtonSecondary>
+      )}
       {blogs.map((b) => (
         <Link key={b.id} className={styles.blogCard} href={`/blog/${b._id}`}>
           <Image
