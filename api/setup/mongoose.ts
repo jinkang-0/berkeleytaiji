@@ -21,11 +21,13 @@ const BlogSchema = new Schema(
       required: true,
       default: []
     },
-    published: Date,
+    published: { type: Schema.Types.Boolean, required: true },
+    publishDate: { type: Date, required: false },
     visible: { type: Boolean, required: true },
     image: { type: String, required: true },
     content: { type: String, required: true },
-    imageOffset: { type: Number, required: true, default: 0 }
+    imageOffset: { type: Number, required: true, default: 0 },
+    blogId: { type: String, required: true }
   },
   { collection: "Blog" }
 );

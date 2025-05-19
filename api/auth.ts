@@ -1,6 +1,6 @@
 "use server";
 
-import { oauthClient } from "@/lib/google";
+import { oauthClient } from "@/api/setup/google";
 import { cookies } from "next/headers";
 import { checkAdmin } from "./db";
 import jwt from "jsonwebtoken";

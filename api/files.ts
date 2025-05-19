@@ -1,6 +1,6 @@
 "use server";
 
-import { serviceAccountAuth } from "@/lib/google";
+import { serviceAccountAuth } from "@/api/setup/google";
 
 /**
  * Uploads new image to blog image folder

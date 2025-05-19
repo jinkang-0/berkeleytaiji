@@ -1,14 +1,14 @@
-import { getBlogByBlogId } from "@/api/db";
+import { getBlogByObjectId } from "@/api/db";
 import { notFound } from "next/navigation";
 import BlogReader from "@/components/blog/blog-reader";
 
-export default async function BlogPage({
+export default async function DraftBlogPage({
   params
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const blogData = await getBlogByBlogId(id);
+  const blogData = await getBlogByObjectId(id);
   if (blogData.length !== 1 || !blogData[0]) return notFound();
 
   const blog = blogData[0];
