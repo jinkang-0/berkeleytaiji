@@ -2,7 +2,7 @@ import { getBlogs } from "@/api/db";
 import BlogCard from "./blog-card";
 
 export default async function BlogFeed({ isAdmin }: { isAdmin: boolean }) {
-  const blogs = await getBlogs(isAdmin ? undefined : true);
+  const blogs = await getBlogs(isAdmin ? false : true);
 
   return (
     <>
@@ -11,6 +11,7 @@ export default async function BlogFeed({ isAdmin }: { isAdmin: boolean }) {
       {blogs.map((b) => (
         <BlogCard
           key={b.id}
+          id={b.id}
           blogId={b.blogId}
           image={b.image}
           title={b.title}
@@ -18,6 +19,7 @@ export default async function BlogFeed({ isAdmin }: { isAdmin: boolean }) {
           publishDate={b.publishDate ?? undefined}
           content={b.content}
           authors={b.authors.map((a) => a.name)}
+          visible={b.visible}
         />
       ))}
     </>

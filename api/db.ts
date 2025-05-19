@@ -13,8 +13,8 @@ import { isValidObjectId, Types } from "mongoose";
 export async function getBlogs(filterVisible = true) {
   if (!(await getConnection())) return [];
 
-  const visible = filterVisible ? true : undefined;
-  const blogs = await Blog.find({ visible })
+  const query = filterVisible ? { visible: true } : {};
+  const blogs = await Blog.find({ ...query, published: true })
     .populate<{ authors: [UserType] }>("authors")
     .exec();
 
@@ -124,4 +124,41 @@ export async function createDraft(authorEmail: string) {
   await blog.save();
 
   return blog.id;
+}
+
+/**
+ * Delete a blog draft.
+ *
+ * @param id - The ID of the blog draft to delete.
+ * @returns True if the draft was deleted, false otherwise.
+ */
+export async function deleteDraft(id: string) {
+  if (!(await getConnection())) return false;
+  if (!isValidObjectId(id)) return false;
+
+  const result = await Blog.deleteOne({ _id: new Types.ObjectId(id) }).exec();
+  if (result.deletedCount === 0) return false;
+
+  return true;
+}
+
+/**
+ * Update a blog draft.
+ *
+ * @param id - The object ID of the blog draft to update.
+ * @param data - The data to update the blog draft with.
+ * @returns True if the draft was updated, false otherwise.
+ */
+export async function updateVisibility(id: string, visible: boolean) {
+  if (!(await getConnection())) return false;
+  if (!isValidObjectId(id)) return false;
+
+  const result = await Blog.updateOne(
+    { _id: new Types.ObjectId(id) },
+    { visible }
+  ).exec();
+
+  if (result.modifiedCount === 0) return false;
+
+  return true;
 }

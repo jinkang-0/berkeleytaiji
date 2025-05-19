@@ -3,7 +3,7 @@ import { checkAdmin } from "@/api/db";
 import { getSession } from "@/api/auth";
 import DraftBlogFeed from "@/components/blog/draft-feed";
 import BlogFeed from "@/components/blog/blog-feed";
-import ButtonCreateBlog from "@/components/blog/create-blog";
+import ButtonCreateBlog from "@/components/blog/button-create-blog";
 
 export default async function Page() {
   const session = await getSession();
