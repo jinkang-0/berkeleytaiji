@@ -1,0 +1,30 @@
+@use "lib/colors";
+
+.imageContainer {
+  position: relative;
+
+  & > div {
+    opacity: 0;
+    visibility: hidden;
+    transition: 200ms;
+  }
+
+  &:hover > div {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px;
+  display: flex;
+  gap: 8px;
+
+  button {
+    color: colors.$gray;
+    font-weight: 500;
+  }
+}

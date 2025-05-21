@@ -7,6 +7,7 @@ import { PopulatedBlog } from "@/lib/types";
 import { BlogContextProvider } from "./context-blog";
 import EditorTitle from "./editor/editor-title";
 import SavingIndicator from "./editor/saving-indicator";
+import EditorImage from "./editor/editor-image";
 
 export default async function BlogReader({
   blog,
@@ -23,16 +24,20 @@ export default async function BlogReader({
             <Link href="/blog">
               <LeftArrow /> Back to blogs
             </Link>
-            <Image
-              src={blog.image}
-              alt={blog.title}
-              width="400"
-              height="200"
-              blurDataURL={blog.image}
-              style={{
-                objectPosition: `0% ${blog.imageOffset}%`
-              }}
-            />
+            {editable ? (
+              <EditorImage />
+            ) : (
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                width="400"
+                height="200"
+                blurDataURL={blog.image}
+                style={{
+                  objectPosition: `0% ${blog.imageOffset}%`
+                }}
+              />
+            )}
             <div className={styles.titles}>
               {editable ? <EditorTitle /> : <h2>{blog.title}</h2>}
               <span>
@@ -48,7 +53,7 @@ export default async function BlogReader({
             </div>
           </header>
           <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-          <SavingIndicator />
+          {editable && <SavingIndicator />}
         </article>
       </div>
     </BlogContextProvider>

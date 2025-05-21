@@ -62,8 +62,8 @@ export const getYTEmbed = (link: string) => {
 
 /**
  * Get the file ID of a Google Drive file.
- * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
- * Output: d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ * Input: https://drive.google.com/file/d/abc/view
+ * Output: abc
  */
 export const getFileId = (link: string) => {
   const url = new URL(link);
@@ -74,11 +74,11 @@ export const getFileId = (link: string) => {
 
 /**
  * Transform a Google Drive share link to a user content download link.
- * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
- * Output: https://drive.usercontent.google.com/download?id=1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ * Input: abc
+ * Output: https://drive.usercontent.google.com/download?id=abc
  */
-export const gDriveToDownload = (link: string) => {
-  return `https://drive.usercontent.google.com/download?id=${getFileId(link)}`;
+export const gDriveToDownload = (fileId: string) => {
+  return `https://drive.usercontent.google.com/download?id=${fileId}`;
 };
 
 /**
