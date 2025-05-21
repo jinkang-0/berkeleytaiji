@@ -4,50 +4,31 @@ import styles from "./blog-card.module.scss";
 import { formatList } from "@/lib/utils";
 import ButtonDeleteBlog from "./button-delete-draft";
 import ButtonVisibilityToggle from "./button-visibility-toggle";
+import { PopulatedBlog } from "@/lib/types";
 
-interface BlogCardProps {
-  id: string;
-  blogId: string;
-  image: string;
-  title: string;
-  published: boolean;
-  publishDate: Date | undefined;
-  content: string;
-  authors: string[];
-  visible: boolean;
-}
-
-export default function BlogCard({
-  id,
-  blogId,
-  image,
-  title,
-  publishDate,
-  published,
-  content,
-  authors,
-  visible
-}: BlogCardProps) {
-  const link = published ? `/blog/${blogId}` : `/blog/draft/${blogId}`;
+export default function BlogCard({ blog }: { blog: PopulatedBlog }) {
+  const link = blog.published
+    ? `/blog/${blog.blogId}`
+    : `/blog/draft/${blog.blogId}`;
 
   return (
     <div className={styles.blogCardContainer}>
       <Link className={styles.blogCard} href={link}>
         <Image
-          src={image}
+          src={blog.image}
           width="400"
           height="400"
-          alt={title}
-          blurDataURL={image}
+          alt={blog.title}
+          blurDataURL={blog.image}
           className={styles.blogCardImage}
         />
         <div className={styles.blogCardDetails}>
           <header>
-            <p>{title}</p>
+            <p>{blog.title}</p>
             <span>
-              {formatList(authors)} ·{" "}
-              {published && publishDate
-                ? publishDate.toLocaleDateString(undefined, {
+              {formatList(blog.authors.map((a) => a.name))} ·{" "}
+              {blog.published && blog.publishDate
+                ? blog.publishDate.toLocaleDateString(undefined, {
                     month: "long",
                     day: "numeric",
                     year: "numeric"
@@ -55,14 +36,14 @@ export default function BlogCard({
                 : "Unpublished"}
             </span>
           </header>
-          <section>{content}</section>
+          <section>{blog.content}</section>
         </div>
       </Link>
       <div className={styles.cardActions}>
-        {published ? (
-          <ButtonVisibilityToggle blogId={id} visible={visible} />
+        {blog.published ? (
+          <ButtonVisibilityToggle blogId={blog._id} visible={blog.visible} />
         ) : (
-          <ButtonDeleteBlog blogId={id} />
+          <ButtonDeleteBlog blogId={blog._id} />
         )}
       </div>
     </div>

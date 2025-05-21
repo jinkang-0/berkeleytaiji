@@ -1,6 +1,7 @@
-import { getBlogByObjectId } from "@/api/db";
+import { checkAdmin, getBlogByObjectId } from "@/api/db";
 import { notFound } from "next/navigation";
 import BlogReader from "@/components/blog/blog-reader";
+import { getSession } from "@/api/auth";
 
 export default async function DraftBlogPage({
   params
@@ -13,15 +14,9 @@ export default async function DraftBlogPage({
 
   const blog = blogData[0];
 
-  return (
-    <BlogReader
-      image={blog.image}
-      title={blog.title}
-      imageOffset={blog.imageOffset}
-      authors={blog.authors.map((author) => author.name)}
-      content={blog.content}
-      published={blog.published}
-      publishDate={blog.publishDate ?? null}
-    />
-  );
+  const session = await getSession();
+  const user = session.success && session.user;
+  const isAdmin = user && (await checkAdmin(user.email));
+
+  return <BlogReader blog={blog} editable={isAdmin} />;
 }

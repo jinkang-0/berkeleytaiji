@@ -9,6 +9,7 @@
   width: 60%;
   margin-left: clamp(20px, 16%, 200px);
   margin-bottom: 128px;
+  position: relative;
 }
 
 .header {
@@ -29,6 +30,10 @@
     height: 250px;
     border-radius: 16px;
     object-fit: cover;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 }
 

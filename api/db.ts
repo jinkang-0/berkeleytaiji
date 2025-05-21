@@ -1,8 +1,15 @@
 "use server";
 
-import { Blog, User, UserType, getConnection } from "@/api/setup/mongoose";
+import {
+  Blog,
+  BlogType,
+  User,
+  UserType,
+  getConnection
+} from "@/api/setup/mongoose";
 import { getRandomImage } from "./unsplash";
 import { isValidObjectId, Types } from "mongoose";
+import { serializeLeanDoc } from "@/lib/utils";
 
 /**
  * Get all viewable blogs.
@@ -16,9 +23,9 @@ export async function getBlogs(filterVisible = true) {
   const query = filterVisible ? { visible: true } : {};
   const blogs = await Blog.find({ ...query, published: true })
     .populate<{ authors: [UserType] }>("authors")
-    .exec();
+    .lean();
 
-  return blogs;
+  return serializeLeanDoc(blogs);
 }
 
 /**
@@ -31,9 +38,9 @@ export async function getDrafts() {
 
   const drafts = await Blog.find({ published: false })
     .populate<{ authors: [UserType] }>("authors")
-    .exec();
+    .lean();
 
-  return drafts;
+  return serializeLeanDoc(drafts);
 }
 
 /**
@@ -49,9 +56,9 @@ export async function getBlogByBlogId(id: string, filterVisible = true) {
   const visible = filterVisible ? true : undefined;
   const blog = await Blog.find({ blogId: id, visible })
     .populate<{ authors: [UserType] }>("authors")
-    .exec();
+    .lean();
 
-  return blog;
+  return serializeLeanDoc(blog);
 }
 
 /**
@@ -67,9 +74,9 @@ export async function getBlogByObjectId(id: string) {
 
   const blog = await Blog.find({ _id: new Types.ObjectId(id) })
     .populate<{ authors: [UserType] }>("authors")
-    .exec();
+    .lean();
 
-  return blog;
+  return serializeLeanDoc(blog);
 }
 
 /**
@@ -81,8 +88,8 @@ export async function getBlogByObjectId(id: string) {
 export async function checkAdmin(email: string) {
   if (!(await getConnection())) return false;
 
-  const result = await User.find({ email }).exec();
-  if (result.length === 0) return false;
+  const num = await User.find({ email }).countDocuments().lean();
+  if (num === 0) return false;
 
   return true;
 }
@@ -95,7 +102,7 @@ export async function createDraft(authorEmail: string) {
   if (!(await getConnection())) return false;
 
   // get author id
-  const authorResult = await User.find({ email: authorEmail }).exec();
+  const authorResult = await User.find({ email: authorEmail }).lean();
   if (authorResult.length === 0) return false;
 
   const author = authorResult[0];
@@ -124,6 +131,26 @@ export async function createDraft(authorEmail: string) {
   await blog.save();
 
   return blog.id;
+}
+
+/**
+ * Update a blog.
+ *
+ * @param id - The ID of the blog to update.
+ * @param data - The data to update the blog with.
+ */
+export async function updateBlog(id: string, data: Partial<BlogType>) {
+  if (!(await getConnection())) return false;
+  if (!isValidObjectId(id)) return false;
+
+  const result = await Blog.updateOne(
+    { _id: new Types.ObjectId(id) },
+    { ...data }
+  ).exec();
+
+  if (result.modifiedCount === 0) return false;
+
+  return true;
 }
 
 /**

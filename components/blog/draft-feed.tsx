@@ -9,18 +9,7 @@ export default async function DraftBlogFeed() {
       {drafts.length > 0 && <h6>Unpublished Drafts</h6>}
 
       {drafts.map((b) => (
-        <BlogCard
-          key={b.id}
-          id={b.id}
-          blogId={b.blogId}
-          image={b.image}
-          title={b.title}
-          published={b.published}
-          publishDate={b.publishDate ?? undefined}
-          content={b.content}
-          authors={b.authors.map((a) => a.name)}
-          visible={b.visible}
-        />
+        <BlogCard key={b._id} blog={b} />
       ))}
     </>
   );

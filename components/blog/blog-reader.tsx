@@ -3,59 +3,54 @@ import styles from "./blog.module.scss";
 import Image from "next/image";
 import LeftArrow from "@/icons/left-arrow";
 import { formatList } from "@/lib/utils";
-
-interface BlogReaderProps {
-  image: string;
-  title: string;
-  imageOffset: number;
-  authors: string[];
-  content: string;
-  published: boolean;
-  publishDate: Date | null;
-}
+import { PopulatedBlog } from "@/lib/types";
+import { BlogContextProvider } from "./context-blog";
+import EditorTitle from "./editor/editor-title";
+import SavingIndicator from "./editor/saving-indicator";
 
 export default async function BlogReader({
-  image,
-  title,
-  imageOffset,
-  authors,
-  content,
-  published,
-  publishDate
-}: BlogReaderProps) {
+  blog,
+  editable
+}: {
+  blog: PopulatedBlog;
+  editable?: boolean;
+}) {
   return (
-    <div className={styles.container}>
-      <article className={styles.article}>
-        <header className={styles.header}>
-          <Link href="/blog">
-            <LeftArrow /> Back to blogs
-          </Link>
-          <Image
-            src={image}
-            alt={title}
-            width="400"
-            height="200"
-            blurDataURL={image}
-            style={{
-              objectPosition: `0% ${imageOffset}%`
-            }}
-          />
-          <div className={styles.titles}>
-            <h2>{title}</h2>
-            <span>
-              {formatList(authors)} ·{" "}
-              {published && publishDate
-                ? publishDate.toLocaleDateString(undefined, {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric"
-                  })
-                : "Unpublished"}
-            </span>
-          </div>
-        </header>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </article>
-    </div>
+    <BlogContextProvider blog={blog}>
+      <div className={styles.container}>
+        <article className={styles.article}>
+          <header className={styles.header}>
+            <Link href="/blog">
+              <LeftArrow /> Back to blogs
+            </Link>
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              width="400"
+              height="200"
+              blurDataURL={blog.image}
+              style={{
+                objectPosition: `0% ${blog.imageOffset}%`
+              }}
+            />
+            <div className={styles.titles}>
+              {editable ? <EditorTitle /> : <h2>{blog.title}</h2>}
+              <span>
+                {formatList(blog.authors.map((a) => a.name))} ·{" "}
+                {blog.published && blog.publishDate
+                  ? blog.publishDate.toLocaleDateString(undefined, {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric"
+                    })
+                  : "Unpublished"}
+              </span>
+            </div>
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+          <SavingIndicator />
+        </article>
+      </div>
+    </BlogContextProvider>
   );
 }
