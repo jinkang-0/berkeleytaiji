@@ -1,0 +1,99 @@
+@use "lib/colors";
+
+.editor {
+  outline: none;
+  padding-bottom: 128px;
+
+  p {
+    margin: 8px 0;
+  }
+
+  ul,
+  ol {
+    margin: 8px 0;
+    margin-left: 20px;
+  }
+
+  blockquote {
+    margin: 8px 0;
+    padding-left: 20px;
+    color: colors.$gray;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 4px;
+      height: 100%;
+      background-color: colors.$border;
+      position: absolute;
+      left: 0;
+      border-radius: 4px;
+    }
+  }
+}
+
+.toolbar {
+  position: relative;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid colors.$border;
+
+  button {
+    color: colors.$gray;
+
+    &:global(.active) {
+      color: colors.$fg;
+    }
+  }
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: colors.$borderDark;
+  border-radius: 8px;
+}
+
+.toolbarTooltip {
+  padding: 8px 12px;
+  background: colors.$card;
+  border-radius: 8px;
+  z-index: 102;
+  color: colors.$gray;
+  font-size: 1rem;
+}
+
+// dropdown
+
+button.dropdownTrigger {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdownMenu {
+  background: colors.$card;
+  z-index: 100;
+  padding: 8px 0;
+  border-radius: 8px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: colors.$gray;
+
+  &:hover {
+    background: colors.$borderDark;
+    color: colors.$fg;
+  }
+}

@@ -89,7 +89,8 @@ a.buttonPrimary:global(.disabled) {
   }
 
   &:hover,
-  &:focus-visible {
+  &:focus-visible,
+  &:global(.active) {
     &::after {
       opacity: 1;
     }

@@ -8,6 +8,8 @@ import { BlogContextProvider } from "./context-blog";
 import EditorTitle from "./editor/editor-title";
 import SavingIndicator from "./editor/saving-indicator";
 import EditorImage from "./editor/editor-image";
+import sanitize from "sanitize-html";
+import EditorContent from "./editor/editor-content";
 
 export default async function BlogReader({
   blog,
@@ -52,7 +54,11 @@ export default async function BlogReader({
               </span>
             </div>
           </header>
-          <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+          {editable ? (
+            <EditorContent />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: sanitize(blog.content) }} />
+          )}
           {editable && <SavingIndicator />}
         </article>
       </div>
