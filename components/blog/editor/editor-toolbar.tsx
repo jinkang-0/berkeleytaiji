@@ -14,22 +14,26 @@ import {
   useListToolbarButton,
   useListToolbarButtonState
 } from "@udecode/plate-list/react";
+import { Alignment, setAlign } from "@udecode/plate-alignment";
 
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 
-import Bold from "@/icons/bold";
-import Italic from "@/icons/italic";
-import Underline from "@/icons/underline";
-import BulletListIcon from "@/icons/bullet-list";
-import NumberedListIcon from "@/icons/numbered-list";
-import Blockquote from "@/icons/blockquote";
-import Pilcrow from "@/icons/pilcrow";
-import HeadingOne from "@/icons/heading-one";
+import Bold from "@/icons/editor/bold";
+import Italic from "@/icons/editor/italic";
+import Underline from "@/icons/editor/underline";
+import BulletListIcon from "@/icons/editor/bullet-list";
+import NumberedListIcon from "@/icons/editor/numbered-list";
+import Blockquote from "@/icons/editor/blockquote";
+import Pilcrow from "@/icons/editor/pilcrow";
+import HeadingOne from "@/icons/editor/heading-one";
 import DownCaret from "@/icons/down-caret";
-import HeadingTwo from "@/icons/heading-two";
-import HeadingThree from "@/icons/heading-three";
+import HeadingTwo from "@/icons/editor/heading-two";
+import HeadingThree from "@/icons/editor/heading-three";
 import SavingIndicator from "./saving-indicator";
+import LeftAlign from "@/icons/editor/left-align";
+import CenterAlign from "@/icons/editor/center-align";
+import RightAlign from "@/icons/editor/right-align";
 
 export function EditorToolbar() {
   return (
@@ -46,15 +50,26 @@ export function EditorToolbar() {
         <Underline />
       </ToolbarButtonMark>
       <ToolbarSeparator />
-      <ToolbarButtonList format="ul" tooltip="Bullet List (Ctrl+Option+8)">
+      <ToolbarButtonList format="ul" tooltip="Bullet List">
         <BulletListIcon />
       </ToolbarButtonList>
-      <ToolbarButtonList format="ol" tooltip="Numbered List (Ctrl+Shift+4)">
+      <ToolbarButtonList format="ol" tooltip="Numbered List">
         <NumberedListIcon />
       </ToolbarButtonList>
-      <ToolbarButtonBlock format="blockquote" tooltip="Quote (Ctrl+Shift+.)">
+      <ToolbarButtonBlock format="blockquote" tooltip="Quote">
         <Blockquote />
       </ToolbarButtonBlock>
+      <ToolbarSeparator />
+      <ToolbarButtonAlign format="left" tooltip="Align Left">
+        <LeftAlign />
+      </ToolbarButtonAlign>
+      <ToolbarButtonAlign format="center" tooltip="Align Center">
+        <CenterAlign />
+      </ToolbarButtonAlign>
+      <ToolbarButtonAlign format="right" tooltip="Align Right">
+        <RightAlign />
+      </ToolbarButtonAlign>
+
       <SavingIndicator />
     </div>
   );
@@ -126,6 +141,7 @@ export function ToolbarButtonBlock({
 
   const toggleBlock = () => {
     editor.tf.toggleBlock(format);
+    editor.tf.focus();
   };
 
   return (
@@ -159,6 +175,29 @@ export function ToolbarButtonList({
       <ButtonGhost className={pressed ? "active" : ""} {...eventHandlers}>
         {children}
       </ButtonGhost>
+    </Tooltip>
+  );
+}
+
+export function ToolbarButtonAlign({
+  children,
+  format,
+  tooltip
+}: {
+  children: React.ReactNode;
+  format: Alignment;
+  tooltip: string;
+}) {
+  const editor = useEditorRef();
+
+  const toggleAlign = () => {
+    setAlign(editor, { value: format });
+    editor.tf.focus();
+  };
+
+  return (
+    <Tooltip tooltip={tooltip}>
+      <ButtonGhost onClick={() => toggleAlign()}>{children}</ButtonGhost>
     </Tooltip>
   );
 }

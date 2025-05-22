@@ -10,9 +10,7 @@ export default function SavingIndicator() {
   const blogContext = useBlogContext();
   const { isSaving } = blogContext;
   const [visible, setVisible] = useState(false);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setTimer] = useState<NodeJS.Timeout | null>(null);
+  const [, setTimer] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isSaving) {

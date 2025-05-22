@@ -1,5 +1,5 @@
 import { Value } from "@udecode/plate";
-import { serializeValue } from "./editor/editor-static";
+import { serializeValue } from "./editor/editor-config-static";
 import styles from "./blog-content.module.scss";
 
 export default async function BlogContent({

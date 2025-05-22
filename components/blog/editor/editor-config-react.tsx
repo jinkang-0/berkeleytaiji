@@ -6,6 +6,7 @@ import { ResetNodePlugin } from "@udecode/plate-reset-node/react";
 import { BasicElementsPlugin } from "@udecode/plate-basic-elements/react";
 import { BasicMarksPlugin } from "@udecode/plate-basic-marks/react";
 import { SoftBreakPlugin } from "@udecode/plate-break/react";
+import { AlignPlugin } from "@udecode/plate-alignment/react";
 import {
   PlateElement,
   PlateElementProps,
@@ -76,6 +77,11 @@ export const editorPlugins = [
         { hotkey: "shift+enter" },
         { hotkey: "enter", query: { allow: ["blockquote"] } }
       ]
+    }
+  }),
+  AlignPlugin.configure({
+    inject: {
+      targetPlugins: ["p", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"]
     }
   })
 ];

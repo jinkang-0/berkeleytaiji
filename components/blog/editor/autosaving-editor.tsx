@@ -4,7 +4,7 @@ import { Plate, PlateEditor, PlateProps } from "@udecode/plate/react";
 import { useBlogContext } from "../context-blog";
 import { Value } from "@udecode/plate";
 import { useRef, useState } from "react";
-import { serializeValue } from "./editor-static";
+import { serializeValue } from "./editor-config-static";
 import { convert } from "html-to-text";
 
 interface AutosaveState {
@@ -12,7 +12,7 @@ interface AutosaveState {
   currentValue: Value;
 }
 
-const autosaveInterval = 1000; // 1 second
+const autosaveInterval = 3000; // 3 seconds
 
 export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
   const { saveBlog } = useBlogContext();

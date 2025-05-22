@@ -12,13 +12,11 @@ import BlogContent from "./blog-content";
 
 export default async function BlogReader({
   blog,
-  editable: a
+  editable
 }: {
   blog: PopulatedBlog;
   editable?: boolean;
 }) {
-  const editable = true;
-
   return (
     <BlogContextProvider blog={blog}>
       <div className={styles.container}>

@@ -3,7 +3,7 @@
 import { PlateContent, usePlateEditor } from "@udecode/plate/react";
 import { EditorToolbar } from "./editor-toolbar";
 import { useBlogContext } from "../context-blog";
-import { editorComponents, editorPlugins } from "./editor-react";
+import { editorComponents, editorPlugins } from "./editor-config-react";
 import AutosavingEditor from "./autosaving-editor";
 import styles from "../blog-content.module.scss";
 
