@@ -25,9 +25,10 @@ const BlogSchema = new Schema(
     publishDate: { type: Date, required: false },
     visible: { type: Boolean, required: true },
     image: { type: String, required: true },
-    content: { type: String, required: true },
+    content: { type: Object, required: true },
     imageOffset: { type: Number, required: true, default: 0 },
-    blogId: { type: String, required: true }
+    blogId: { type: String, required: true },
+    summary: { type: String, required: true }
   },
   { collection: "Blog" }
 );

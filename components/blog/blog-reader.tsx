@@ -6,18 +6,19 @@ import { formatList } from "@/lib/utils";
 import { PopulatedBlog } from "@/lib/types";
 import { BlogContextProvider } from "./context-blog";
 import EditorTitle from "./editor/editor-title";
-import SavingIndicator from "./editor/saving-indicator";
 import EditorImage from "./editor/editor-image";
-import sanitize from "sanitize-html";
 import EditorContent from "./editor/editor-content";
+import BlogContent from "./blog-content";
 
 export default async function BlogReader({
   blog,
-  editable
+  editable: a
 }: {
   blog: PopulatedBlog;
   editable?: boolean;
 }) {
+  const editable = true;
+
   return (
     <BlogContextProvider blog={blog}>
       <div className={styles.container}>
@@ -57,9 +58,8 @@ export default async function BlogReader({
           {editable ? (
             <EditorContent />
           ) : (
-            <div dangerouslySetInnerHTML={{ __html: sanitize(blog.content) }} />
+            <BlogContent blogContent={blog.content} />
           )}
-          {editable && <SavingIndicator />}
         </article>
       </div>
     </BlogContextProvider>

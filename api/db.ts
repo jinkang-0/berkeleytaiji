@@ -22,6 +22,7 @@ export async function getBlogs(filterVisible = true) {
 
   const query = filterVisible ? { visible: true } : {};
   const blogs = await Blog.find({ ...query, published: true })
+    .select("-__v -content")
     .populate<{ authors: [UserType] }>("authors")
     .lean();
 
@@ -124,7 +125,16 @@ export async function createDraft(authorEmail: string) {
     publishDate: null,
     visible: false,
     image,
-    content: "This is a new blog. Start writing!",
+    content: [
+      {
+        type: "p",
+        children: [
+          {
+            text: "This is a new blog. Start writing!"
+          }
+        ]
+      }
+    ],
     imageOffset: 0
   });
 

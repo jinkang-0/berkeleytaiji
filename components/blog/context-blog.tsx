@@ -7,6 +7,7 @@ import {
   createContext,
   Dispatch,
   SetStateAction,
+  useCallback,
   useContext,
   useState,
   useTransition
@@ -39,13 +40,16 @@ export function BlogContextProvider({
   const [blogState, setBlogState] = useState<PopulatedBlog>(blog);
   const [isSaving, startSaving] = useTransition();
 
-  const saveBlog = async (data: Partial<BlogType>) => {
-    const result = updateBlog(blogState._id, data);
-    startSaving(async () => {
-      await result;
-    });
-    return await result;
-  };
+  const saveBlog = useCallback(
+    async (data: Partial<BlogType>) => {
+      const result = updateBlog(blogState._id, data);
+      startSaving(async () => {
+        await result;
+      });
+      return await result;
+    },
+    [startSaving, blogState._id]
+  );
 
   return (
     <BlogContext.Provider

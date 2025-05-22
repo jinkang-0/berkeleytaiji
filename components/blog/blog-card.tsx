@@ -36,7 +36,7 @@ export default function BlogCard({ blog }: { blog: PopulatedBlog }) {
                 : "Unpublished"}
             </span>
           </header>
-          <section>{blog.content}</section>
+          <section>{blog.summary}</section>
         </div>
       </Link>
       <div className={styles.cardActions}>

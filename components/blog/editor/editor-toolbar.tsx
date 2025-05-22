@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 
 import { ButtonGhost } from "@/components/ui/button";
-import styles from "./editor-content.module.scss";
+import styles from "./editor-toolbar.module.scss";
 
 import {
   ParagraphPlugin,
@@ -29,6 +29,7 @@ import HeadingOne from "@/icons/heading-one";
 import DownCaret from "@/icons/down-caret";
 import HeadingTwo from "@/icons/heading-two";
 import HeadingThree from "@/icons/heading-three";
+import SavingIndicator from "./saving-indicator";
 
 export function EditorToolbar() {
   return (
@@ -54,6 +55,7 @@ export function EditorToolbar() {
       <ToolbarButtonBlock format="blockquote" tooltip="Quote (Ctrl+Shift+.)">
         <Blockquote />
       </ToolbarButtonBlock>
+      <SavingIndicator />
     </div>
   );
 }
