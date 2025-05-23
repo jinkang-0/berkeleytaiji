@@ -3,7 +3,7 @@
 
 .content {
   outline: none;
-  padding-bottom: 128px;
+  min-height: 120px !important;
 
   h1 {
     font-size: 3rem;

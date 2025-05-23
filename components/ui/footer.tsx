@@ -3,15 +3,14 @@ import InstagramIcon from "@/icons/instagram";
 import YoutubeIcon from "@/icons/youtube";
 import { EMAIL, LINKS } from "@/data/links";
 import Link from "next/link";
-import styles from "./footer.module.scss";
 import EmailIcon from "@/icons/email";
 import OCFBadge from "../ocf/ocf-badge";
+import styles from "./footer.module.scss";
 
-export default function Footer({ className }: { className?: string }) {
+export default function Footer() {
   return (
-    <footer className={`${styles.footer} ${className}`}>
-      <Link href={`mailto:${EMAIL}`}>{EMAIL}</Link>
-      <div>
+    <footer className={styles.footer}>
+      <div className={styles.footerIcons}>
         <Link href={LINKS.instagram} target="_blank">
           <InstagramIcon />
         </Link>
@@ -21,7 +20,7 @@ export default function Footer({ className }: { className?: string }) {
         <Link href={LINKS.youtube} target="_blank">
           <YoutubeIcon />
         </Link>
-        <Link className={styles.emailLink} href={`mailto:${EMAIL}`}>
+        <Link href={`mailto:${EMAIL}`}>
           <EmailIcon />
         </Link>
       </div>
