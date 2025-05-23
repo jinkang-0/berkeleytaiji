@@ -54,8 +54,8 @@ export async function getDrafts() {
 export async function getBlogByBlogId(id: string, filterVisible = true) {
   if (!(await getConnection())) return [];
 
-  const visible = filterVisible ? true : undefined;
-  const blog = await Blog.find({ blogId: id, visible })
+  const visible = filterVisible ? { visible: true } : {};
+  const blog = await Blog.find({ blogId: id, ...visible })
     .populate<{ authors: [UserType] }>("authors")
     .lean();
 
@@ -135,7 +135,8 @@ export async function createDraft(authorEmail: string) {
         ]
       }
     ],
-    imageOffset: 0
+    imageOffset: 0,
+    summary: "This is a new blog. Start writing!"
   });
 
   await blog.save();

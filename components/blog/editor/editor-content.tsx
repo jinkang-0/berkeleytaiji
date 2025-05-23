@@ -6,6 +6,7 @@ import { useBlogContext } from "../context-blog";
 import { editorComponents, editorPlugins } from "./editor-config-react";
 import AutosavingEditor from "./autosaving-editor";
 import styles from "../blog-content.module.scss";
+import EditorActions from "./editor-actions";
 
 export default function EditorContent() {
   const {
@@ -19,13 +20,16 @@ export default function EditorContent() {
   });
 
   return (
-    <AutosavingEditor editor={editor}>
-      <EditorToolbar />
-      <PlateContent
-        className={styles.content}
-        style={{ minHeight: "100px" }}
-        placeholder="Write something..."
-      />
-    </AutosavingEditor>
+    <>
+      <AutosavingEditor editor={editor}>
+        <EditorToolbar />
+        <PlateContent
+          className={styles.content}
+          style={{ minHeight: "100px" }}
+          placeholder="Write something..."
+        />
+      </AutosavingEditor>
+      <EditorActions />
+    </>
   );
 }
