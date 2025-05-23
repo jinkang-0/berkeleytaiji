@@ -1,6 +1,6 @@
 "use client";
 
-import { updateVisibility } from "@/api/db";
+import { updateBlog } from "@/api/db";
 import { ButtonGhost, ButtonPrimary } from "@/components/ui/button";
 import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";
@@ -19,7 +19,7 @@ export default function ButtonVisibilityToggle({
   const router = useRouter();
 
   const toggleVisibility = useCallback(async () => {
-    await updateVisibility(blogId, !visible);
+    await updateBlog(blogId, { visible: !visible });
     router.replace("/blog");
   }, [blogId, visible, router]);
 

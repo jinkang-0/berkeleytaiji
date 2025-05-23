@@ -1,8 +1,10 @@
 import { getBlogs } from "@/api/db";
 import BlogCard from "./blog-card";
+import { isAdminSession } from "@/api/auth";
 
-export default async function BlogFeed({ isAdmin }: { isAdmin: boolean }) {
-  const blogs = await getBlogs(isAdmin ? false : true);
+export default async function BlogFeed() {
+  const isAdmin = await isAdminSession();
+  const blogs = await getBlogs();
 
   return (
     <>

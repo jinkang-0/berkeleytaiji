@@ -5,11 +5,13 @@ import { formatList } from "@/lib/utils";
 import ButtonDeleteBlog from "./button-delete-draft";
 import ButtonVisibilityToggle from "./button-visibility-toggle";
 import { PopulatedBlog } from "@/lib/types";
+import { isAdminSession } from "@/api/auth";
 
-export default function BlogCard({ blog }: { blog: PopulatedBlog }) {
+export default async function BlogCard({ blog }: { blog: PopulatedBlog }) {
   const link = blog.published
     ? `/blog/${blog.blogId}`
     : `/blog/draft/${blog.blogId}`;
+  const isAdmin = await isAdminSession();
 
   return (
     <div className={styles.blogCardContainer}>
@@ -39,13 +41,15 @@ export default function BlogCard({ blog }: { blog: PopulatedBlog }) {
           <section>{blog.summary}</section>
         </div>
       </Link>
-      <div className={styles.cardActions}>
-        {blog.published ? (
-          <ButtonVisibilityToggle blogId={blog._id} visible={blog.visible} />
-        ) : (
-          <ButtonDeleteBlog blogId={blog._id} />
-        )}
-      </div>
+      {isAdmin && (
+        <div className={styles.cardActions}>
+          {blog.published ? (
+            <ButtonVisibilityToggle blogId={blog._id} visible={blog.visible} />
+          ) : (
+            <ButtonDeleteBlog blogId={blog._id} />
+          )}
+        </div>
+      )}
     </div>
   );
 }

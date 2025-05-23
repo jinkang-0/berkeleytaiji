@@ -13,7 +13,7 @@ export function ButtonGoogleSignIn() {
   const handleSuccess = async (res: CodeResponse) => {
     const authCode = res.code;
     if (!authCode) {
-      console.log("No auth code received.");
+      console.error("No auth code received.");
       return;
     }
 
@@ -26,7 +26,7 @@ export function ButtonGoogleSignIn() {
 
   // handle error callback
   const handleError = () => {
-    console.log("Failed to sign in.");
+    console.error("Failed to sign in.");
   };
 
   const login = useGoogleLogin({
@@ -36,11 +36,11 @@ export function ButtonGoogleSignIn() {
   });
 
   return (
-    <div>
+    <>
       <ButtonPrimary onClick={() => login()}>
         <GoogleIcon /> Continue with Google
       </ButtonPrimary>
       <p>{errorMessage}</p>
-    </div>
+    </>
   );
 }

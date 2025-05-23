@@ -10,17 +10,19 @@ import {
 import { getRandomImage } from "./unsplash";
 import { isValidObjectId, Types } from "mongoose";
 import { serializeLeanDoc } from "@/lib/utils";
+import { getSession, isAdminSession } from "./auth";
+import { cache } from "react";
 
 /**
  * Get all viewable blogs.
  *
- * @param filterVisible - Whether to filter by visibility.
  * @returns An array of blog objects.
  */
-export async function getBlogs(filterVisible = true) {
+export async function getBlogs() {
   if (!(await getConnection())) return [];
 
-  const query = filterVisible ? { visible: true } : {};
+  const isAdmin = await isAdminSession();
+  const query = !isAdmin ? { visible: true } : {};
   const blogs = await Blog.find({ ...query, published: true })
     .select("-__v -content")
     .populate<{ authors: [UserType] }>("authors")
@@ -36,6 +38,7 @@ export async function getBlogs(filterVisible = true) {
  */
 export async function getDrafts() {
   if (!(await getConnection())) return [];
+  if (!isAdminSession()) return [];
 
   const drafts = await Blog.find({ published: false })
     .populate<{ authors: [UserType] }>("authors")
@@ -51,10 +54,11 @@ export async function getDrafts() {
  * @param filterVisible - Whether to filter by visibility.
  * @returns The blog object if found, or an empty array if not found or invalid ID.
  */
-export async function getBlogByBlogId(id: string, filterVisible = true) {
+export async function getBlogByBlogId(id: string) {
   if (!(await getConnection())) return [];
 
-  const visible = filterVisible ? { visible: true } : {};
+  const isAdmin = await isAdminSession();
+  const visible = !isAdmin ? { visible: true } : {};
   const blog = await Blog.find({ blogId: id, ...visible })
     .populate<{ authors: [UserType] }>("authors")
     .lean();
@@ -64,7 +68,6 @@ export async function getBlogByBlogId(id: string, filterVisible = true) {
 
 /**
  * Get a blog by object ID.
- * WARNING: This function does not check for visibility.
  *
  * @param id - The ID of the blog to get.
  * @returns The blog object if found, or an empty array if not found or invalid ID.
@@ -72,6 +75,7 @@ export async function getBlogByBlogId(id: string, filterVisible = true) {
 export async function getBlogByObjectId(id: string) {
   if (!(await getConnection())) return [];
   if (!isValidObjectId(id)) return [];
+  if (!isAdminSession()) return [];
 
   const blog = await Blog.find({ _id: new Types.ObjectId(id) })
     .populate<{ authors: [UserType] }>("authors")
@@ -86,24 +90,31 @@ export async function getBlogByObjectId(id: string) {
  * @param email - The email of the user to check.
  * @returns True if the user is an admin, false otherwise.
  */
-export async function checkAdmin(email: string) {
+export const checkAdmin = cache(async (email: string) => {
   if (!(await getConnection())) return false;
 
   const num = await User.find({ email }).countDocuments().lean();
   if (num === 0) return false;
 
   return true;
-}
+});
 
 /**
  * Create a new blog draft.
- *
  */
-export async function createDraft(authorEmail: string) {
+export async function createDraft() {
   if (!(await getConnection())) return false;
+  if (!isAdminSession()) return false;
+
+  // get session user
+  const session = await getSession();
+  if (!session.success) return false;
+
+  const user = session.user;
+  if (!user) return false;
 
   // get author id
-  const authorResult = await User.find({ email: authorEmail }).lean();
+  const authorResult = await User.find({ email: user.getEmail() }).lean();
   if (authorResult.length === 0) return false;
 
   const author = authorResult[0];
@@ -153,6 +164,7 @@ export async function createDraft(authorEmail: string) {
 export async function updateBlog(id: string, data: Partial<BlogType>) {
   if (!(await getConnection())) return false;
   if (!isValidObjectId(id)) return false;
+  if (!isAdminSession()) return false;
 
   const result = await Blog.updateOne(
     { _id: new Types.ObjectId(id) },
@@ -173,30 +185,10 @@ export async function updateBlog(id: string, data: Partial<BlogType>) {
 export async function deleteDraft(id: string) {
   if (!(await getConnection())) return false;
   if (!isValidObjectId(id)) return false;
+  if (!isAdminSession()) return false;
 
   const result = await Blog.deleteOne({ _id: new Types.ObjectId(id) }).exec();
   if (result.deletedCount === 0) return false;
-
-  return true;
-}
-
-/**
- * Update a blog draft.
- *
- * @param id - The object ID of the blog draft to update.
- * @param data - The data to update the blog draft with.
- * @returns True if the draft was updated, false otherwise.
- */
-export async function updateVisibility(id: string, visible: boolean) {
-  if (!(await getConnection())) return false;
-  if (!isValidObjectId(id)) return false;
-
-  const result = await Blog.updateOne(
-    { _id: new Types.ObjectId(id) },
-    { visible }
-  ).exec();
-
-  if (result.modifiedCount === 0) return false;
 
   return true;
 }

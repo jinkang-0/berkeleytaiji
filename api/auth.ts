@@ -6,6 +6,8 @@ import { checkAdmin } from "./db";
 import jwt from "jsonwebtoken";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { Credentials, UserRefreshClient } from "google-auth-library";
+import { User } from "@/lib/classes";
+import { cache } from "react";
 
 // ensure environmental variables are imported
 if (!process.env.AUTH_GOOGLE_ID)
@@ -36,7 +38,12 @@ const cookieOptions: Partial<ResponseCookie> = {
   maxAge: 60 * 60 * 24 * expirationDays
 };
 
-// refresh token
+/**
+ * Refresh the user's access token using the refresh token.
+ *
+ * @param refreshToken The refresh token of the user.
+ * @returns Refreshed token credentials.
+ */
 async function refreshToken(refreshToken: string) {
   const user = new UserRefreshClient(
     process.env.AUTH_GOOGLE_ID,
@@ -49,7 +56,12 @@ async function refreshToken(refreshToken: string) {
   return credentials;
 }
 
-// check session and refresh token if expires in less than a week
+/**
+ * Checks the expiration date of the token credentials of the user and refreshes it if necessary.
+ *
+ * @param tokens The token credentials of the user.
+ * @returns Success object with credentials if the token is valid, or false if it is not.
+ */
 export async function checkCredentials(tokens: Credentials) {
   if (tokens.refresh_token && tokens.expiry_date) {
     const expiresIn = tokens.expiry_date - Date.now();
@@ -62,16 +74,25 @@ export async function checkCredentials(tokens: Credentials) {
   return { success: false };
 }
 
-// login using google token
+/**
+ * Logs the user in using Google OAuth.
+ *
+ * @param authCode The authorization code for Google OAuth.
+ * @returns Success status, or error message if login fails.
+ */
 export async function loginWithGoogle(authCode: string) {
   // get tokens from google oauth
   const { tokens } = await oauthClient.getToken(authCode);
 
-  if (!tokens.expiry_date)
-    return { success: false, message: "No expiry date found" };
+  if (!tokens.expiry_date) {
+    console.error("No expiry date found in tokens.");
+    return { success: false, message: "An unexpected error occurred." };
+  }
 
-  if (tokens.expiry_date < Date.now())
-    return { success: false, message: "Token expired" };
+  if (tokens.expiry_date < Date.now()) {
+    console.error("Token expired.");
+    return { success: false, message: "An unexpected error occurred." };
+  }
 
   // refresh token expiration date
   const checkRes = await checkCredentials(tokens);
@@ -79,7 +100,10 @@ export async function loginWithGoogle(authCode: string) {
     ? checkRes.credentials?.id_token
     : tokens.id_token;
 
-  if (!idToken) return { success: false, message: "No id token found" };
+  if (!idToken) {
+    console.error("No ID token found.");
+    return { success: false, message: "An unexpected error occurred." };
+  }
 
   const ticket = await oauthClient.verifyIdToken({
     idToken,
@@ -88,15 +112,15 @@ export async function loginWithGoogle(authCode: string) {
 
   // check email exists and is verified
   const payload = ticket.getPayload();
-  if (!payload) return { success: false, message: "Invalid token" };
-  if (!payload.email) return { success: false, message: "No email found" };
+  if (!payload) return { success: false, message: "Invalid token." };
+  if (!payload.email) return { success: false, message: "No email found." };
   if (!payload.email_verified)
-    return { success: false, message: "Email not verified" };
+    return { success: false, message: "Email not verified." };
 
   // check user is admin
   const isAdmin = await checkAdmin(payload.email);
   if (!isAdmin) {
-    return { success: false, message: "User is not an admin" };
+    return { success: false, message: "Not authorized." };
   }
 
   // store user session
@@ -113,7 +137,11 @@ export async function loginWithGoogle(authCode: string) {
   return { success: true };
 }
 
-// verify and renew session
+/**
+ * Gets the current session and extends it if it is valid.
+ *
+ * @returns Current session's user, or an error message if the session is invalid.
+ */
 export async function getSession() {
   const cookieStore = await cookies();
   const session = cookieStore.get("session");
@@ -129,11 +157,7 @@ export async function getSession() {
     if (typeof decoded === "string")
       return { success: false, message: "Invalid token" };
 
-    const user = {
-      email: decoded.email,
-      name: decoded.name,
-      sub: decoded.sub
-    };
+    const user = new User(decoded.email, decoded.name, decoded.sub);
 
     // report success
     return { success: true, user };
@@ -142,9 +166,40 @@ export async function getSession() {
   }
 }
 
-// logout: delete session
+/**
+ * Logs the user out by deleting the session cookie.
+ */
 export async function logout() {
   const cookieStore = await cookies();
   cookieStore.delete("session");
-  return { success: true };
 }
+
+/**
+ * Checks if the calling user is an admin.
+ *
+ * @returns True if the user is an admin, false otherwise.
+ */
+export const isAdminSession = cache(async () => {
+  const session = await getSession();
+  if (!session.success) return false;
+
+  const user = session.user;
+  if (!user) return false;
+
+  return await checkAdmin(user.getEmail());
+});
+
+/**
+ * Gets the email of the logged-in user.
+ *
+ * @returns The user email, or null if the user is not logged in.
+ */
+export const getEmail = cache(async () => {
+  const session = await getSession();
+  if (!session.success) return null;
+
+  const user = session.user;
+  if (!user) return null;
+
+  return user.getEmail();
+});
