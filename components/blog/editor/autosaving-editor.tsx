@@ -12,15 +12,17 @@ interface AutosaveState {
   currentValue: Value;
 }
 
-const autosaveInterval = 3000; // 3 seconds
+const autosaveInterval = 2000; // 2 seconds
 
 export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
-  const { saveBlog } = useBlogContext();
-  const [checkingAutosave, setCheckingAutosave] = useState(false);
+  const { saveBlog, reportEdit } = useBlogContext();
   const autosaveState = useRef<AutosaveState>({
     lastSavedValue: [],
     currentValue: []
   });
+  const [autosaveTimeout, setAutosaveTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
 
   const attemptAutosave = () => {
     const currentValue = autosaveState.current.currentValue;
@@ -34,7 +36,7 @@ export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
         const trimmed = result.replaceAll(/\s+/g, " ").slice(0, 300);
         saveBlog({ content: currentValue, summary: trimmed });
       })();
-      setCheckingAutosave(false);
+      setAutosaveTimeout(null);
     } else {
       // otherwise, record current change and keep checking
       autosaveState.current.lastSavedValue = currentValue;
@@ -46,14 +48,23 @@ export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
 
   const handleValueChange = ({ value }: { value: Value }) => {
     autosaveState.current.currentValue = value;
-    if (checkingAutosave) return;
+
+    // reset existing timeout
+    if (autosaveTimeout) {
+      clearTimeout(autosaveTimeout);
+    } else {
+      // first time typing, record current value for checking
+      // and report edit status
+      autosaveState.current.lastSavedValue = value;
+      reportEdit();
+    }
 
     // attempt to autosave
-    autosaveState.current.lastSavedValue = value;
-    setTimeout(() => {
-      attemptAutosave();
-    }, autosaveInterval);
-    setCheckingAutosave(true);
+    setAutosaveTimeout(
+      setTimeout(() => {
+        attemptAutosave();
+      }, autosaveInterval)
+    );
   };
 
   return <Plate {...props} onValueChange={handleValueChange} />;

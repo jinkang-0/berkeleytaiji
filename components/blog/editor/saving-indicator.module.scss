@@ -27,3 +27,8 @@
   @include indicator;
   color: colors.$success;
 }
+
+.unsaved {
+  @include indicator;
+  color: colors.$gray;
+}

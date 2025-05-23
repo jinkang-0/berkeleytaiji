@@ -9,6 +9,7 @@ import {
   SetStateAction,
   useCallback,
   useContext,
+  useMemo,
   useState,
   useTransition
 } from "react";
@@ -17,7 +18,8 @@ interface BlogContextProps {
   blog: PopulatedBlog;
   setBlogState: Dispatch<SetStateAction<PopulatedBlog>>;
   saveBlog: (data: Partial<BlogType>) => Promise<boolean>;
-  isSaving: boolean;
+  reportEdit: () => void;
+  status: "unsaved" | "saving" | "saved";
 }
 
 const BlogContext = createContext<BlogContextProps | null>(null);
@@ -38,7 +40,16 @@ export function BlogContextProvider({
   blog: PopulatedBlog;
 }) {
   const [blogState, setBlogState] = useState<PopulatedBlog>(blog);
+  const [isUnsaved, setUnsaved] = useState(false);
   const [isSaving, startSaving] = useTransition();
+  const status = useMemo(
+    () => (isSaving ? "saving" : isUnsaved ? "unsaved" : "saved"),
+    [isSaving, isUnsaved]
+  );
+
+  const reportEdit = useCallback(() => {
+    setUnsaved(true);
+  }, []);
 
   const saveBlog = useCallback(
     async (data: Partial<BlogType>) => {
@@ -46,14 +57,16 @@ export function BlogContextProvider({
       startSaving(async () => {
         await result;
       });
-      return await result;
+      const awaitedResult = await result;
+      setUnsaved(false);
+      return awaitedResult;
     },
     [startSaving, blogState._id]
   );
 
   return (
     <BlogContext.Provider
-      value={{ blog: blogState, setBlogState, isSaving, saveBlog }}
+      value={{ blog: blogState, setBlogState, status, reportEdit, saveBlog }}
     >
       {children}
     </BlogContext.Provider>
