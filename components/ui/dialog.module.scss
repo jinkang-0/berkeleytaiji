@@ -1,0 +1,60 @@
+@use "lib/colors";
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  animation: appear 150ms ease-in-out;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+}
+
+.dialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  z-index: 201;
+  background: colors.$card;
+  padding: 32px;
+  padding-bottom: 16px;
+  animation: popOut 150ms ease-in-out;
+
+  footer {
+    border-top: 1px solid colors.$border;
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    align-items: center;
+    padding-top: 16px;
+  }
+}
+
+.dialogTitle {
+  font-size: 2rem;
+}
+
+.dialogDescription {
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popOut {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translate(-50%, -49%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}

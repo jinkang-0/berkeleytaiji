@@ -3,6 +3,7 @@
 
 .button {
   display: flex;
+  align-items: center;
   gap: 0.625rem;
   font-family: inherit;
   font-size: inherit;
@@ -47,6 +48,22 @@ a.buttonPrimary:global(.disabled) {
   }
 }
 
+.buttonSecondary {
+  background: colors.$grayDark;
+  color: colors.$grayLight;
+  transition: 200ms;
+
+  &:hover {
+    background: colors.$secondaryHighlight;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: rgb(35, 35, 35);
+    opacity: 0.9;
+  }
+}
+
 .buttonGhost {
   padding: 0 !important;
 
@@ -72,7 +89,8 @@ a.buttonPrimary:global(.disabled) {
   }
 
   &:hover,
-  &:focus-visible {
+  &:focus-visible,
+  &:global(.active) {
     &::after {
       opacity: 1;
     }

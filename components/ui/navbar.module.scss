@@ -1,0 +1,50 @@
+@use "lib/colors";
+
+$itemWidth: 5rem;
+$itemGap: 2rem;
+
+.navbar {
+  width: 100%;
+  display: flex;
+  gap: $itemGap;
+  justify-content: center;
+  margin: 64px 0 16px 0;
+  position: relative;
+
+  a {
+    color: colors.$gray;
+    transition: 200ms;
+    width: $itemWidth;
+    text-align: center;
+
+    &:hover {
+      text-decoration: none;
+      color: colors.$grayLight;
+    }
+  }
+
+  a.active {
+    color: colors.$goldLight;
+  }
+}
+
+.shifter {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(calc(-50% - ($itemWidth / 2) - ($itemGap / 2)), 4px);
+  width: $itemWidth;
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-radius: 9999px;
+  background: colors.$goldLight;
+  transition: 200ms ease-in-out;
+
+  &:global(.i1) {
+    transform: translateX(#{$itemWidth + $itemGap});
+  }
+}

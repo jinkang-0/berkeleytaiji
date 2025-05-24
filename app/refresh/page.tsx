@@ -1,17 +1,30 @@
 import Footer from "@/components/ui/footer";
 import styles from "./page.module.scss";
-import { LinkButtonPrimary } from "@/components/ui/button";
-import { revalidateHome } from "@/api/actions";
-import { ButtonPrimarySingle } from "@/components/ui/button-single";
+import { LinkButtonOutline } from "@/components/ui/button";
+import { revalidate } from "@/api/actions";
+import { ButtonSinglePrimary } from "@/components/ui/button-single";
+import { isAdminSession } from "@/api/auth";
+import { notFound } from "next/navigation";
 
-export default function RefreshPage() {
+export default async function RefreshPage() {
+  const isAdmin = isAdminSession();
+  if (!isAdmin) {
+    return notFound();
+  }
+
   return (
     <main className={styles.container}>
       <article>
-        <ButtonPrimarySingle onClick={revalidateHome}>
+        <ButtonSinglePrimary
+          onClick={async () => {
+            "use server";
+            revalidate("/");
+            revalidate("/blog");
+          }}
+        >
           Refresh content data
-        </ButtonPrimarySingle>
-        <LinkButtonPrimary href="/">Back to home</LinkButtonPrimary>
+        </ButtonSinglePrimary>
+        <LinkButtonOutline href="/">Back to home</LinkButtonOutline>
       </article>
       <Footer />
     </main>

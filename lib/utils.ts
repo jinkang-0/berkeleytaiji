@@ -1,3 +1,6 @@
+import { Types } from "mongoose";
+import { Serialize } from "./types";
+
 /**
  * Get the month from a string of the format "Jan 1, 2025"
  */
@@ -59,8 +62,8 @@ export const getYTEmbed = (link: string) => {
 
 /**
  * Get the file ID of a Google Drive file.
- * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
- * Output: d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ * Input: https://drive.google.com/file/d/abc/view
+ * Output: abc
  */
 export const getFileId = (link: string) => {
   const url = new URL(link);
@@ -71,9 +74,50 @@ export const getFileId = (link: string) => {
 
 /**
  * Transform a Google Drive share link to a user content download link.
- * Input: https://drive.google.com/file/d/1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ/view
- * Output: https://drive.usercontent.google.com/download?id=1nqCUGvWYzCA7sPHXtdphhiF4qt7fq-QJ
+ * Input: abc
+ * Output: https://drive.usercontent.google.com/download?id=abc
  */
-export const gDriveToDownload = (link: string) => {
-  return `https://drive.usercontent.google.com/download?id=${getFileId(link)}`;
+export const gDriveToDownload = (fileId: string) => {
+  return `https://drive.usercontent.google.com/download?id=${fileId}`;
+};
+
+/**
+ * Formats a list of strings into a grammatically correct sentence.
+ *
+ * formatList(["Apple"]) => "Apple"
+ * formatList(["Apple", "Banana"]) => "Apple and Banana"
+ * formatList(["Apple", "Banana", "Citrus"]) => "Apple, Banana, and Citrus"
+ */
+export const formatList = (items: string[], joinTerm = " and "): string => {
+  if (items.length == 0) return "";
+  if (items.length == 1) return items[0];
+  if (items.length == 2) return items.join(joinTerm);
+
+  const firstTerms = items.slice(0, items.length - 1).join(", ");
+  const lastItem = items[items.length - 1];
+  return `${firstTerms},${joinTerm}${lastItem}`;
+};
+
+export const serializeLeanDoc = <T>(
+  doc: T
+): T extends Types.ObjectId
+  ? string
+  : T extends Array<infer U>
+  ? Array<Serialize<U>>
+  : T extends object
+  ? Serialize<T>
+  : T => {
+  if (doc instanceof Array) return doc.map((d) => serializeLeanDoc(d)) as never;
+
+  if (doc instanceof Types.ObjectId) return doc.toString() as never;
+
+  if (!(doc instanceof Date) && typeof doc === "object") {
+    const result: Record<string, unknown> = {};
+    for (const key in doc) {
+      result[key] = serializeLeanDoc((doc as never)[key]);
+    }
+    return result as never;
+  }
+
+  return doc as never;
 };

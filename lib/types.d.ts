@@ -1,6 +1,13 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import type {
+  DefaultSchemaOptions,
+  Schema as SchemaType,
+  Types
+} from "mongoose";
+import { getBlogByBlogId } from "@/api/db";
 
-export interface Event {
+// types for home page data
+interface Event {
   name: string;
   date: string;
   from: string;
@@ -9,23 +16,52 @@ export interface Event {
   attachments: string[];
 }
 
-export interface GalleryItem {
+interface GalleryItem {
   image: StaticImageData;
   caption: string;
 }
 
-export interface Form {
-  name: string;
-  chinese: string;
-  link: string;
-}
-
-export type Breakpoint = "sm" | "md" | "lg" | "xl";
-
-export interface ScheduleItem {
+interface ScheduleItem {
   Day: string;
   From: string;
   To: string;
   Location: string;
   Alternative?: string;
 }
+
+// database objects
+
+type PopulatedBlog = Awaited<ReturnType<typeof getBlogByBlogId>>[0];
+
+// utility types
+
+type ModelTypeFromSchema<S> = S extends SchemaType<unknown, infer Model>
+  ? Model
+  : never;
+
+type TypeFromSchema<S> = S extends SchemaType<
+  unknown,
+  ModelTypeFromSchema<S>,
+  object,
+  object,
+  object,
+  object,
+  DefaultSchemaOptions,
+  infer DocType
+>
+  ? DocType
+  : never;
+
+type Prettify<T> = {} & {
+  [K in keyof T]: T[K];
+};
+
+type Serialize<T> = {
+  [K in keyof T]: T[K] extends Types.ObjectId
+    ? string
+    : T[K] extends Array<infer U>
+    ? Array<Serialize<U>>
+    : T[K] extends object
+    ? Serialize<T[K]>
+    : T[K];
+};

@@ -8,7 +8,7 @@ import Footer from "@/components/ui/footer";
 export default function ErrorPage() {
   return (
     <main className={styles.container}>
-      <article>
+      <article className={styles.error}>
         <Image src={ImageSorryCat} alt="Sorry Cat" />
         <div>
           <h3>Error 500</h3>
