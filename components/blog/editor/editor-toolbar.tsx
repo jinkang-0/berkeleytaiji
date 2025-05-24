@@ -37,40 +37,47 @@ import RightAlign from "@/icons/editor/right-align";
 
 export function EditorToolbar() {
   return (
-    <div className={styles.toolbar}>
-      <ToolbarDropdown />
-      <ToolbarSeparator />
-      <ToolbarButtonMark format="bold" tooltip="Bold (Ctrl+B)">
-        <Bold />
-      </ToolbarButtonMark>
-      <ToolbarButtonMark format="italic" tooltip="Italic (Ctrl+I)">
-        <Italic />
-      </ToolbarButtonMark>
-      <ToolbarButtonMark format="underline" tooltip="Underline (Ctrl+U)">
-        <Underline />
-      </ToolbarButtonMark>
-      <ToolbarSeparator />
-      <ToolbarButtonList format="ul" tooltip="Bullet List">
-        <BulletListIcon />
-      </ToolbarButtonList>
-      <ToolbarButtonList format="ol" tooltip="Numbered List">
-        <NumberedListIcon />
-      </ToolbarButtonList>
-      <ToolbarButtonBlock format="blockquote" tooltip="Quote">
-        <Blockquote />
-      </ToolbarButtonBlock>
-      <ToolbarSeparator />
-      <ToolbarButtonAlign format="left" tooltip="Align Left">
-        <LeftAlign />
-      </ToolbarButtonAlign>
-      <ToolbarButtonAlign format="center" tooltip="Align Center">
-        <CenterAlign />
-      </ToolbarButtonAlign>
-      <ToolbarButtonAlign format="right" tooltip="Align Right">
-        <RightAlign />
-      </ToolbarButtonAlign>
-
+    <div className={styles.toolbarContainer}>
       <SavingIndicator />
+      <div className={styles.toolbar}>
+        <ToolbarDropdown />
+        <ToolbarSeparator />
+        <ToolbarGroup>
+          <ToolbarButtonMark format="bold" tooltip="Bold (Ctrl+B)">
+            <Bold />
+          </ToolbarButtonMark>
+          <ToolbarButtonMark format="italic" tooltip="Italic (Ctrl+I)">
+            <Italic />
+          </ToolbarButtonMark>
+          <ToolbarButtonMark format="underline" tooltip="Underline (Ctrl+U)">
+            <Underline />
+          </ToolbarButtonMark>
+        </ToolbarGroup>
+        <ToolbarSeparator />
+        <ToolbarGroup>
+          <ToolbarButtonList format="ul" tooltip="Bullet List">
+            <BulletListIcon />
+          </ToolbarButtonList>
+          <ToolbarButtonList format="ol" tooltip="Numbered List">
+            <NumberedListIcon />
+          </ToolbarButtonList>
+          <ToolbarButtonBlock format="blockquote" tooltip="Quote">
+            <Blockquote />
+          </ToolbarButtonBlock>
+        </ToolbarGroup>
+        <ToolbarSeparator />
+        <ToolbarGroup>
+          <ToolbarButtonAlign format="left" tooltip="Align Left">
+            <LeftAlign />
+          </ToolbarButtonAlign>
+          <ToolbarButtonAlign format="center" tooltip="Align Center">
+            <CenterAlign />
+          </ToolbarButtonAlign>
+          <ToolbarButtonAlign format="right" tooltip="Align Right">
+            <RightAlign />
+          </ToolbarButtonAlign>
+        </ToolbarGroup>
+      </div>
     </div>
   );
 }
@@ -272,4 +279,8 @@ export function ToolbarDropdown() {
 
 export function ToolbarSeparator() {
   return <div className={styles.separator} />;
+}
+
+export function ToolbarGroup({ children }: { children: React.ReactNode }) {
+  return <div className={styles.toolbarGroup}>{children}</div>;
 }

@@ -1,4 +1,5 @@
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .container {
   width: 100%;
@@ -43,5 +44,27 @@
 
   span {
     color: colors.$gray;
+  }
+}
+
+@media (max-width: breakpoints.$lg) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 clamp(0px, 5vw, 200px);
+  }
+
+  .article {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: breakpoints.$sm) {
+  .titles {
+    h2 {
+      font-size: 2rem;
+    }
   }
 }
