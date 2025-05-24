@@ -8,21 +8,50 @@ export default function FAQSection() {
       <h3>FAQ</h3>
       <div className={styles.faq}>
         <FAQList>
+          <FAQCard question="What happens if I miss a class?">
+            Don&apos;t worry! We understand that life (especially as a student)
+            can get busy, and it&apos;s not uncommon for members to miss classes
+            from time to time. If you miss a class, you can always catch up by
+            attending the next class.
+            <br /> <br />
+            Ultimately, it is up to you to decide how much you want to practice.
+            We encourage you to attend classes regularly, but we also understand
+            that everyone has different schedules and commitments.
+          </FAQCard>
+          <FAQCard question="Are there ranks in tai chi?">
+            No, there are no ranks in tai chi. We do not use a belt system or
+            any other ranking system to classify practitioners. Instead, we
+            focus on the individual&apos;s progress and understanding of the
+            art.
+            <br /> <br />
+            We believe that tai chi is a lifelong journey, and everyone
+            progresses at their own pace. Our instructors are here to guide you
+            and help you improve your skills, regardless of your current level.
+          </FAQCard>
           <FAQCard question="What is tai chi?">
             Tai chi, or taijiquan, is one of the three internal Chinese martial
-            arts, alongside Xingyi and Bagua. Tai chi is grounded in the Taoist
-            philosophy of the same name, and as such draws many concepts from
-            the Taoist cosmology.
+            arts, alongside Xingyi and Bagua. Tai chi emphasizes slow,
+            deliberate movements, deep breathing, and mental focus. It is often
+            practiced for its health benefits, including stress reduction,
+            improved balance, and increased flexibility.
             <br /> <br />
-            From time to time, we may refer to concepts from the tai chi Taoist
-            philosophy, many of which unfortunately has no direct translation in
-            English. Please ask us to clarify when things get too esoteric!
+            Tai chi is also a martial art that emphasizes yielding and
+            redirecting force, to ground the opponent&apos;s force and use it
+            against them, incorporating techniques like spiraling and{" "}
+            <Link href="https://en.wikipedia.org/wiki/Chin_Na">qin na</Link>.
+            However, this requires an advanced understanding of internal energy,
+            which may take years to develop through diligent practice. As such,
+            our class advertises and takes an emphasis on the health and
+            wellness practice of tai chi.
             <br /> <br />
-            While our focus is to teach tai chi for health and wellness, our
-            instructors can also demonstrate how the forms practitioners
-            practice can be applied for self-defense as well. If you&apos;re
-            curious to see how a move can be applied for self-defense, feel free
-            to ask!
+            That said, we still promote the understanding of internal energy
+            (&quot;qi&quot;) as a core part of our practice, as it is not only
+            useful for self-defense, but also a vital enrichment of one&apos;s
+            own life. Moreover, if you are interested in the martial aspect of
+            tai chi, our instructors can demonstrate how the forms can be
+            applied for self-defense (even without using internal energy). Feel
+            free to ask during class if you are curious to see how a move can be
+            applied for self-defense!
           </FAQCard>
           <FAQCard question="What are the health benefits of tai chi?">
             Tai chi has been linked to more resistant tendons, stronger muscles,
@@ -74,30 +103,35 @@ export default function FAQSection() {
             <br />
             For context, we schedule many performance events throughout the
             year, organized to help spread the art and grow the martial arts
-            community. Sometimes, we may also host or participate in
-            tournaments!
+            community. Sometimes, members or instructors may also participate in
+            tournaments. These events help us spread the art of tai chi and are
+            a great way to meet other practitioners and learn from different
+            styles.
             <br />
             <br />
-            We encourage members to attend and help out at these events because
-            they help spread the art and continue our long martial lineage!
-            Attending competitions are also a great chance to see how your form
-            merits among other practitioners, or to see what else is out there
-            in the kung fu world.
-            <br />
-            <br />
-            That said, we understand that many feel uncomfortable to perform or
-            attend competitions, so it is definitely not a requirement for
-            members to perform!
+            Helping volunteer at these events is a great way to get involved
+            with the community, and you don&apos;t necessarily have to perform
+            to help out! We often need volunteers to help set up the event,
+            assist with registration, or help with logistics.
+            <br /> <br />
+            That said, we do encourage members to perform at events if they feel
+            comfortable doing so. Not only is it a great way to build confidence
+            and showcase your skills, but it also helps promote the art of tai
+            chi to a wider audience.
+            <br /> <br />
+            We also encourage members to attend events even if they are not
+            performing. It&apos;s a great way to learn from other practitioners,
+            see different styles of tai chi, and meet other martial artists.
           </FAQCard>
           <FAQCard question="How are classes organized?">
             We start class with a joint loosening exercise to release stress
             built up during the day. After that, it is usually followed up with
             a stretch or qigong, which helps practitioners build sensitivity of
-            &quot;qi.&quot;
+            internal energy (&quot;qi&quot;).
             <br />
             <br />
             For online classes, our time is limited, so we either do an extended
-            session of qigong or one of form practice each class.
+            session of qigong or a form practice each class.
             <br /> <br />
             For in person classes, we split off into groups. Beginners will
             practice the fundamental forms while advanced members work on their
@@ -111,7 +145,7 @@ export default function FAQSection() {
           </FAQCard>
           <FAQCard question="What forms are practiced?">
             If you are new to tai chi, we will start you off by working on your
-            footwork, your sensitivity towards energy, and how to express energy
+            footwork, your sensitivity towards energy, and expression of energy
             with three fundamental forms. Sun 12 in the Fall, Sun Guangbo in the
             Spring, and Bafa Wubu in the Summer.
             <br /> <br />
@@ -139,9 +173,8 @@ export default function FAQSection() {
           </FAQCard>
         </FAQList>
         <span>
-          Got more questions? Email us at{" "}
-          <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link> and
-          we&apos;ll be more than happy to answer!
+          Have other questions? Email us at{" "}
+          <Link href="mailto:taiji@ucmap.org">taiji@ucmap.org</Link>!
         </span>
       </div>
     </section>
