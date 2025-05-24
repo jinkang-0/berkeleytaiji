@@ -3,14 +3,11 @@ import styles from "./page.module.scss";
 import { LinkButtonOutline } from "@/components/ui/button";
 import { revalidate } from "@/api/actions";
 import { ButtonSinglePrimary } from "@/components/ui/button-single";
-import { getSession } from "@/api/auth";
-import { checkAdmin } from "@/api/db";
+import { isAdminSession } from "@/api/auth";
 import { notFound } from "next/navigation";
 
 export default async function RefreshPage() {
-  const session = await getSession();
-  const user = session.success && session.user;
-  const isAdmin = user && checkAdmin(user.email);
+  const isAdmin = isAdminSession();
   if (!isAdmin) {
     return notFound();
   }
