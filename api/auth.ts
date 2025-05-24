@@ -8,6 +8,7 @@ import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { Credentials, UserRefreshClient } from "google-auth-library";
 import { User } from "@/lib/classes";
 import { cache } from "react";
+import { getConnection } from "./setup/mongoose";
 
 // ensure environmental variables are imported
 if (!process.env.AUTH_GOOGLE_ID)
@@ -116,6 +117,10 @@ export async function loginWithGoogle(authCode: string) {
   if (!payload.email) return { success: false, message: "No email found." };
   if (!payload.email_verified)
     return { success: false, message: "Email not verified." };
+
+  if (!getConnection()) {
+    return { success: false, message: "Internal server error." };
+  }
 
   // check user is admin
   const isAdmin = await checkAdmin(payload.email);
