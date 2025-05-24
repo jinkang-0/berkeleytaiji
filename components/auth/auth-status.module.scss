@@ -1,4 +1,5 @@
 @use "lib/colors";
+@use "lib/breakpoints";
 
 .statusBox {
   position: absolute;
@@ -12,5 +13,12 @@
 
   p {
     color: colors.$gray;
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .statusBox {
+    top: clamp(4px, 5vw, 20px);
+    right: clamp(4px, 5vw, 20px);
   }
 }

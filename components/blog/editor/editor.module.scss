@@ -1,5 +1,6 @@
 @use "lib/colors";
 @use "lib/fonts";
+@use "lib/breakpoints";
 
 .titleContainer {
   position: relative;
@@ -31,4 +32,10 @@
   border: none;
   outline: none;
   width: 100%;
+}
+
+@media (max-width: breakpoints.$sm) {
+  .editableTitle {
+    font-size: 2rem;
+  }
 }

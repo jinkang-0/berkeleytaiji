@@ -1,17 +1,26 @@
 @use "lib/colors";
+@use "lib/breakpoints";
 
-.toolbar {
+.toolbarContainer {
   position: sticky;
   top: 0;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  z-index: 100;
+  background: colors.$bg;
+  border-bottom: 1px solid colors.$border;
+  box-shadow: 0 4px 8px -2px colors.$bg;
   padding: 16px 0;
   margin-bottom: 20px;
-  border-bottom: 1px solid colors.$border;
-  background: colors.$bg;
-  z-index: 100;
-  box-shadow: 0 4px 8px -2px colors.$bg;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
 
   button {
     color: colors.$gray;
@@ -27,6 +36,12 @@
   height: 20px;
   background-color: colors.$borderDark;
   border-radius: 8px;
+}
+
+.toolbarGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .toolbarTooltip {

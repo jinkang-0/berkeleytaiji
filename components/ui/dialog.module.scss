@@ -16,6 +16,7 @@
   border-radius: 8px;
   z-index: 201;
   background: colors.$card;
+  width: clamp(300px, 90vw, 600px);
   padding: 32px;
   padding-bottom: 16px;
   animation: popOut 150ms ease-in-out;

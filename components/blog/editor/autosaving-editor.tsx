@@ -34,6 +34,7 @@ export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
       const result = convert(serializedContent);
       const trimmed = result.replaceAll(/\s+/g, " ").slice(0, 300);
       await saveBlog({ content: currentValue, summary: trimmed });
+      if (autosaveTimeout) clearTimeout(autosaveTimeout);
       setAutosaveTimeout(null);
     } else {
       // otherwise, record current change and keep checking
