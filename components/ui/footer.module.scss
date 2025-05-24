@@ -24,7 +24,8 @@
 .footerIcons {
   display: flex;
   gap: clamp(4px, 2vw, 24px); // 24px
-  align-items: flex-end;
+  // align-items: flex-end;
+  justify-content: flex-end;
   margin-top: auto;
   flex: 1;
 

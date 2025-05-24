@@ -7,7 +7,7 @@ import BookOpen from "@/icons/editor/book-open";
 import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";
 import { useRouter } from "next/navigation";
-import { deleteDraft, updateBlog } from "@/api/db";
+import { deleteDraft, numSameIdBlogs, updateBlog } from "@/api/db";
 import styles from "./editor-actions.module.scss";
 import dialogStyles from "@/components/ui/dialog.module.scss";
 
@@ -30,7 +30,7 @@ function DraftEditorActions() {
   } = useBlogContext();
   const router = useRouter();
 
-  const publishBlog = () => {
+  const publishBlog = async () => {
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
@@ -41,7 +41,9 @@ function DraftEditorActions() {
       .replaceAll(/[^\w\s]/g, "")
       .replaceAll(/\W/g, "-");
 
-    const blogId = `${yearMonth}-${trimmedTitle}`;
+    let blogId = `${yearMonth}-${trimmedTitle}`;
+    const numSameName = await numSameIdBlogs(blogId);
+    if (numSameName > 0) blogId = `${blogId}-${numSameName}`;
 
     saveBlog({ published: true, publishDate: today, blogId, visible: true });
 

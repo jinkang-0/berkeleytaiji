@@ -24,18 +24,16 @@ export default function AutosavingEditor(props: PlateProps<PlateEditor>) {
     null
   );
 
-  const attemptAutosave = () => {
+  const attemptAutosave = async () => {
     const currentValue = autosaveState.current.currentValue;
     const lastSavedValue = autosaveState.current.lastSavedValue;
 
     // if current and previous values are the same, user stopped typing, so save the blog
     if (JSON.stringify(lastSavedValue) === JSON.stringify(currentValue)) {
-      (async () => {
-        const serializedContent = await serializeValue(currentValue);
-        const result = convert(serializedContent);
-        const trimmed = result.replaceAll(/\s+/g, " ").slice(0, 300);
-        saveBlog({ content: currentValue, summary: trimmed });
-      })();
+      const serializedContent = await serializeValue(currentValue);
+      const result = convert(serializedContent);
+      const trimmed = result.replaceAll(/\s+/g, " ").slice(0, 300);
+      await saveBlog({ content: currentValue, summary: trimmed });
       setAutosaveTimeout(null);
     } else {
       // otherwise, record current change and keep checking

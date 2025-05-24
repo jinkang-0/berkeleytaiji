@@ -192,3 +192,19 @@ export async function deleteDraft(id: string) {
 
   return true;
 }
+
+/**
+ * Get the number of blogs with the same blogId.
+ *
+ * @param blogId - The blogId to check.
+ * @returns The number of blogs with the same blogId.
+ * @remarks This function is used to ensure that blog IDs are unique when publishing a new blog.
+ */
+export async function numSameIdBlogs(blogId: string) {
+  if (!(await getConnection())) return 0;
+  if (!isAdminSession()) return 0;
+
+  const num = await Blog.find({ blogId }).countDocuments().lean();
+
+  return num;
+}
