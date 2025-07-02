@@ -30,6 +30,13 @@ export const getTime = (date: string) => {
  */
 export const compareDate = (a: Date, b: string, t: string) => {
   const d = new Date(`${b} ${t}`);
+  if (isNaN(d.getTime())) {
+    const dFallback = new Date(b);
+    if (isNaN(dFallback.getTime())) {
+      return false; // Invalid date, cannot compare
+    }
+    return a < dFallback;
+  }
   return a < d;
 };
 

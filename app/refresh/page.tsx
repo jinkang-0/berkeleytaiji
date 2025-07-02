@@ -7,7 +7,7 @@ import { isAdminSession } from "@/api/auth";
 import { notFound } from "next/navigation";
 
 export default async function RefreshPage() {
-  const isAdmin = isAdminSession();
+  const isAdmin = await isAdminSession();
   if (!isAdmin) {
     return notFound();
   }
