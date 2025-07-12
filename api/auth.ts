@@ -5,10 +5,9 @@ import { cookies } from "next/headers";
 import { checkAdmin } from "./db";
 import jwt from "jsonwebtoken";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { Credentials, UserRefreshClient } from "google-auth-library";
-import { User } from "@/lib/classes";
-import { cache } from "react";
-import { getConnection } from "./setup/mongoose";
+import { UserRefreshClient } from "google-auth-library";
+import { UserSession } from "@/lib/types";
+import CONFIG from "@/data/config";
 
 // ensure environmental variables are imported
 if (!process.env.AUTH_GOOGLE_ID)
@@ -24,7 +23,12 @@ if (!process.env.AUTH_GOOGLE_SECRET)
     "Google OAuth Client secret not included in environment variables."
   );
 
+if (!process.env.ADMIN_KEY)
+  throw new Error("Admin key not included in environment variables.");
+
+//
 // config options
+//
 const expirationDays = 30;
 const refreshThreshold = 7 * 24 * 60 * 60 * 1000; // 7 days
 
@@ -39,41 +43,9 @@ const cookieOptions: Partial<ResponseCookie> = {
   maxAge: 60 * 60 * 24 * expirationDays
 };
 
-/**
- * Refresh the user's access token using the refresh token.
- *
- * @param refreshToken The refresh token of the user.
- * @returns Refreshed token credentials.
- */
-async function refreshToken(refreshToken: string) {
-  const user = new UserRefreshClient(
-    process.env.AUTH_GOOGLE_ID,
-    process.env.AUTH_GOOGLE_SECRET,
-    refreshToken
-  );
-
-  const { credentials } = await user.refreshAccessToken();
-
-  return credentials;
-}
-
-/**
- * Checks the expiration date of the token credentials of the user and refreshes it if necessary.
- *
- * @param tokens The token credentials of the user.
- * @returns Success object with credentials if the token is valid, or false if it is not.
- */
-export async function checkCredentials(tokens: Credentials) {
-  if (tokens.refresh_token && tokens.expiry_date) {
-    const expiresIn = tokens.expiry_date - Date.now();
-    if (expiresIn < refreshThreshold) {
-      const credentials = await refreshToken(tokens.refresh_token);
-      return { success: true, credentials };
-    }
-  }
-
-  return { success: false };
-}
+//
+// auth actions
+//
 
 /**
  * Logs the user in using Google OAuth.
@@ -95,19 +67,14 @@ export async function loginWithGoogle(authCode: string) {
     return { success: false, message: "An unexpected error occurred." };
   }
 
-  // refresh token expiration date
-  const checkRes = await checkCredentials(tokens);
-  const idToken = checkRes.success
-    ? checkRes.credentials?.id_token
-    : tokens.id_token;
-
-  if (!idToken) {
+  if (!tokens.id_token) {
     console.error("No ID token found.");
     return { success: false, message: "An unexpected error occurred." };
   }
 
+  // verify token
   const ticket = await oauthClient.verifyIdToken({
-    idToken,
+    idToken: tokens.id_token,
     audience: process.env.AUTH_GOOGLE_ID
   });
 
@@ -118,10 +85,6 @@ export async function loginWithGoogle(authCode: string) {
   if (!payload.email_verified)
     return { success: false, message: "Email not verified." };
 
-  if (!getConnection()) {
-    return { success: false, message: "Internal server error." };
-  }
-
   // check user is admin
   const isAdmin = await checkAdmin(payload.email);
   if (!isAdmin) {
@@ -129,10 +92,12 @@ export async function loginWithGoogle(authCode: string) {
   }
 
   // store user session
-  const user = {
+  const user: UserSession = {
     email: payload.email,
     name: payload.name,
-    sub: payload.sub
+    sub: payload.sub,
+    tokens,
+    lastRefreshed: Date.now()
   };
 
   const cookieStore = await cookies();
@@ -151,7 +116,8 @@ export async function getSession() {
   const cookieStore = await cookies();
   const session = cookieStore.get("session");
 
-  if (!session) return { success: false, message: "No session found" };
+  if (!session || !session.value)
+    return { success: false, message: "No session found" };
 
   // verify JWT token
   try {
@@ -162,11 +128,53 @@ export async function getSession() {
     if (typeof decoded === "string")
       return { success: false, message: "Invalid token" };
 
-    const user = new User(decoded.email, decoded.name, decoded.sub);
+    if (
+      !decoded.email ||
+      !decoded.name ||
+      !decoded.sub ||
+      !decoded.tokens ||
+      !decoded.lastRefreshed
+    ) {
+      console.error("Invalid token payload:", decoded);
+      return { success: false, message: "Invalid token payload" };
+    }
+
+    const user: UserSession = {
+      email: decoded.email,
+      name: decoded.name,
+      sub: decoded.sub,
+      tokens: decoded.tokens,
+      lastRefreshed: decoded.lastRefreshed
+    };
+
+    // check admin status
+    const res = await fetch(`${CONFIG.siteUrl}/api/check-admin`, {
+      headers: {
+        Authorization: process.env.ADMIN_KEY!,
+        "X-Email": user.email
+      },
+      next: { revalidate: 3600, tags: ["check-admin"] } // revalidate every hour
+    });
+
+    if (!res.ok) {
+      console.error("Failed to check admin status:", res.statusText);
+      return { success: false, message: "Failed to check admin status" };
+    }
+
+    const data = await res.json();
+    const isAdmin = !!data.isAdmin;
+    if (!isAdmin) {
+      console.error("User is not an admin.");
+      return { success: false, message: "Not authorized" };
+    }
+
+    // check and refresh tokens if needed
+    const refreshedUser = await checkAndRefresh(user);
 
     // report success
-    return { success: true, user };
+    return { success: true, user: refreshedUser };
   } catch (err) {
+    console.error("Error verifying session:", err);
     return { success: false, message: String(err) };
   }
 }
@@ -179,32 +187,85 @@ export async function logout() {
   cookieStore.delete("session");
 }
 
+//
+// utility functions
+//
+
+/**
+ * Refresh the user's access token using the refresh token.
+ *
+ * @param user The user session containing the refresh token.
+ * @returns The updated user session with new tokens, or the same user if tokens don't need to be refreshed.
+ * @throws Error if the refresh token is not found or if the refresh fails.
+ */
+async function checkAndRefresh(user: UserSession) {
+  // ensure user has tokens
+  if (!user.tokens || !user.tokens.refresh_token) {
+    throw new Error("No refresh token found in user session.");
+  }
+
+  // check if the token needs to be refreshed
+  if (
+    user.lastRefreshed &&
+    Date.now() - user.lastRefreshed < refreshThreshold
+  ) {
+    return user;
+  }
+
+  // refresh user tokens
+  const client = new UserRefreshClient(
+    process.env.AUTH_GOOGLE_ID,
+    process.env.AUTH_GOOGLE_SECRET,
+    user.tokens.refresh_token
+  );
+
+  const { credentials } = await client.refreshAccessToken();
+
+  const newUser: UserSession = {
+    ...user,
+    tokens: {
+      ...user.tokens,
+      access_token: credentials.access_token,
+      expiry_date: credentials.expiry_date,
+      refresh_token: credentials.refresh_token
+    },
+    lastRefreshed: Date.now()
+  };
+
+  // update session cookie
+  const cookieStore = await cookies();
+  const token = jwt.sign(newUser, process.env.JWT_SECRET!, jwtOptions);
+  cookieStore.set("session", token, cookieOptions);
+
+  return newUser;
+}
+
 /**
  * Checks if the calling user is an admin.
  *
  * @returns True if the user is an admin, false otherwise.
  */
-export const isAdminSession = cache(async () => {
+export const isAdminSession = async () => {
   const session = await getSession();
   if (!session.success) return false;
 
   const user = session.user;
   if (!user) return false;
 
-  return await checkAdmin(user.getEmail());
-});
+  return true;
+};
 
 /**
  * Gets the email of the logged-in user.
  *
  * @returns The user email, or null if the user is not logged in.
  */
-export const getEmail = cache(async () => {
+export const getEmail = async () => {
   const session = await getSession();
   if (!session.success) return null;
 
   const user = session.user;
   if (!user) return null;
 
-  return user.getEmail();
-});
+  return user.email;
+};

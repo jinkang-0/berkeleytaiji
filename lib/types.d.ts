@@ -6,6 +6,15 @@ import type {
 } from "mongoose";
 import { getBlogByBlogId } from "@/api/db";
 
+// auth
+interface UserSession {
+  email: string;
+  name?: string;
+  sub: string;
+  tokens?: Credentials;
+  lastRefreshed?: number; // timestamp of last token refresh
+}
+
 // types for home page data
 interface Event {
   name: string;
