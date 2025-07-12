@@ -6,7 +6,6 @@ import { checkAdmin } from "./db";
 import jwt from "jsonwebtoken";
 import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { UserRefreshClient } from "google-auth-library";
-import { getConnection } from "./setup/mongoose";
 import { UserSession } from "@/lib/types";
 import CONFIG from "@/data/config";
 
