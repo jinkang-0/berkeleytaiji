@@ -86,10 +86,6 @@ export async function loginWithGoogle(authCode: string) {
   if (!payload.email_verified)
     return { success: false, message: "Email not verified." };
 
-  if (!getConnection()) {
-    return { success: false, message: "Internal server error." };
-  }
-
   // check user is admin
   const isAdmin = await checkAdmin(payload.email);
   if (!isAdmin) {
