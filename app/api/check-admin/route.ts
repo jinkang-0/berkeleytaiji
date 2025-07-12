@@ -4,7 +4,7 @@ if (!process.env.ADMIN_KEY) {
   throw new Error("Admin key not included in environment variables.");
 }
 
-export const dyanmic = "force-static";
+export const dynamic = "force-static";
 
 export async function GET(request: Request) {
   // check if request has the correct admin key
