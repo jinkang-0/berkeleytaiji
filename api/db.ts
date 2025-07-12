@@ -11,7 +11,6 @@ import { getRandomImage } from "./unsplash";
 import { isValidObjectId, Types } from "mongoose";
 import { serializeLeanDoc } from "@/lib/utils";
 import { getSession, isAdminSession } from "./auth";
-import { cache } from "react";
 
 /**
  * Get all viewable blogs.
@@ -90,14 +89,14 @@ export async function getBlogByObjectId(id: string) {
  * @param email - The email of the user to check.
  * @returns True if the user is an admin, false otherwise.
  */
-export const checkAdmin = cache(async (email: string) => {
+export const checkAdmin = async (email: string) => {
   if (!(await getConnection())) return false;
 
   const num = await User.find({ email }).countDocuments().lean();
   if (num === 0) return false;
 
   return true;
-});
+};
 
 /**
  * Create a new blog draft.
@@ -114,7 +113,7 @@ export async function createDraft() {
   if (!user) return false;
 
   // get author id
-  const authorResult = await User.find({ email: user.getEmail() }).lean();
+  const authorResult = await User.find({ email: user.email }).lean();
   if (authorResult.length === 0) return false;
 
   const author = authorResult[0];
