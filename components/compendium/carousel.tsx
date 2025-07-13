@@ -54,7 +54,7 @@ export default function CompendiumCarousel({
         ref={swiperRef}
       >
         {carouselItems.map((i) => (
-          <SwiperSlide key={i.title} className={styles.carouselItemWrapper}>
+          <SwiperSlide key={i.title}>
             <a className={styles.carouselItem} href={i.link} target="_blank">
               <Image
                 src={i.image.src}
@@ -67,7 +67,7 @@ export default function CompendiumCarousel({
               <div className={styles.carouselItemContent}>
                 <h3 className={styles.title}>{i.title}</h3>
                 {i.tags && i.tags.length > 0 && (
-                  <div className={`${styles.tags} ${styles.center}`}>
+                  <div className={styles.tags}>
                     {i.tags.map((tag) => (
                       <span key={tag} className={styles.tag}>
                         {tag}

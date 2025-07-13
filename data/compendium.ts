@@ -132,7 +132,7 @@ const yang24: CompendiumItem = {
   link: "https://youtu.be/XkCwv9oNM3c?si=9WS9315Fls5pzjq1",
   image: Yang24,
   category: "Intermediate Compulsory",
-  otherNames: ["杨氏二十四式", "Beijing Form"]
+  otherNames: ["杨氏二十四式"]
 };
 
 const taijiBaguaFan: CompendiumItem = {

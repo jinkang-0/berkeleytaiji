@@ -1,19 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
+import { useRef } from "react";
+import ChevronLeft from "@/icons/chevron-left";
+import ChevronRight from "@/icons/chevron-right";
+import CatalogCard from "./catalog-card";
 
 import "swiper/scss";
 import "swiper/scss/mousewheel";
 import "swiper/scss/pagination";
 import "swiper/scss/effect-fade";
-
-import styles from "./carousel.module.scss";
-import { useRef } from "react";
-import ChevronLeft from "@/icons/chevron-left";
-import ChevronRight from "@/icons/chevron-right";
+import styles from "./catalog.module.scss";
 
 export default function CompendiumCatalog({
   items
@@ -54,36 +53,16 @@ export default function CompendiumCatalog({
         }}
         ref={swiperRef}
       >
-        {carouselItems.map((i) => (
+        {carouselItems.map((i, idx) => (
           <SwiperSlide key={i.title} className={styles.carouselItemWrapper}>
-            <a
-              className={`${styles.carouselItem} ${
-                i.link ? styles.carouselCard : styles.inactiveCard
-              }`}
-              href={i.link}
-              target="_blank"
-            >
-              <Image
-                src={i.image.src}
-                blurDataURL={i.image.blurDataURL}
-                placeholder="blur"
-                alt={i.image.alt ?? "alt"}
-                width="800"
-                height="450"
-              />
-              <div className={styles.carouselItemContentStatic}>
-                <h6 className={styles.title}>{i.title}</h6>
-                {i.tags && i.tags.length > 0 && (
-                  <div className={styles.tags}>
-                    {i.tags.map((tag) => (
-                      <span key={tag} className={styles.tagDark}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </a>
+            <CatalogCard
+              description={i.description}
+              image={i.image}
+              link={i.link}
+              title={i.title}
+              tags={i.tags}
+              rightAlign={idx % 3 === 2}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
