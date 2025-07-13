@@ -22,6 +22,7 @@ export default function Navbar() {
           className={activeIdx === idx ? styles.active : ""}
         >
           {n.name}
+          <div className={styles.indicator} />
         </Link>
       ))}
     </nav>

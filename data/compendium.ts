@@ -17,7 +17,7 @@ const spiralingExercises: CompendiumItem = {
     "A curated set of exercises to loosen up and prepare for practice. Trains body awareness, coordination, and spiraling techniques.",
   category: "Exercises",
   image:
-    "https://images.unsplash.com/photo-1636545672666-391bda04f4d0?q=80&w=1170&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1631556269791-fff05a526613?q=80&w=1000&auto=format&fit=crop",
   link: "https://austinchentaichi.com/wp-content/uploads/2009/10/ReelingSilkBook.pdf",
   otherNames: ["缠丝功"]
 };

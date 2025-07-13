@@ -1,7 +1,7 @@
 "use client";
 
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
 import { useRef } from "react";
 import ChevronLeft from "@/icons/chevron-left";
@@ -13,6 +13,9 @@ import "swiper/scss/mousewheel";
 import "swiper/scss/pagination";
 import "swiper/scss/effect-fade";
 import styles from "./catalog.module.scss";
+import { CatalogContextProvider } from "./catalog-context";
+
+const alignments = ["left", "middle", "right"] as const;
 
 export default function CompendiumCatalog({
   items
@@ -20,6 +23,7 @@ export default function CompendiumCatalog({
   items: CompendiumItem[];
 }) {
   const swiperRef = useRef<SwiperRef>(null);
+  const overlayPortalRef = useRef<HTMLDivElement>(null);
 
   const carouselItems = items.map((item) => ({
     image: {
@@ -33,45 +37,65 @@ export default function CompendiumCatalog({
     link: item.link
   }));
 
+  const groupedItems = carouselItems.reduce(
+    (acc: (typeof carouselItems)[0][][], item, index) => {
+      const groupIndex = Math.floor(index / 3);
+      if (acc.length <= groupIndex) {
+        acc.push([]);
+      }
+      acc[groupIndex].push(item);
+      return acc;
+    },
+    []
+  );
+
   return (
     <div className={styles.container}>
-      <Swiper
-        modules={[Autoplay, Mousewheel, Pagination]}
-        className={styles.carousel}
-        spaceBetween={24}
-        slidesPerGroup={3}
-        slidesPerView={3}
-        loop
-        autoplay={{
-          delay: 5000
-        }}
-        speed={500}
-        pagination={{ clickable: true }}
-        mousewheel={{
-          enabled: true,
-          forceToAxis: true
-        }}
-        ref={swiperRef}
-      >
-        {carouselItems.map((i, idx) => (
-          <SwiperSlide key={i.title} className={styles.carouselItemWrapper}>
-            <CatalogCard
-              description={i.description}
-              image={i.image}
-              link={i.link}
-              title={i.title}
-              tags={i.tags}
-              rightAlign={idx % 3 === 2}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      {carouselItems.length > 3 && (
-        <>
-          <CarouselControlLeft swiperRef={swiperRef} />
-          <CarouselControlRight swiperRef={swiperRef} />
-        </>
-      )}
+      <CatalogContextProvider>
+        <Swiper
+          modules={[Autoplay, Mousewheel, Pagination, EffectFade]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          className={styles.carousel}
+          loop
+          speed={250}
+          pagination={{ clickable: true }}
+          mousewheel={{
+            enabled: true,
+            forceToAxis: true
+          }}
+          ref={swiperRef}
+        >
+          {groupedItems.map((grp) => (
+            <SwiperSlide
+              key={grp[0].title}
+              className={styles.carouselItemWrapper}
+            >
+              <div className={styles.itemGroup}>
+                {grp.map((i, idx) => (
+                  <CatalogCard
+                    key={i.title}
+                    description={i.description}
+                    image={i.image}
+                    link={i.link}
+                    title={i.title}
+                    tags={i.tags}
+                    alignment={alignments[idx % 3]}
+                    overlayPortalRef={overlayPortalRef}
+                  />
+                ))}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {carouselItems.length > 3 && (
+          <>
+            <CarouselControlLeft swiperRef={swiperRef} />
+            <CarouselControlRight swiperRef={swiperRef} />
+          </>
+        )}
+        <div ref={overlayPortalRef} className={styles.overlayPortal} />
+      </CatalogContextProvider>
     </div>
   );
 }
