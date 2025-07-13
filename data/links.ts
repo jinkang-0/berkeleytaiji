@@ -21,5 +21,9 @@ export const NAVBAR_LINKS = [
   {
     href: "/blog",
     name: "Blog"
+  },
+  {
+    href: "/compendium",
+    name: "Compendium"
   }
 ];

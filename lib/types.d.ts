@@ -15,6 +15,33 @@ interface UserSession {
   lastRefreshed?: number; // timestamp of last token refresh
 }
 
+// compendium
+type CompendiumCategory =
+  | "Exercises"
+  | "Qigong"
+  | "Core Compulsory"
+  | "Intermediate Compulsory"
+  | "Projects";
+
+interface CompendiumItemBase {
+  title: string;
+  description: string;
+  otherNames: string[];
+  category: CompendiumCategory;
+}
+
+interface CompendiumItemWithVideo extends CompendiumItemBase {
+  youtubeLink: string;
+}
+
+interface CompendiumItemWithLink extends CompendiumItemBase {
+  youtubeLink?: undefined;
+  image: string;
+  link?: string;
+}
+
+type CompendiumItem = CompendiumItemWithVideo | CompendiumItemWithLink;
+
 // types for home page data
 interface Event {
   name: string;

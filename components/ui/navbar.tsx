@@ -24,9 +24,6 @@ export default function Navbar() {
           {n.name}
         </Link>
       ))}
-      <div className={styles.shifter}>
-        <div className={`${styles.divider} i${activeIdx}`}></div>
-      </div>
     </nav>
   );
 }
