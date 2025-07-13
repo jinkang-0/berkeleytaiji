@@ -21,16 +21,17 @@
     width: auto;
   }
 
-  :global(.swiper-slide-active) .caption {
-    opacity: 1;
-    transition-delay: 250ms;
-  }
-
   .carouselItem {
     width: 100%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      text-decoration: none;
+    }
 
     img {
       width: 100%;
@@ -39,8 +40,21 @@
       -webkit-user-drag: none;
       aspect-ratio: 16 / 9;
       object-fit: cover;
-      border-radius: 8px;
     }
+  }
+
+  .carouselCard {
+    border: 1px solid colors.$borderDark;
+    transition: border-color 200ms;
+
+    &:hover {
+      border-color: colors.$border;
+    }
+  }
+
+  .inactiveCard {
+    opacity: 0.8;
+    pointer-events: none;
   }
 
   .carouselItemContent {
@@ -50,7 +64,6 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     padding: 24px;
-    border-radius: 8px;
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 0%,
@@ -64,12 +77,30 @@
     user-select: none;
   }
 
+  .carouselItemContentStatic {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 16px 12px 16px;
+    background: colors.$card;
+
+    .title {
+      font-weight: 600;
+    }
+  }
+
   .tags {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
     margin-bottom: 8px;
 
-    .tag {
+    .center {
+      justify-content: center;
+    }
+
+    @mixin tagBase {
       background: colors.$card;
       color: colors.$border;
       padding: 2px 6px;
@@ -77,6 +108,15 @@
       font-size: 1rem;
       font-weight: 500;
       line-height: 1.45;
+    }
+
+    .tag {
+      @include tagBase;
+    }
+
+    .tagDark {
+      @include tagBase;
+      background: colors.$grayDark;
     }
   }
 
@@ -135,12 +175,8 @@
 
 @media (max-width: breakpoints.$md) {
   .carousel:global(.swiper) {
-    .carouselItem {
+    .carouselItem.fixedWidth {
       width: 300px;
-
-      .ambiance {
-        filter: blur(10px);
-      }
     }
   }
 }

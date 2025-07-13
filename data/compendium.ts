@@ -27,6 +27,7 @@ const taoistYogaStretches: CompendiumItem = {
   description:
     "A series of stretches used by Taoists, dating back to the Jin dynasty or earlier.",
   image: "https://images.unsplash.com/photo-1661308411865-4fce7576bef8",
+  link: "https://en.wikipedia.org/wiki/Daoyin",
   category: "Exercises",
   otherNames: ["导引"]
 };
@@ -111,7 +112,7 @@ const yangBafawubu: CompendiumItem = {
 const sunGuangbo: CompendiumItem = {
   title: "Sun Guangbo",
   description:
-    "A concise form of Sun-style tai chi, focusing on the core principles of the style.",
+    "A concise form of Sun-style tai chi, covering a plethora of common Sun style techniques.",
   link: "https://youtu.be/U6fGm8ungYg?si=qY4LHsgVT1bKrM3_",
   image: SunGuangbo,
   category: "Core Compulsory",

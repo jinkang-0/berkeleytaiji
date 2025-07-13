@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Mousewheel, Pagination } from "swiper/modules";
+import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
 
 import "swiper/scss";
@@ -15,7 +15,7 @@ import { useRef } from "react";
 import ChevronLeft from "@/icons/chevron-left";
 import ChevronRight from "@/icons/chevron-right";
 
-export default function CompendiumCarousel({
+export default function CompendiumCatalog({
   items
 }: {
   items: CompendiumItem[];
@@ -30,17 +30,18 @@ export default function CompendiumCarousel({
     },
     title: item.title,
     description: item.description,
-    tags: [item.category, ...item.otherNames],
+    tags: [...item.otherNames],
     link: item.link
   }));
 
   return (
     <div className={styles.container}>
       <Swiper
-        modules={[Autoplay, Mousewheel, Pagination, EffectFade]}
-        effect="fade"
-        fadeEffect={{ crossFade: true }}
+        modules={[Autoplay, Mousewheel, Pagination]}
         className={styles.carousel}
+        spaceBetween={24}
+        slidesPerGroup={3}
+        slidesPerView={3}
         loop
         autoplay={{
           delay: 5000
@@ -55,7 +56,13 @@ export default function CompendiumCarousel({
       >
         {carouselItems.map((i) => (
           <SwiperSlide key={i.title} className={styles.carouselItemWrapper}>
-            <a className={styles.carouselItem} href={i.link} target="_blank">
+            <a
+              className={`${styles.carouselItem} ${
+                i.link ? styles.carouselCard : styles.inactiveCard
+              }`}
+              href={i.link}
+              target="_blank"
+            >
               <Image
                 src={i.image.src}
                 blurDataURL={i.image.blurDataURL}
@@ -64,25 +71,28 @@ export default function CompendiumCarousel({
                 width="800"
                 height="450"
               />
-              <div className={styles.carouselItemContent}>
-                <h3 className={styles.title}>{i.title}</h3>
+              <div className={styles.carouselItemContentStatic}>
+                <h6 className={styles.title}>{i.title}</h6>
                 {i.tags && i.tags.length > 0 && (
-                  <div className={`${styles.tags} ${styles.center}`}>
+                  <div className={styles.tags}>
                     {i.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>
+                      <span key={tag} className={styles.tagDark}>
                         {tag}
                       </span>
                     ))}
                   </div>
                 )}
-                <p className={styles.caption}>{i.description}</p>
               </div>
             </a>
           </SwiperSlide>
         ))}
       </Swiper>
-      <CarouselControlLeft swiperRef={swiperRef} />
-      <CarouselControlRight swiperRef={swiperRef} />
+      {carouselItems.length > 3 && (
+        <>
+          <CarouselControlLeft swiperRef={swiperRef} />
+          <CarouselControlRight swiperRef={swiperRef} />
+        </>
+      )}
     </div>
   );
 }
