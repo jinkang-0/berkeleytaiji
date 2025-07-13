@@ -23,24 +23,14 @@ type CompendiumCategory =
   | "Intermediate Compulsory"
   | "Projects";
 
-interface CompendiumItemBase {
+interface CompendiumItem {
   title: string;
   description: string;
   otherNames: string[];
   category: CompendiumCategory;
-}
-
-interface CompendiumItemWithVideo extends CompendiumItemBase {
-  youtubeLink: string;
-}
-
-interface CompendiumItemWithLink extends CompendiumItemBase {
-  youtubeLink?: undefined;
-  image: string;
+  image: string | StaticImageData;
   link?: string;
 }
-
-type CompendiumItem = CompendiumItemWithVideo | CompendiumItemWithLink;
 
 // types for home page data
 interface Event {

@@ -1,36 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Autoplay,
-  EffectFade,
-  Mousewheel,
-  Navigation,
-  Pagination
-} from "swiper/modules";
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
-import { getThumbnail } from "@/lib/utils";
 
 import "swiper/scss";
 import "swiper/scss/mousewheel";
-import "swiper/scss/navigation";
 import "swiper/scss/pagination";
 import "swiper/scss/effect-fade";
 
 import styles from "./carousel.module.scss";
+import { useRef } from "react";
+import ChevronLeft from "@/icons/chevron-left";
+import ChevronRight from "@/icons/chevron-right";
 
 export default function CompendiumCarousel({
   items
 }: {
   items: CompendiumItem[];
 }) {
+  const swiperRef = useRef<SwiperRef>(null);
+
   const carouselItems = items.map((item) => ({
     image: {
-      src:
-        item.youtubeLink !== undefined
-          ? getThumbnail(item.youtubeLink)
-          : item.image,
+      src: item.image,
+      blurDataURL: typeof item.image === "string" ? item.image : undefined,
       alt: item.title
     },
     title: item.title,
@@ -41,7 +36,7 @@ export default function CompendiumCarousel({
   return (
     <div className={styles.container}>
       <Swiper
-        modules={[Autoplay, Mousewheel, Pagination, Navigation, EffectFade]}
+        modules={[Autoplay, Mousewheel, Pagination, EffectFade]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
         className={styles.carousel}
@@ -55,13 +50,14 @@ export default function CompendiumCarousel({
           enabled: true,
           forceToAxis: true
         }}
+        ref={swiperRef}
       >
         {carouselItems.map((i) => (
           <SwiperSlide key={i.title} className={styles.carouselItemWrapper}>
             <div className={styles.carouselItem}>
               <Image
                 src={i.image.src}
-                blurDataURL={i.image.src}
+                blurDataURL={i.image.blurDataURL}
                 placeholder="blur"
                 alt={i.image.alt ?? "alt"}
                 width="800"
@@ -84,6 +80,40 @@ export default function CompendiumCarousel({
           </SwiperSlide>
         ))}
       </Swiper>
+      <CarouselControlLeft swiperRef={swiperRef} />
+      <CarouselControlRight swiperRef={swiperRef} />
     </div>
+  );
+}
+
+function CarouselControlLeft({
+  swiperRef
+}: {
+  swiperRef: React.RefObject<SwiperRef | null>;
+}) {
+  return (
+    <button
+      className={styles.carouselControlLeft}
+      onClick={() => swiperRef.current?.swiper.slidePrev()}
+      aria-label="Previous slide"
+    >
+      <ChevronLeft />
+    </button>
+  );
+}
+
+function CarouselControlRight({
+  swiperRef
+}: {
+  swiperRef: React.RefObject<SwiperRef | null>;
+}) {
+  return (
+    <button
+      className={styles.carouselControlRight}
+      onClick={() => swiperRef.current?.swiper.slideNext()}
+      aria-label="Next slide"
+    >
+      <ChevronRight />
+    </button>
   );
 }

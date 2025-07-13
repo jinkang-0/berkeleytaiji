@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
 }
 
 .carousel:global(.swiper) {
@@ -83,6 +84,52 @@
     font-size: 1.125rem;
     width: clamp(300px, 80%, 600px);
   }
+
+  & > :global(.swiper-pagination) {
+    position: static;
+
+    & > :global(.swiper-pagination-bullet) {
+      background-color: colors.$gray;
+      opacity: 0.24;
+      width: 32px;
+      height: 8px;
+      transition: background-color 200ms, opacity 200ms;
+      border-radius: 8px;
+
+      &:global(.swiper-pagination-bullet-active) {
+        background-color: colors.$goldLight;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+@mixin carouselControl {
+  background: none;
+  border: none;
+  border-radius: 9999px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+
+.carouselControlLeft {
+  @include carouselControl;
+
+  left: -16px;
+  transform: translate(-100%, -50%);
+}
+
+.carouselControlRight {
+  @include carouselControl;
+
+  right: -16px;
+  transform: translate(100%, -50%);
 }
 
 @media (max-width: breakpoints.$md) {
