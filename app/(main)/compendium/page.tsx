@@ -8,6 +8,13 @@ import {
   qigong
 } from "@/data/compendium";
 import CompendiumCatalog from "@/components/compendium/catalog";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Compendium",
+  description:
+    "Explore what we practice at Berkeley Taiji, including exercises, qigong, and compulsory forms."
+};
 
 export default function CompendiumPage() {
   return (

@@ -7,7 +7,7 @@ const CONFIG = {
       ? "https://berkeleytaiji.vercel.app"
       : "http://localhost:3000",
   siteName: "Berkeley Taiji",
-  siteDescription: "The official Taiji club at UC Berkeley."
+  siteDescription: "The official tai chi club at UC Berkeley"
 };
 
 export default CONFIG;
