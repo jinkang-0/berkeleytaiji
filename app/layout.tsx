@@ -32,23 +32,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: CONFIG.siteName,
+  title: {
+    default: CONFIG.siteName,
+    template: `%s | ${CONFIG.siteName}`
+  },
   description: CONFIG.siteDescription,
   keywords: [
-    "CalTaiji",
-    "Berkeley",
-    "Berkeley Taiji",
-    "Taiji",
-    "Tai Chi",
-    "UC Berkeley",
-    "Berkeley",
-    "Martial Arts",
-    "Chinese Martial Arts",
-    "Kungfu",
+    "berkeley",
+    "uc berkeley",
+    "berkeley taiji",
+    "berkeley tai chi",
+    "taiji",
+    "tai chi",
+    "uc berkeley taiji",
+    "uc berkeley tai chi",
+    "chinese martial arts",
     "kung fu",
-    "UCMAP",
-    "UC Martial Arts Program",
-    "Club"
+    "kungfu",
+    "ucmap",
+    "ucmap taiji",
+    "ucmap tai chi",
+    "uc martial arts program taiji",
+    "uc martial arts program tai chi",
+    "uc martial arts taiji",
+    "uc martial arts tai chi"
   ],
   metadataBase: new URL(CONFIG.siteUrl),
   openGraph: {
@@ -63,6 +70,10 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png"
+  },
+  robots: {
+    follow: true,
+    index: true
   }
 };
 
