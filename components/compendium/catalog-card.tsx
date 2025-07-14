@@ -7,6 +7,7 @@ import { useCallback, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { useCatalogContext } from "./catalog-context";
+import UnlinkIcon from "@/icons/unlink";
 
 interface CatalogCardProps {
   link?: string;
@@ -31,21 +32,19 @@ export default function CatalogCard({
   alignment,
   overlayPortalRef
 }: CatalogCardProps) {
-  const elemRef = useRef<HTMLDivElement>(null);
+  const elemRef = useRef<HTMLAnchorElement>(null);
   const { isCardHovered, setIsCardHovered } = useCatalogContext();
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = useCallback(() => {
-    if (!link) return;
     setIsCardHovered(true);
     setIsHovering(true);
-  }, [setIsCardHovered, link]);
+  }, [setIsCardHovered]);
 
   const handleMouseLeave = useCallback(() => {
-    if (!link) return;
     setIsCardHovered(false);
     setIsHovering(false);
-  }, [setIsCardHovered, link]);
+  }, [setIsCardHovered]);
 
   return (
     <div
@@ -53,8 +52,10 @@ export default function CatalogCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div
+      <a
         ref={elemRef}
+        href={link}
+        target="_blank"
         className={clsx(
           styles.carouselCard,
           !link && styles.inactiveCard,
@@ -83,17 +84,18 @@ export default function CatalogCard({
           )}
           <p className={styles.description}>{description}</p>
         </div>
-      </div>
+      </a>
       {overlayPortalRef.current &&
         createPortal(
           <AnimatePresence>
-            {link && isHovering && (
+            {isHovering && (
               <motion.a
                 href={link}
                 target="_blank"
                 className={clsx(
                   styles.itemOverlay,
-                  styles[`${alignment}Align`]
+                  styles[`${alignment}Align`],
+                  !link && styles.noLink
                 )}
                 initial={{
                   opacity: 0,
@@ -108,6 +110,7 @@ export default function CatalogCard({
                 exit={{
                   opacity: 0,
                   width: elemRef.current?.getBoundingClientRect().width,
+                  height: elemRef.current?.getBoundingClientRect().height,
                   transition: {
                     duration: 0.2,
                     opacity: { delay: 0.1 }
@@ -118,15 +121,22 @@ export default function CatalogCard({
                   ease: "easeInOut"
                 }}
               >
-                <Image
-                  src={image.src}
-                  blurDataURL={image.blurDataURL}
-                  placeholder="blur"
-                  className={styles.itemImage}
-                  alt={image.alt ?? "alt"}
-                  width="800"
-                  height="450"
-                />
+                {link ? (
+                  <Image
+                    src={image.src}
+                    blurDataURL={image.blurDataURL}
+                    placeholder="blur"
+                    className={styles.itemImage}
+                    alt={image.alt ?? "alt"}
+                    width="800"
+                    height="450"
+                  />
+                ) : (
+                  <div className={styles.nolinkNotice}>
+                    <UnlinkIcon />
+                    <span>No links available</span>
+                  </div>
+                )}
                 <div className={styles.carouselItemContent}>
                   <h6 className={styles.title}>{title}</h6>
                   {tags && tags.length > 0 && (

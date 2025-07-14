@@ -1,7 +1,9 @@
+@use "lib/breakpoints";
+
 .container {
   display: flex;
   flex-direction: column;
-  width: clamp(600px, 80%, 900px);
+  width: clamp(300px, 95%, 900px);
   margin-top: 64px;
   margin-bottom: 24px;
   flex: 1;
@@ -19,4 +21,10 @@
   padding: 64px 0;
   width: 100%;
   align-items: center;
+}
+
+@media (max-width: breakpoints.$md) {
+  .catalog h3 {
+    font-size: 1.5rem;
+  }
 }

@@ -17,6 +17,13 @@
   width: 100%;
   margin: 16px 0;
 
+  :global(.swiper-wrapper) {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    min-width: 0;
+  }
+
   :global(.swiper-slide) {
     width: auto;
   }
@@ -59,8 +66,13 @@
   flex-direction: column;
   position: relative;
   z-index: 0;
-  transition: opacity 350ms ease-in-out;
+  transition: opacity 350ms ease-in-out, border-color 200ms;
   width: 100%;
+
+  &:hover {
+    text-decoration: none;
+    border-color: colors.$border;
+  }
 
   &.lowerPresence {
     opacity: 0.5;
@@ -88,6 +100,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition: width 200ms;
+  color: colors.$goldLight;
 }
 
 .tags {
@@ -125,6 +138,18 @@
   object-fit: cover;
 }
 
+.nolinkNotice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: colors.$grayLight;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 150px;
+  background: colors.$buttonBorder;
+}
+
 .overlayPortal {
   position: absolute;
   top: 16px;
@@ -144,6 +169,10 @@
   opacity: 0;
   border: 1px solid colors.$border;
   z-index: 10;
+
+  &.noLink {
+    border-color: colors.$bg;
+  }
 
   &:hover {
     text-decoration: none;
@@ -189,10 +218,34 @@
   transform: translate(100%, -50%);
 }
 
-@media (max-width: breakpoints.$md) {
+@media (max-width: breakpoints.$lg) {
   .carousel:global(.swiper) {
     .carouselItem.fixedWidth {
       width: 300px;
     }
+  }
+
+  .itemGroup {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carouselControlLeft,
+  .carouselControlRight {
+    display: none;
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .container {
+    width: 100%;
+  }
+
+  .itemGroup {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .itemOverlay {
+    display: none;
   }
 }

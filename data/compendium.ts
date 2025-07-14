@@ -45,7 +45,7 @@ const chenHunyuanQigong: CompendiumItem = {
   image: "https://images.unsplash.com/photo-1647039726235-bc7dbbc9a681",
   link: "https://en.m.wikipedia.org/wiki/Chen-style_tai_chi#Xinyi_Hunyuan_tai_chi",
   category: "Qigong",
-  otherNames: ["陈式心意混元太极气功"]
+  otherNames: ["陈氏心意混元太极气功"]
 };
 
 const thirteenWords: CompendiumItem = {
@@ -116,7 +116,7 @@ const sunGuangbo: CompendiumItem = {
   link: "https://youtu.be/U6fGm8ungYg?si=qY4LHsgVT1bKrM3_",
   image: SunGuangbo,
   category: "Core Compulsory",
-  otherNames: ["孙式太极广播操"]
+  otherNames: ["孙氏太极广播操"]
 };
 
 export const coreCompulsory = [sun12, yangBafawubu, sunGuangbo];
@@ -151,7 +151,7 @@ const chenHunyuanRuler10: CompendiumItem = {
   link: "https://youtu.be/CczCUMiJKso?si=GzIy_CvB1r96_hV8",
   image: Ruler,
   category: "Intermediate Compulsory",
-  otherNames: ["陈式心意混元棒十式"]
+  otherNames: ["陈氏心意混元棒十式"]
 };
 
 export const intermediateCompulsory = [

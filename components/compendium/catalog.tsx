@@ -3,7 +3,7 @@
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
-import { useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ChevronLeft from "@/icons/chevron-left";
 import ChevronRight from "@/icons/chevron-right";
 import CatalogCard from "./catalog-card";
@@ -15,7 +15,11 @@ import "swiper/scss/effect-fade";
 import styles from "./catalog.module.scss";
 import { CatalogContextProvider } from "./catalog-context";
 
-const alignments = ["left", "middle", "right"] as const;
+const alignments = [
+  ["middle"],
+  ["left", "right"],
+  ["left", "middle", "right"]
+] as const;
 
 export default function CompendiumCatalog({
   items
@@ -24,29 +28,78 @@ export default function CompendiumCatalog({
 }) {
   const swiperRef = useRef<SwiperRef>(null);
   const overlayPortalRef = useRef<HTMLDivElement>(null);
+  const [groupSize, setGroupSize] = useState(3);
 
-  const carouselItems = items.map((item) => ({
-    image: {
-      src: item.image,
-      blurDataURL: typeof item.image === "string" ? item.image : undefined,
-      alt: item.title
-    },
-    title: item.title,
-    description: item.description,
-    tags: [...item.otherNames],
-    link: item.link
-  }));
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-  const groupedItems = carouselItems.reduce(
-    (acc: (typeof carouselItems)[0][][], item, index) => {
-      const groupIndex = Math.floor(index / 3);
-      if (acc.length <= groupIndex) {
-        acc.push([]);
-      }
-      acc[groupIndex].push(item);
-      return acc;
-    },
-    []
+    const handleSmallBreakpoint = (ev: MediaQueryListEvent) => {
+      if (ev.matches) setGroupSize(1);
+      else setGroupSize(2);
+    };
+
+    const handleMediumBreakpoint = (ev: MediaQueryListEvent) => {
+      if (ev.matches) setGroupSize(2);
+      else setGroupSize(3);
+    };
+
+    const handleLargeBreakpoint = (ev: MediaQueryListEvent) => {
+      if (ev.matches) setGroupSize(3);
+      else setGroupSize(2);
+    };
+
+    const smBreakpoint = window.matchMedia("(max-width: 46.875rem)");
+    const mdBreakpoint = window.matchMedia("(max-width: 59.375rem)");
+    const lgBreakpoint = window.matchMedia("(min-width: 59.375rem)");
+
+    smBreakpoint.addEventListener("change", handleSmallBreakpoint);
+    mdBreakpoint.addEventListener("change", handleMediumBreakpoint);
+    lgBreakpoint.addEventListener("change", handleLargeBreakpoint);
+
+    // initial check
+    if (smBreakpoint.matches) {
+      setGroupSize(1);
+    } else if (mdBreakpoint.matches) {
+      setGroupSize(2);
+    }
+
+    return () => {
+      smBreakpoint.removeEventListener("change", handleSmallBreakpoint);
+      mdBreakpoint.removeEventListener("change", handleMediumBreakpoint);
+      lgBreakpoint.removeEventListener("change", handleLargeBreakpoint);
+    };
+  }, []);
+
+  const carouselItems = useMemo(
+    () =>
+      items.map((item) => ({
+        image: {
+          src: item.image,
+          blurDataURL: typeof item.image === "string" ? item.image : undefined,
+          alt: item.title
+        },
+        title: item.title,
+        description: item.description,
+        tags: [...item.otherNames],
+        link: item.link
+      })),
+    [items]
+  );
+
+  const groupedItems = useMemo(
+    () =>
+      carouselItems.reduce(
+        (acc: (typeof carouselItems)[0][][], item, index) => {
+          const groupIndex = Math.floor(index / groupSize);
+          if (acc.length <= groupIndex) {
+            acc.push([]);
+          }
+          acc[groupIndex].push(item);
+          return acc;
+        },
+        []
+      ),
+    [carouselItems, groupSize]
   );
 
   return (
@@ -57,8 +110,9 @@ export default function CompendiumCatalog({
           effect="fade"
           fadeEffect={{ crossFade: true }}
           className={styles.carousel}
+          spaceBetween={0}
           loop
-          speed={250}
+          speed={500}
           pagination={{ clickable: true }}
           mousewheel={{
             enabled: true,
@@ -80,7 +134,7 @@ export default function CompendiumCatalog({
                     link={i.link}
                     title={i.title}
                     tags={i.tags}
-                    alignment={alignments[idx % 3]}
+                    alignment={alignments[groupSize - 1][idx % groupSize]}
                     overlayPortalRef={overlayPortalRef}
                   />
                 ))}

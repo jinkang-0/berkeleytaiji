@@ -42,6 +42,7 @@ export default function CompendiumCarousel({
         fadeEffect={{ crossFade: true }}
         className={styles.carousel}
         loop
+        slidesPerView="auto"
         autoplay={{
           delay: 5000
         }}
@@ -52,6 +53,7 @@ export default function CompendiumCarousel({
           forceToAxis: true
         }}
         ref={swiperRef}
+        resistance={false}
       >
         {carouselItems.map((i) => (
           <SwiperSlide key={i.title}>

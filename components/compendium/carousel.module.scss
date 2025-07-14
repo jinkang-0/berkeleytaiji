@@ -17,6 +17,13 @@
   width: 100%;
   margin: 16px 0;
 
+  :global(.swiper-wrapper) {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    min-width: 0;
+  }
+
   :global(.swiper-slide) {
     width: auto;
   }
@@ -119,26 +126,54 @@
   position: absolute;
   top: 50%;
   cursor: pointer;
+  z-index: 10;
 }
+
+$absOffset: 160px;
+$scaleOffset: 15vw;
 
 .carouselControlLeft {
   @include carouselControl;
 
-  left: -16px;
+  left: clamp(-16px, $absOffset - $scaleOffset, 42px);
   transform: translate(-100%, -50%);
 }
 
 .carouselControlRight {
   @include carouselControl;
 
-  right: -16px;
+  right: clamp(-16px, $absOffset - $scaleOffset, 42px);
   transform: translate(100%, -50%);
 }
 
 @media (max-width: breakpoints.$md) {
+  .container {
+    width: 100%;
+  }
+
   .carousel:global(.swiper) {
-    .carouselItem.fixedWidth {
-      width: 300px;
+    .carouselItem img {
+      width: auto;
+      height: 350px;
+    }
+
+    .carouselItemContent {
+      width: auto;
+      height: 350px;
+      aspect-ratio: unset;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .caption {
+      font-size: 1rem;
+    }
+
+    .tags .tag {
+      font-size: 0.875rem;
     }
   }
 }
