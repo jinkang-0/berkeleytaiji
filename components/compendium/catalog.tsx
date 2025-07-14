@@ -142,7 +142,7 @@ export default function CompendiumCatalog({
             </SwiperSlide>
           ))}
         </Swiper>
-        {carouselItems.length > 3 && (
+        {carouselItems.length > groupSize && (
           <>
             <CarouselControlLeft swiperRef={swiperRef} />
             <CarouselControlRight swiperRef={swiperRef} />
