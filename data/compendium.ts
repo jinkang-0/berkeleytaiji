@@ -6,6 +6,7 @@ import SunGuangbo from "@/assets/compendium/guangbo.webp";
 import Ruler from "@/assets/compendium/ruler.webp";
 import Yang24 from "@/assets/compendium/yang24.webp";
 import Sun12 from "@/assets/compendium/sun12.webp";
+import Yang32 from "@/assets/compendium/yang32.webp";
 
 //
 // exercises
@@ -52,7 +53,7 @@ const thirteenWords: CompendiumItem = {
   title: "Thirteen Words",
   description:
     "A qigong practice that emphasizes the cultivation of internal energy through specific postures and breathing techniques.",
-  link: "https://youtu.be/_0_lwrfgC_Q?si=Bs9NU5qEPwYZmofx",
+  link: "https://youtu.be/_0_lwrfgC_Q",
   image: ThirteenWords,
   category: "Qigong",
   otherNames: ["十三字"]
@@ -93,17 +94,17 @@ const sun12: CompendiumItem = {
   title: "Sun 12",
   description:
     "A simplified form of Sun-style tai chi, focused on developing footwork.",
-  link: "https://youtu.be/fRA7bMWEpjo?si=ni2YRwMO8IFM0bRr",
+  link: "https://youtu.be/fRA7bMWEpjo",
   image: Sun12,
   category: "Core Compulsory",
   otherNames: ["孙氏十二式"]
 };
 
 const yangBafawubu: CompendiumItem = {
-  title: "Yang Bafawubu",
+  title: "Yang Bafa Wubu",
   description:
     "A foundational form of Yang-style tai chi, emphasizing the eight powers and five directions commonly used in tai chi.",
-  link: "https://youtu.be/XoW25w-Uusg?si=JoxnYKWidihfxH2G",
+  link: "https://youtu.be/XoW25w-Uusg",
   image: BafaWubu,
   category: "Core Compulsory",
   otherNames: ["杨氏八法五步"]
@@ -113,7 +114,7 @@ const sunGuangbo: CompendiumItem = {
   title: "Sun Guangbo",
   description:
     "A concise form of Sun-style tai chi, covering a plethora of common Sun style techniques.",
-  link: "https://youtu.be/U6fGm8ungYg?si=qY4LHsgVT1bKrM3_",
+  link: "https://youtu.be/U6fGm8ungYg",
   image: SunGuangbo,
   category: "Core Compulsory",
   otherNames: ["孙氏太极广播操"]
@@ -129,7 +130,7 @@ const yang24: CompendiumItem = {
   title: "Yang 24",
   description:
     "A widely practiced form of Yang-style tai chi, commonly used for competitions to demonstrate physical aptitude. Not a health form.",
-  link: "https://youtu.be/XkCwv9oNM3c?si=9WS9315Fls5pzjq1",
+  link: "https://youtu.be/XkCwv9oNM3c",
   image: Yang24,
   category: "Intermediate Compulsory",
   otherNames: ["杨氏二十四式"]
@@ -139,7 +140,7 @@ const taijiBaguaFan: CompendiumItem = {
   title: "Taiji Bagua Fan",
   description:
     "A distilled fan set from the Bagua Kun Lun Fan forms, combining elements of bagua and tai chi.",
-  link: "https://youtu.be/K72qsZavBN0?si=tLR2IvJKExOUO_rQ",
+  link: "https://youtu.be/K72qsZavBN0",
   image: Fan,
   category: "Intermediate Compulsory",
   otherNames: ["太极八卦扇"]
@@ -148,16 +149,26 @@ const taijiBaguaFan: CompendiumItem = {
 const chenHunyuanRuler10: CompendiumItem = {
   title: "Chen Hunyuan Ruler 10",
   description: "The 10 form ruler set from Chen Hunyuan tai chi.",
-  link: "https://youtu.be/CczCUMiJKso?si=GzIy_CvB1r96_hV8",
+  link: "https://youtu.be/CczCUMiJKso",
   image: Ruler,
   category: "Intermediate Compulsory",
   otherNames: ["陈氏心意混元棒十式"]
 };
 
+const yang32Sword: CompendiumItem = {
+  title: "Yang 32 Straight Sword",
+  description: "A traditional Yang-style sword form.",
+  link: "https://youtu.be/4Qf2zk7FLuo",
+  image: Yang32,
+  category: "Intermediate Compulsory",
+  otherNames: ["杨氏三十二式剑"]
+};
+
 export const intermediateCompulsory = [
   yang24,
   taijiBaguaFan,
-  chenHunyuanRuler10
+  chenHunyuanRuler10,
+  yang32Sword
 ];
 
 // featured items for carousel
