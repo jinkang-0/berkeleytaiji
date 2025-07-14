@@ -88,6 +88,22 @@ export const gDriveToDownload = (fileId: string) => {
   return `https://drive.usercontent.google.com/download?id=${fileId}`;
 };
 
+export const getVideoId = (link: string) => {
+  const url = new URL(link);
+  if (url.hostname === "www.youtube.com" || url.hostname === "youtube.com") {
+    return url.searchParams.get("v");
+  } else if (url.hostname === "youtu.be") {
+    return url.pathname.split("/")[1];
+  }
+  return null;
+};
+
+export const getThumbnail = (link: string) => {
+  const videoId = getVideoId(link);
+  if (!videoId) return "";
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+};
+
 /**
  * Formats a list of strings into a grammatically correct sentence.
  *

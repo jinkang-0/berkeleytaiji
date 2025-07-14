@@ -15,6 +15,23 @@ interface UserSession {
   lastRefreshed?: number; // timestamp of last token refresh
 }
 
+// compendium
+type CompendiumCategory =
+  | "Exercises"
+  | "Qigong"
+  | "Core Compulsory"
+  | "Intermediate Compulsory"
+  | "Projects";
+
+interface CompendiumItem {
+  title: string;
+  description: string;
+  otherNames: string[];
+  category: CompendiumCategory;
+  image: string | StaticImageData;
+  link?: string;
+}
+
 // types for home page data
 interface Event {
   name: string;

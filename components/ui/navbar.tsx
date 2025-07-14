@@ -22,11 +22,9 @@ export default function Navbar() {
           className={activeIdx === idx ? styles.active : ""}
         >
           {n.name}
+          <div className={styles.indicator} />
         </Link>
       ))}
-      <div className={styles.shifter}>
-        <div className={`${styles.divider} i${activeIdx}`}></div>
-      </div>
     </nav>
   );
 }

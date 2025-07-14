@@ -5,5 +5,5 @@ import Hero from "./hero";
 
 export default function ConditionalHero() {
   const pathname = usePathname();
-  return pathname === "/" ? <Hero /> : null;
+  return pathname === "/" ? <Hero /> : <div style={{ marginTop: "32px" }} />;
 }

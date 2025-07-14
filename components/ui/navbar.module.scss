@@ -1,50 +1,52 @@
 @use "lib/colors";
 
-$itemWidth: 5rem;
-$itemGap: 2rem;
-
 .navbar {
   width: 100%;
   display: flex;
-  gap: $itemGap;
+  gap: 2rem;
   justify-content: center;
-  margin: 64px 0 16px 0;
+  margin: 32px 0 16px 0;
   position: relative;
 
   a {
+    position: relative;
     color: colors.$gray;
     transition: 200ms;
-    width: $itemWidth;
     text-align: center;
 
     &:hover {
       text-decoration: none;
       color: colors.$grayLight;
     }
+
+    .indicator {
+      position: absolute;
+      top: 100%;
+      left: calc(50% - 0.5rem);
+      width: 100%;
+      height: 1px;
+      margin-top: 4px;
+      transform: translateX(-50%);
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        padding: 0 0.5rem;
+        height: 1px;
+        background: colors.$goldLight;
+        transform: scaleX(0);
+        transition: transform 200ms;
+        transform-origin: center;
+      }
+    }
   }
 
   a.active {
     color: colors.$goldLight;
-  }
-}
 
-.shifter {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(calc(-50% - ($itemWidth / 2) - ($itemGap / 2)), 4px);
-  width: $itemWidth;
-}
-
-.divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  border-radius: 9999px;
-  background: colors.$goldLight;
-  transition: 200ms ease-in-out;
-
-  &:global(.i1) {
-    transform: translateX(#{$itemWidth + $itemGap});
+    .indicator::after {
+      transform: scaleX(1);
+    }
   }
 }

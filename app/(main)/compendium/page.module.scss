@@ -1,0 +1,30 @@
+@use "lib/breakpoints";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: clamp(300px, 95%, 900px);
+  margin-top: 64px;
+  margin-bottom: 24px;
+  flex: 1;
+
+  & > h3 {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 64px 0;
+  width: 100%;
+  align-items: center;
+}
+
+@media (max-width: breakpoints.$md) {
+  .catalog h3 {
+    font-size: 1.5rem;
+  }
+}
