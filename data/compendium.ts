@@ -101,7 +101,7 @@ const sun12: CompendiumItem = {
 };
 
 const yangBafawubu: CompendiumItem = {
-  title: "Yang Bafawubu",
+  title: "Yang Bafa Wubu",
   description:
     "A foundational form of Yang-style tai chi, emphasizing the eight powers and five directions commonly used in tai chi.",
   link: "https://youtu.be/XoW25w-Uusg",
