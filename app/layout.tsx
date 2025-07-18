@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     default: CONFIG.siteName,
     template: `%s | ${CONFIG.siteName}`
   },
+  creator: CONFIG.siteName,
+  publisher: CONFIG.siteName,
+  applicationName: CONFIG.siteName,
   description: CONFIG.siteDescription,
   keywords: [
     "berkeley",
