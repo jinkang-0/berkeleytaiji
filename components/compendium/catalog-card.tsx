@@ -9,6 +9,7 @@ import { useCallback, useRef, useState } from "react";
 import { useCatalogContext } from "./catalog-context";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useCompendiumContext } from "./compendium-context";
 
 interface CatalogCardProps {
   item: CompendiumItem;
@@ -24,6 +25,7 @@ export default function CatalogCard({
   const elemRef = useRef<HTMLAnchorElement>(null);
   const { isCardHovered, setIsCardHovered } = useCatalogContext();
   const [isHovering, setIsHovering] = useState(false);
+  const { setDialogOpenedNaturally } = useCompendiumContext();
 
   const handleMouseEnter = useCallback(() => {
     setIsCardHovered(true);
@@ -35,6 +37,10 @@ export default function CatalogCard({
     setIsHovering(false);
   }, [setIsCardHovered]);
 
+  const handleOpenModal = useCallback(() => {
+    setDialogOpenedNaturally(true);
+  }, [setDialogOpenedNaturally]);
+
   return (
     <div
       className={styles.carouselItem}
@@ -43,6 +49,7 @@ export default function CatalogCard({
     >
       <Link
         ref={elemRef}
+        onNavigate={handleOpenModal}
         href={`?id=${item.id}`}
         className={clsx(
           styles.carouselCard,
@@ -108,6 +115,7 @@ export default function CatalogCard({
                 <Link
                   href={`?id=${item.id}`}
                   className={styles.overlayLink}
+                  onNavigate={handleOpenModal}
                   scroll={false}
                 >
                   <Image

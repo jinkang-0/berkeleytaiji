@@ -92,7 +92,7 @@
 // content
 
 .content {
-  padding: 32px 0;
+  margin-top: 32px;
   width: 100%;
 
   article {
@@ -103,8 +103,15 @@
   }
 
   ul {
-    padding-top: 0.5rem;
-    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+    margin-left: 1.25rem;
+  }
+
+  iframe {
+    border: none;
+    border-radius: 8px;
+    margin-top: 16px;
+    width: 100%;
   }
 }
 

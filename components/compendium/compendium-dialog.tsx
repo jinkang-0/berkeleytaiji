@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { compendiumIndex } from "@/data/compendium";
 import { useMemo } from "react";
 import styles from "./content.module.scss";
+import { useCompendiumContext } from "./compendium-context";
 
 export default function CompendiumDialog({
   children
@@ -16,6 +17,8 @@ export default function CompendiumDialog({
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const { dialogOpenedNaturally, setDialogOpenedNaturally } =
+    useCompendiumContext();
 
   const selectedItem = useMemo(() => compendiumIndex[id || ""] || null, [id]);
   const tags = useMemo(
@@ -24,11 +27,20 @@ export default function CompendiumDialog({
     [selectedItem]
   );
 
+  const goBack = () => {
+    if (dialogOpenedNaturally) {
+      router.back();
+      setDialogOpenedNaturally(false);
+    } else {
+      router.replace("/compendium");
+    }
+  };
+
   return (
     <Dialog.Root
       open={!!selectedItem}
       onOpenChange={(open) => {
-        if (!open) router.back();
+        if (!open) goBack();
       }}
     >
       <Dialog.Portal>
@@ -45,7 +57,7 @@ export default function CompendiumDialog({
               <div className={styles.dialogMain}>
                 {/* close button */}
                 <button
-                  onClick={() => router.back()}
+                  onClick={() => goBack()}
                   className={styles.dialogCloseButton}
                 >
                   <CancelIcon />

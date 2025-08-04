@@ -27,13 +27,27 @@ const taoistYogaStretches: CompendiumItem = {
   id: "taoist-yoga-stretches",
   title: "Taoist Yoga Stretches",
   description:
-    "A series of stretches used by Taoists, dating back to the Jin dynasty or earlier.",
+    "A series of stretches taken from Taoist yoga, dating back to the Han dynasty.",
   image: "https://images.unsplash.com/photo-1661308411865-4fce7576bef8",
   category: "Exercises",
-  otherNames: ["导引"]
+  otherNames: ["导引", "Daoyin"]
 };
 
-export const exercises = [spiralingExercises, taoistYogaStretches];
+const templeGuardianExercises: CompendiumItem = {
+  id: "temple-guardian-exercises",
+  title: "Temple Guardian Exercises",
+  description:
+    "A set of exercises practiced by Shaolin temple monks to develop strength, flexibility, and balance.",
+  image: "https://images.unsplash.com/photo-1619400521895-d17d2f7be1cc",
+  category: "Exercises",
+  otherNames: ["金刚如意功"]
+};
+
+export const exercises = [
+  spiralingExercises,
+  taoistYogaStretches,
+  templeGuardianExercises
+];
 
 //
 // qigong
@@ -43,49 +57,34 @@ const chenHunyuanQigong: CompendiumItem = {
   id: "chen-hunyuan-qigong",
   title: "Chen Hunyuan Qigong",
   description:
-    "A qigong practice that integrates the whole body and mind, focusing on energy cultivation and health.",
+    "A qigong practice that integrates the full body, focusing on cultivating sensitivity towards internal energy.",
   image: "https://images.unsplash.com/photo-1647039726235-bc7dbbc9a681",
   category: "Qigong",
-  otherNames: ["陈氏心意混元太极气功"]
+  otherNames: ["陈氏混元太极气功"]
 };
 
 const thirteenWords: CompendiumItem = {
   id: "thirteen-words",
   title: "Thirteen Words",
   description:
-    "A qigong practice that emphasizes the cultivation of internal energy through specific postures and breathing techniques.",
+    "A qigong practice that regulates breathing, improves physique, and strengthens the body.",
   image: ThirteenWords,
   category: "Qigong",
   otherNames: ["十三字"]
-};
-
-const templeGuardianQigong: CompendiumItem = {
-  id: "temple-guardian-qigong",
-  title: "Temple Guardian Qigong",
-  description:
-    "A qigong practice used by temple guardian monks to develop strength and cultivate internal energy.",
-  image: "https://images.unsplash.com/photo-1619400521895-d17d2f7be1cc",
-  category: "Qigong",
-  otherNames: ["金刚如意功"]
 };
 
 const eightBrocades: CompendiumItem = {
   id: "eight-brocades",
   title: "Eight Brocades",
   description:
-    "A set of eight traditional Chinese exercises that promote health and vitality. Each movement is designed to enhance energy flow and balance.",
+    "A set of eight movements designed to improve health and vitality, also used to cultivate internal energy.",
   image:
     "https://images.unsplash.com/photo-1659434567251-c98f02eb47a0?q=80&w=1173&auto=format&fit=crop",
   category: "Exercises",
-  otherNames: ["八段锦"]
+  otherNames: ["八段锦", "Baduanjin"]
 };
 
-export const qigong = [
-  chenHunyuanQigong,
-  thirteenWords,
-  templeGuardianQigong,
-  eightBrocades
-];
+export const qigong = [chenHunyuanQigong, thirteenWords, eightBrocades];
 
 //
 // core compulsory
@@ -176,7 +175,7 @@ export const intermediateCompulsory = [
 
 export const featuredCompendiumItems: CompendiumItem[] = [
   spiralingExercises,
-  templeGuardianQigong,
+  templeGuardianExercises,
   chenHunyuanQigong,
   taijiBaguaFan,
   bafaWubu
