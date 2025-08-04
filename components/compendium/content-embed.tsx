@@ -1,3 +1,5 @@
+import styles from "./content.module.scss";
+
 export default function ContentEmbed({
   id,
   title
@@ -6,7 +8,7 @@ export default function ContentEmbed({
   title?: string;
 }) {
   return (
-    <>
+    <div className={styles.embed}>
       <iframe
         width="560"
         height="315"
@@ -16,12 +18,7 @@ export default function ContentEmbed({
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
-      {title && (
-        <>
-          <br />
-          <b>{title}</b>
-        </>
-      )}
-    </>
+      {title && <p>{title}</p>}
+    </div>
   );
 }

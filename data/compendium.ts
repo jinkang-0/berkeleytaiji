@@ -104,10 +104,10 @@ const bafaWubu: CompendiumItem = {
   id: "bafa-wubu",
   title: "Bafa Wubu",
   description:
-    "A foundational form of tai chi, covers all eight powers and their expressions in five different directions.",
+    "The foundational form of tai chi, covers all eight powers and their expressions in five different directions.",
   image: BafaWubu,
   category: "Core Compulsory",
-  otherNames: ["八法五步", "Thirteen Postures"]
+  otherNames: ["八法五步", "太极十三式", "Thirteen Postures"]
 };
 
 const sunGuangbo: CompendiumItem = {
@@ -130,7 +130,7 @@ const yang24: CompendiumItem = {
   id: "yang24",
   title: "Yang 24",
   description:
-    "A widely practiced form of Yang-style tai chi, commonly used for competitions to demonstrate physical aptitude. Not a health form.",
+    "The yang style 24-form, a quintessential form used in competitions to demonstrate physical aptitude and skill.",
   image: Yang24,
   category: "Intermediate Compulsory",
   otherNames: ["杨氏二十四式"]
@@ -152,7 +152,7 @@ const chenHunyuanRuler10: CompendiumItem = {
   description: "The 10 form ruler set from Chen Hunyuan tai chi.",
   image: Ruler,
   category: "Intermediate Compulsory",
-  otherNames: ["陈氏心意混元棒十式"]
+  otherNames: ["陈氏混元太极棒十式"]
 };
 
 const yang32Sword: CompendiumItem = {

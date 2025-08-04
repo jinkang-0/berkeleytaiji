@@ -95,7 +95,7 @@ export default function CatalogCard({
                 animate={{
                   opacity: 1,
                   width: elemRef.current?.getBoundingClientRect().width
-                    ? elemRef.current.getBoundingClientRect().width * 1.33
+                    ? elemRef.current.getBoundingClientRect().width * 1.5
                     : 0
                 }}
                 exit={{
