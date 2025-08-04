@@ -11,26 +11,26 @@ export default function AboutSection() {
       <div className={styles.about}>
         <YinYang className={styles.yinyang} />
         <p>
-          Berkeley Taiji is the official taiji club at UC Berkeley, one of the
-          many programs offered at the{" "}
+          Berkeley Taiji is the official tai chi club at UC Berkeley, as part of
+          the{" "}
           <Link href={LINKS.ucmap} about="_blank">
             UC Martial Arts Program (UCMAP)
           </Link>
           .
           <br /> <br />
-          We teach tai chi with an emphasis on health and wellness. This means
-          we practice with the intent to improve physical fitness and to relax
-          the mind.
+          The concept of tai chi covers many things. However, situated in the
+          context of a college club, we place an emphasis on health and
+          wellness. That is, we aim to help our students improve their physical
+          abilities and ease stress through tai chi practice.
           <br /> <br />
-          We focus on Sun style tai chi, as it is most applicable to this
-          purpose, and the simplest style to get started. That said, this is
-          more of a holistic view, as many exercises are mixed with elements
-          from Yang and Chen styles to work on flexibility and strength.
+          We welcome all students, regardless of prior experience, age, or
+          physical aptitude. Whether you are a beginner or an experienced
+          practitioner, you will find a place in our community.
           <br /> <br />
           After grasping the basics, members are encouraged to further hone
           their craft. This can mean mastering complete forms, trying out
-          weapons, or exploring other martial arts like Xingyi, Bagua, or
-          Shaolin.
+          weapons, using tai chi in application, or deepening your soft energy
+          skills.
         </p>
         <SingleWhip className={styles.singlewhip} />
       </div>

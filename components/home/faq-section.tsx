@@ -19,41 +19,71 @@ export default function FAQSection() {
             that everyone has different schedules and commitments.
           </FAQCard>
           <FAQCard question="Are there ranks in tai chi?">
-            No, there are no ranks in tai chi. We do not use a belt system or
-            any other ranking system to classify practitioners. Instead, we
-            focus on the individual&apos;s progress and understanding of the
-            art.
+            In our club, we do not use a belt system or any other ranking system
+            to classify practitioners. Instead, we focus on the
+            individual&apos;s progress and understanding of the art.
             <br /> <br />
-            We believe that tai chi is a lifelong journey, and everyone
-            progresses at their own pace. Our instructors are here to guide you
-            and help you improve your skills, regardless of your current level.
+            If you are interested in competing, you will likely be categorized
+            based on your years of experience or age, but obviously this is not
+            a ranking of skill, just a categorization.
+            <br /> <br />
+            That is not to say that we do not have a system of progression or
+            roadmap, however. In tai chi, we generally recognize your
+            understanding of the essence of the art far more than your ability
+            to memorize and perform a form.
+            <br /> <br />
+            That is, are you able to feel energy (&quot;qi&quot;)? Perhaps as
+            tingling sensations in your hands, or a sense of heaviness in your
+            limbs? Are you able to express energy through your movements and
+            direct it towards or into your opponent?
+            <br /> <br />
+            Of course, memorizing and performing forms is important, but it is
+            not the end goal of tai chi. What is important is your personal
+            growth in the internal arts and your ability to apply tai chi in
+            your life, to shape it to your needs, and to understand the art in a
+            way that is meaningful to you.
           </FAQCard>
           <FAQCard question="What is tai chi?">
-            Tai chi, or taijiquan, is one of the three internal Chinese martial
-            arts, alongside Xingyi and Bagua. Tai chi emphasizes slow,
+            Tai chi, or taijiquan, is one of the three major internal Chinese
+            martial arts, alongside Xingyi and Bagua. Tai chi emphasizes slow,
             deliberate movements, deep breathing, and mental focus. It is often
-            practiced for its health benefits, including stress reduction,
-            improved balance, and increased flexibility.
+            practiced for its health benefits, including stress reduction and
+            improvements in physical fitness (i.e. balance and flexibility).
             <br /> <br />
-            Tai chi is also a martial art that emphasizes yielding and
-            redirecting force, to ground the opponent&apos;s force and use it
-            against them, incorporating techniques like spiraling and{" "}
-            <Link href="https://en.wikipedia.org/wiki/Chin_Na">qin na</Link>.
-            However, this requires an advanced understanding of internal energy,
-            which may take years to develop through diligent practice. As such,
-            our class advertises and takes an emphasis on the health and
-            wellness practice of tai chi.
+            Tai chi is also a martial art that, on the surface, incorporates
+            techniques like spiraling and{" "}
+            <Link href="https://en.wikipedia.org/wiki/Chin_Na">qin na</Link> to
+            deliver force and neutralize opponents. However, advanced levels of
+            tai chi practice involves the understanding and application of
+            internal energy to ground or redirect the opponent&apos;s force or
+            issue force into the opponent from the ground.
             <br /> <br />
-            That said, we still promote the understanding of internal energy
-            (&quot;qi&quot;) as a core part of our practice, as it is not only
-            useful for self-defense, but also a vital enrichment of one&apos;s
-            own life. Moreover, if you are interested in the martial aspect of
-            tai chi, our instructors can demonstrate how the forms can be
-            applied for self-defense (even without using internal energy). Feel
-            free to ask during class if you are curious to see how a move can be
-            applied for self-defense!
+            Unfortunately, advanced understanding of energy often takes decades
+            to develop through diligent practice. As such, our class advertises
+            and takes an emphasis on the health and wellness practice of tai
+            chi. But, if you are interested, we are happy to discuss the martial
+            aspects of tai chi, and how it can be applied in self-defense.
+            <br /> <br />
+            That said, we still promote the understanding of internal energy as
+            a core part of our practice, as it is not only useful for
+            self-defense, but also a vital enrichment in life!
           </FAQCard>
           <FAQCard question="What are the health benefits of tai chi?">
+            To be clear, we are not medical professionals and do not claim that
+            tai chi is a cure for any medical condition. While there are
+            anecdotal evidence that tai chi has helped folks overcome conditions
+            they couldn&apos;t with medication, it is important to understand
+            that everyone&apos;s situation is different. It is always best to
+            consult with a medical professional if your goal is to use tai chi
+            to treat a specific condition, especially if you are limited by
+            physical ailments.
+            <br /> <br />
+            Having said that, there is generally a consensus that tai chi is
+            beneficial for overall health and wellness. It is a low-impact
+            exercise that can be practiced by people of all ages and fitness
+            levels. Below are a few health benefits of tai chi that have been
+            observed from medical studies.
+            <br /> <br />
             Tai chi has been linked to more resistant tendons, stronger muscles,
             better flexibility, increased spatial awareness, improved balancing,
             and some degree of aerobic conditioning without raising the
@@ -64,19 +94,12 @@ export default function FAQSection() {
             >
               this article from Harvard Medical School
             </Link>
-            ).
-            <br /> <br />
-            We start each class with a set of joint loosening exercises, which
-            helps release stress and tension built up during the day. Many
-            students reportedly find this helpful to manage stress, especially
-            for those who adopt a sedentary lifestyle.
-            <br /> <br />
-            Tai chi is also positively linked to{" "}
+            ). Tai chi is also positively linked with{" "}
             <Link
               href="https://www.alzinfo.org/articles/prevention/tai-chi-for-brain-health/"
               target="_blank"
             >
-              enhancing memory and cognitive function
+              enhanced memory and cognitive function
             </Link>{" "}
             and{" "}
             <Link
@@ -94,8 +117,19 @@ export default function FAQSection() {
               The Harvard Medical School Guide to Tai Chi
             </Link>
             , published in 2013, which discusses the benefits of tai chi from
-            studies. That said, you are also welcome to email us or join in for
-            the first week for free to learn more.
+            medical studies. You are also welcome to email us or join in for the
+            first week for free to learn more!
+            <br /> <br />
+            That said, one must also be careful to not overexert themselves, as
+            tai chi is a physical activity. If you feel any pain or discomfort
+            while practicing, please stop and rest. It is important to listen to
+            your body and not push yourself too hard.
+            <br /> <br />
+            This is especially important to heed for elderly practitioners or
+            those with pre-existing conditions - if you are getting started in
+            tai chi, please practice with an experienced instructor who can
+            guide you through the movements and ensure that you are practicing
+            safely.
           </FAQCard>
           <FAQCard question="Are members required to perform at events?">
             Not at all!
@@ -150,10 +184,11 @@ export default function FAQSection() {
             Spring, and Bafa Wubu in the Summer.
             <br /> <br />
             For practitioners who already have experience in tai chi, or have
-            completed their fundamentals, they can choose to work on perfecting
-            a form of their choice. Whether it&apos;s a long tai chi hand form,
-            a tai chi weapon form, or a form from another martial art like
-            Xingyi or Bagua.
+            completed their fundamentals, they can choose to work on a project.
+            Whether that is a form, a weapon, or an application, it is up to you
+            to decide what you want to work on. If you are unsure, instructors
+            are happy to help you find a project that suits your interests and
+            skill level.
             <br /> <br />
             We&apos;re fortunate to have Sifu Bryant Fong who&apos;s
             knowledgeable in a broad range of traditional Chinese martial arts
@@ -162,12 +197,9 @@ export default function FAQSection() {
             like Baguazhang and Xingyiquan.
             <br /> <br />
             For a compendium of forms practiced by students currently or in the
-            recent past, you can check out this live{" "}
-            <Link
-              target="_blank"
-              href="https://rough-editorial-8b3.notion.site/Cal-Taiji-Compendium-18e5ae60fdec80f880eff8c1736129c7"
-            >
-              Notion page
+            recent past, you can check out our{" "}
+            <Link href="https://berkeleytaiji.vercel.app/compendium">
+              Compendium page
             </Link>
             .
           </FAQCard>
