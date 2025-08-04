@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { Dialog, VisuallyHidden } from "radix-ui";
-import styles from "./catalog.module.scss";
 import CancelIcon from "@/icons/cancel";
 import { useRouter, useSearchParams } from "next/navigation";
 import { compendiumIndex } from "@/data/compendium";
 import { useMemo } from "react";
+import styles from "./content.module.scss";
 
 export default function CompendiumDialog({
   children

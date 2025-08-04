@@ -105,7 +105,11 @@ export default function CatalogCard({
                   ease: "easeInOut"
                 }}
               >
-                <Link href={`?id=${item.id}`} className={styles.overlayLink}>
+                <Link
+                  href={`?id=${item.id}`}
+                  className={styles.overlayLink}
+                  scroll={false}
+                >
                   <Image
                     src={item.image}
                     blurDataURL={
