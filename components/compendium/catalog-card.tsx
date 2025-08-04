@@ -8,8 +8,8 @@ import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { useCatalogContext } from "./catalog-context";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import { useCompendiumContext } from "./compendium-context";
+import { AnimatePresence, motion } from "motion/react";
 
 interface CatalogCardProps {
   item: CompendiumItem;
