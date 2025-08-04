@@ -7,6 +7,7 @@ import PRACTICE_SCHEDULE from "@/data/schedule";
 import { getSchedule } from "@/api/spreadsheet";
 import { Suspense } from "react";
 import { ScheduleItem } from "@/lib/types";
+import Callout from "../ui/callout";
 // import Callout from "../ui/callout";
 
 interface ScheduleProps {
@@ -58,16 +59,20 @@ export default function ScheduleSection() {
           </Suspense>
         </div>
         <footer>
+          <Callout>
+            Class has ended! We will resume in-person practice in the Fall
+            semester.
+          </Callout>
           <div className={styles.buttonGroup}>
             <LinkButtonPrimary
-              // className="disabled"
+              className="disabled"
               href={LINKS.registration}
               target="_blank"
             >
               Register <ExternalIcon />
             </LinkButtonPrimary>
             <LinkButtonOutline
-              // className="disabled"
+              className="disabled"
               href={LINKS.registration_online_only}
               target="_blank"
             >
