@@ -16,8 +16,7 @@ import {
 } from "@udecode/plate-list/react";
 import { Alignment, setAlign } from "@udecode/plate-alignment";
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import * as RadixTooltip from "@radix-ui/react-tooltip";
+import { DropdownMenu, Tooltip as RadixTooltip } from "radix-ui";
 
 import Bold from "@/icons/editor/bold";
 import Italic from "@/icons/editor/italic";

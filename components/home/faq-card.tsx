@@ -1,6 +1,6 @@
 "use client";
 
-import * as Accordion from "@radix-ui/react-accordion";
+import { Accordion } from "radix-ui";
 import styles from "./faq-section.module.scss";
 import DownCaret from "@/icons/down-caret";
 

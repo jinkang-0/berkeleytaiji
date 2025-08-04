@@ -6,7 +6,7 @@ import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import dialogStyles from "@/components/ui/dialog.module.scss";
 
 export default function ButtonVisibilityToggle({

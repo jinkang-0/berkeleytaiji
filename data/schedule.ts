@@ -27,4 +27,9 @@ const PRACTICE_SCHEDULE = [
   }
 ];
 
+export const SCHEDULE_SETTINGS = {
+  classInSession: false,
+  classStartDate: "2025-09-03"
+};
+
 export default PRACTICE_SCHEDULE;

@@ -5,7 +5,7 @@ import { ButtonGhost, ButtonPrimary } from "@/components/ui/button";
 import { useCallback } from "react";
 import { deleteDraft } from "@/api/db";
 import { useRouter } from "next/navigation";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import dialogStyles from "@/components/ui/dialog.module.scss";
 
 export default function ButtonDeleteBlog({ blogId }: { blogId: string }) {

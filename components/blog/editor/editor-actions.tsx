@@ -2,7 +2,7 @@
 
 import { ButtonGhost, ButtonPrimary } from "@/components/ui/button";
 import { useBlogContext } from "../context-blog";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Dialog } from "radix-ui";
 import BookOpen from "@/icons/editor/book-open";
 import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";

@@ -21,7 +21,7 @@ export default function Hero() {
       <div className={styles.content}>
         <h1>Berkeley Taiji</h1>
         <div>
-          <p>Official Taiji club at UC Berkeley</p>
+          <p>Official tai chi club at UC Berkeley</p>
           <p>Founded 1969</p>
         </div>
         <div className={styles.links}>
