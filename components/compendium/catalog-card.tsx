@@ -1,34 +1,23 @@
 "use client";
 
-import { createPortal } from "react-dom";
 import styles from "./catalog.module.scss";
-import Image, { StaticImageData } from "next/image";
-import { useCallback, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import clsx from "clsx";
+import { CompendiumItem } from "@/lib/types";
+import Link from "next/link";
+import { useCallback, useRef, useState } from "react";
 import { useCatalogContext } from "./catalog-context";
-import UnlinkIcon from "@/icons/unlink";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface CatalogCardProps {
-  link?: string;
-  image: {
-    src: string | StaticImageData;
-    blurDataURL?: string;
-    alt?: string;
-  };
-  title: string;
-  description: string;
-  tags: string[];
+  item: CompendiumItem;
   alignment: "left" | "middle" | "right";
   overlayPortalRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function CatalogCard({
-  link,
-  image,
-  title,
-  description,
-  tags,
+  item,
   alignment,
   overlayPortalRef
 }: CatalogCardProps) {
@@ -52,50 +41,45 @@ export default function CatalogCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <a
+      <Link
         ref={elemRef}
-        href={link}
-        target="_blank"
+        href={`?id=${item.id}`}
         className={clsx(
           styles.carouselCard,
-          !link && styles.inactiveCard,
           isCardHovered && !isHovering && styles.lowerPresence
         )}
+        scroll={false}
       >
         <Image
-          src={image.src}
-          blurDataURL={image.blurDataURL}
+          src={item.image}
+          blurDataURL={typeof item.image === "string" ? item.image : undefined}
           placeholder="blur"
           className={styles.itemImage}
-          alt={image.alt ?? "alt"}
+          alt={item.title}
           width="800"
           height="450"
         />
         <div className={styles.carouselItemContent}>
-          <h6 className={styles.title}>{title}</h6>
-          {tags && tags.length > 0 && (
+          <h6 className={styles.title}>{item.title}</h6>
+          {item.otherNames.length > 0 && (
             <div className={styles.tags}>
-              {tags.map((tag) => (
-                <span key={tag} className={styles.tag}>
-                  {tag}
+              {item.otherNames.map((name) => (
+                <span key={name} className={styles.tag}>
+                  {name}
                 </span>
               ))}
             </div>
           )}
-          <p className={styles.description}>{description}</p>
         </div>
-      </a>
+      </Link>
       {overlayPortalRef.current &&
         createPortal(
           <AnimatePresence>
             {isHovering && (
-              <motion.a
-                href={link}
-                target="_blank"
+              <motion.div
                 className={clsx(
                   styles.itemOverlay,
-                  styles[`${alignment}Align`],
-                  !link && styles.noLink
+                  styles[`${alignment}Align`]
                 )}
                 initial={{
                   opacity: 0,
@@ -121,35 +105,32 @@ export default function CatalogCard({
                   ease: "easeInOut"
                 }}
               >
-                {link ? (
+                <Link href={`?id=${item.id}`} className={styles.overlayLink}>
                   <Image
-                    src={image.src}
-                    blurDataURL={image.blurDataURL}
+                    src={item.image}
+                    blurDataURL={
+                      typeof item.image === "string" ? item.image : undefined
+                    }
                     placeholder="blur"
                     className={styles.itemImage}
-                    alt={image.alt ?? "alt"}
+                    alt={item.title}
                     width="800"
                     height="450"
                   />
-                ) : (
-                  <div className={styles.nolinkNotice}>
-                    <UnlinkIcon />
-                    <span>No links available</span>
+                  <div className={styles.carouselItemContent}>
+                    <h6 className={styles.title}>{item.title}</h6>
+                    {item.otherNames && item.otherNames.length > 0 && (
+                      <div className={styles.tags}>
+                        {item.otherNames.map((tag) => (
+                          <span key={tag} className={styles.tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-                <div className={styles.carouselItemContent}>
-                  <h6 className={styles.title}>{title}</h6>
-                  {tags && tags.length > 0 && (
-                    <div className={styles.tags}>
-                      {tags.map((tag) => (
-                        <span key={tag} className={styles.tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </motion.a>
+                </Link>
+              </motion.div>
             )}
           </AnimatePresence>,
           overlayPortalRef.current

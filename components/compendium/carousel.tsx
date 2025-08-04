@@ -14,6 +14,7 @@ import styles from "./carousel.module.scss";
 import { useRef } from "react";
 import ChevronLeft from "@/icons/chevron-left";
 import ChevronRight from "@/icons/chevron-right";
+import Link from "next/link";
 
 export default function CompendiumCarousel({
   items
@@ -31,7 +32,7 @@ export default function CompendiumCarousel({
     title: item.title,
     description: item.description,
     tags: [item.category, ...item.otherNames],
-    link: item.link
+    link: `?id=${item.id}`
   }));
 
   return (
@@ -57,7 +58,7 @@ export default function CompendiumCarousel({
       >
         {carouselItems.map((i) => (
           <SwiperSlide key={i.title}>
-            <a className={styles.carouselItem} href={i.link} target="_blank">
+            <Link className={styles.carouselItem} href={i.link}>
               <Image
                 src={i.image.src}
                 blurDataURL={i.image.blurDataURL}
@@ -79,7 +80,7 @@ export default function CompendiumCarousel({
                 )}
                 <p className={styles.caption}>{i.description}</p>
               </div>
-            </a>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

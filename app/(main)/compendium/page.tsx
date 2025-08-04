@@ -9,6 +9,8 @@ import {
 } from "@/data/compendium";
 import CompendiumCatalog from "@/components/compendium/catalog";
 import { Metadata } from "next";
+import CompendiumDialog from "@/components/compendium/compendium-dialog";
+import CompendiumDialogContent from "@/components/compendium/compendium-dialog-content";
 
 export const metadata: Metadata = {
   title: "Compendium",
@@ -16,9 +18,19 @@ export const metadata: Metadata = {
     "Explore what we practice at Berkeley Taiji, including exercises, qigong, and compulsory forms."
 };
 
-export default function CompendiumPage() {
+export default async function CompendiumPage({
+  searchParams
+}: {
+  searchParams: Promise<{ id: string }>;
+}) {
+  const { id } = await searchParams;
+
   return (
     <div className={styles.container}>
+      <CompendiumDialog>
+        {id && <CompendiumDialogContent id={id} />}
+      </CompendiumDialog>
+
       <h3>Currently Practiced</h3>
       <CompendiumCarousel items={featuredCompendiumItems} />
 

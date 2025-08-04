@@ -24,12 +24,12 @@ type CompendiumCategory =
   | "Projects";
 
 interface CompendiumItem {
+  id: string;
   title: string;
   description: string;
   otherNames: string[];
   category: CompendiumCategory;
   image: string | StaticImageData;
-  link?: string;
 }
 
 // types for home page data
