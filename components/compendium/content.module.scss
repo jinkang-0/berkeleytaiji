@@ -1,0 +1,133 @@
+@use "lib/colors";
+@use "lib/fonts";
+@use "lib/breakpoints";
+
+// dialog
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  overflow: auto;
+  padding: 8rem 0;
+}
+
+.dialogContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(300px, 95%, 900px);
+  max-width: 810px;
+  outline: none;
+}
+
+.dialogMain {
+  position: relative;
+  background: colors.$card;
+  border-radius: 8px;
+  padding: 64px;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    object-fit: cover;
+  }
+
+  header {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+}
+
+.dialogCloseButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(calc(-100% - 8px));
+  background: colors.$buttonBorder;
+  border: none;
+  cursor: pointer;
+  color: colors.$grayLight;
+  border-radius: 9999px;
+  padding: 8px;
+  line-height: 0;
+}
+
+.description {
+  color: colors.$gray;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+
+  .center {
+    justify-content: center;
+  }
+
+  .tag {
+    background: colors.$grayDark;
+    color: colors.$border;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.45;
+    width: fit-content;
+    white-space: nowrap;
+    font-family: fonts.$sans;
+  }
+}
+
+// content
+
+.content {
+  margin-top: 32px;
+  width: 100%;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+  }
+
+  ul {
+    margin-top: 0.5rem;
+    margin-left: 1.25rem;
+  }
+}
+
+.embed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+
+  iframe {
+    border: none;
+    border-radius: 8px;
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  p {
+    font-weight: 600;
+  }
+}
+
+@media (max-width: breakpoints.$md) {
+  .dialogMain {
+    padding: 32px;
+  }
+}

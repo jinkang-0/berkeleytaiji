@@ -70,36 +70,17 @@ export default function CompendiumCatalog({
     };
   }, []);
 
-  const carouselItems = useMemo(
-    () =>
-      items.map((item) => ({
-        image: {
-          src: item.image,
-          blurDataURL: typeof item.image === "string" ? item.image : undefined,
-          alt: item.title
-        },
-        title: item.title,
-        description: item.description,
-        tags: [...item.otherNames],
-        link: item.link
-      })),
-    [items]
-  );
-
   const groupedItems = useMemo(
     () =>
-      carouselItems.reduce(
-        (acc: (typeof carouselItems)[0][][], item, index) => {
-          const groupIndex = Math.floor(index / groupSize);
-          if (acc.length <= groupIndex) {
-            acc.push([]);
-          }
-          acc[groupIndex].push(item);
-          return acc;
-        },
-        []
-      ),
-    [carouselItems, groupSize]
+      items.reduce((acc: (typeof items)[0][][], item, index) => {
+        const groupIndex = Math.floor(index / groupSize);
+        if (acc.length <= groupIndex) {
+          acc.push([]);
+        }
+        acc[groupIndex].push(item);
+        return acc;
+      }, []),
+    [items, groupSize]
   );
 
   return (
@@ -129,11 +110,7 @@ export default function CompendiumCatalog({
                 {grp.map((i, idx) => (
                   <CatalogCard
                     key={i.title}
-                    description={i.description}
-                    image={i.image}
-                    link={i.link}
-                    title={i.title}
-                    tags={i.tags}
+                    item={i}
                     alignment={alignments[groupSize - 1][idx % groupSize]}
                     overlayPortalRef={overlayPortalRef}
                   />
@@ -142,7 +119,7 @@ export default function CompendiumCatalog({
             </SwiperSlide>
           ))}
         </Swiper>
-        {carouselItems.length > groupSize && (
+        {items.length > groupSize && (
           <>
             <CarouselControlLeft swiperRef={swiperRef} />
             <CarouselControlRight swiperRef={swiperRef} />

@@ -1,6 +1,7 @@
 @use "lib/colors";
 @use "lib/keyframes";
 @use "lib/breakpoints";
+@use "lib/fonts";
 
 .container {
   width: 90%;
@@ -10,6 +11,8 @@
   margin: 0 auto;
   position: relative;
 }
+
+// catalog carousel
 
 .carousel:global(.swiper) {
   display: flex;
@@ -31,6 +34,7 @@
 
   .carouselItem {
     width: 100%;
+    min-width: 0;
   }
 
   & > :global(.swiper-pagination) {
@@ -52,12 +56,6 @@
   }
 }
 
-.itemGroup {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
 .carouselCard {
   border: 1px solid colors.$borderDark;
   transition: border-color 200ms;
@@ -66,9 +64,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 0;
   transition: opacity 350ms ease-in-out, border-color 200ms;
   width: 100%;
+  cursor: pointer;
+  min-width: 0;
 
   &:hover {
     text-decoration: none;
@@ -80,8 +79,14 @@
   }
 }
 
+.itemGroup {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
 .inactiveCard {
-  opacity: 0.8;
+  opacity: 0.6;
   pointer-events: none;
 }
 
@@ -91,6 +96,9 @@
   gap: 8px;
   padding: 16px 16px 12px 16px;
   background: colors.$card;
+  width: 100%;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .title {
@@ -102,13 +110,15 @@
   text-overflow: ellipsis;
   transition: width 200ms;
   color: colors.$goldLight;
+  font-family: fonts.$sans;
+  text-align: left;
 }
 
 .tags {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  overflow: hidden;
   gap: 0.5rem;
+  width: 100%;
 
   .center {
     justify-content: center;
@@ -122,13 +132,15 @@
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.45;
+    width: fit-content;
+    white-space: nowrap;
+    font-family: fonts.$sans;
+    flex-shrink: 0;
   }
 }
 
 .description {
   color: colors.$gray;
-  font-size: 1rem;
-  display: none;
 }
 
 .itemImage {
@@ -139,57 +151,7 @@
   object-fit: cover;
 }
 
-.nolinkNotice {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: colors.$grayLight;
-  font-size: 1.25rem;
-  width: 100%;
-  height: 150px;
-  background: colors.$buttonBorder;
-}
-
-.overlayPortal {
-  position: absolute;
-  top: 16px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.itemOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  border: 1px solid colors.$border;
-  z-index: 10;
-
-  &.noLink {
-    border-color: colors.$bg;
-  }
-
-  &:hover {
-    text-decoration: none;
-    opacity: 1;
-  }
-
-  &.rightAlign {
-    right: 0;
-    left: unset;
-  }
-
-  &.middleAlign {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
+// carousel controls
 
 @mixin carouselControl {
   background: none;
@@ -236,13 +198,61 @@ $scaleOffset: 15vw;
   transform: translate(100%, -50%);
 }
 
-@media (max-width: breakpoints.$lg) {
-  .carousel:global(.swiper) {
-    .carouselItem.fixedWidth {
-      width: 300px;
-    }
+// item overlay
+
+.overlayPortal {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlayLink {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.itemOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  border: 1px solid colors.$border;
+  z-index: 10;
+
+  &.noLink {
+    border-color: colors.$bg;
   }
 
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+
+  &.rightAlign {
+    right: 0;
+    left: unset;
+  }
+
+  &.middleAlign {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+// breakpoints
+
+@media (max-width: breakpoints.$lg) {
   .itemGroup {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
