@@ -11,15 +11,46 @@ export const getMonth = (date: string) => {
 
 /**
  * Get the date from a string of the format "Jan 1, 2025"
+ * Example: "Jan 1, 2025" -> 1
  */
 export const getDate = (date: string) => {
   const dateObj = new Date(date);
   return dateObj.getDate();
 };
 
+/**
+ * Gets the time in milliseconds from a date string.
+ * Example: "Jan 1, 2025" -> 1735689600000
+ */
 export const getTime = (date: string) => {
   const dateObj = new Date(date);
   return dateObj.getTime();
+};
+
+export const nth = (d: number) => {
+  if (d > 3 && d < 21) return "th";
+  switch (d % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+};
+
+/**
+ * Parses a date string into a more readable format.
+ * Example: "2025-02-01" -> "Feb 1, 2025"
+ */
+export const parseDate = (date: string) => {
+  const dateObj = new Date(`${date}T00:00:00`);
+  const year = dateObj.getFullYear();
+  const month = dateObj.toLocaleDateString("en", { month: "short" });
+  const day = dateObj.getDate();
+  return `${month} ${day}${nth(day)}, ${year}`;
 };
 
 /**

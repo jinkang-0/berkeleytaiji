@@ -3,12 +3,12 @@ import styles from "./schedule-section.module.scss";
 import Link from "next/link";
 import { LinkButtonOutline, LinkButtonPrimary } from "../ui/button";
 import ExternalIcon from "@/icons/external";
-import PRACTICE_SCHEDULE from "@/data/schedule";
+import PRACTICE_SCHEDULE, { SCHEDULE_SETTINGS } from "@/data/schedule";
 import { getSchedule } from "@/api/spreadsheet";
 import { Suspense } from "react";
 import { ScheduleItem } from "@/lib/types";
 import Callout from "../ui/callout";
-// import Callout from "../ui/callout";
+import { parseDate } from "@/lib/utils";
 
 interface ScheduleProps {
   items: ScheduleItem[];
@@ -59,20 +59,22 @@ export default function ScheduleSection() {
           </Suspense>
         </div>
         <footer>
-          <Callout>
-            Class has ended! We will resume in-person practice in the Fall
-            semester.
-          </Callout>
+          {!SCHEDULE_SETTINGS.classInSession ? (
+            <Callout>
+              Class has ended! We will resume on{" "}
+              {parseDate(SCHEDULE_SETTINGS.classStartDate)}.
+            </Callout>
+          ) : null}
           <div className={styles.buttonGroup}>
             <LinkButtonPrimary
-              className="disabled"
+              className={SCHEDULE_SETTINGS.classInSession ? "" : "disabled"}
               href={LINKS.registration}
               target="_blank"
             >
               Register <ExternalIcon />
             </LinkButtonPrimary>
             <LinkButtonOutline
-              className="disabled"
+              className={SCHEDULE_SETTINGS.classInSession ? "" : "disabled"}
               href={LINKS.registration_online_only}
               target="_blank"
             >
