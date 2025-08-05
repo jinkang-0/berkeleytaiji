@@ -51,6 +51,10 @@ export const newUTCDate = (date: string) => {
  */
 export const parseDate = (date: string) => {
   const dateObj = newUTCDate(date);
+  return parseDateObj(dateObj);
+};
+
+export const parseDateObj = (dateObj: Date) => {
   const year = dateObj.getFullYear();
   const month = dateObj.toLocaleDateString("en", { month: "short" });
   const day = dateObj.getDate();

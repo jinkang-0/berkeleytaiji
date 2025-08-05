@@ -3,12 +3,12 @@ import styles from "./schedule-section.module.scss";
 import Link from "next/link";
 import { LinkButtonOutline, LinkButtonPrimary } from "../ui/button";
 import ExternalIcon from "@/icons/external";
-import PRACTICE_SCHEDULE, { SCHEDULE_SETTINGS } from "@/data/schedule";
+import PRACTICE_SCHEDULE from "@/data/schedule";
 import { getSchedule, loadScheduleSettings } from "@/api/spreadsheet";
 import { Suspense } from "react";
 import { ScheduleItem, ScheduleSettings } from "@/lib/types";
 import Callout from "../ui/callout";
-import { parseDate } from "@/lib/utils";
+import { parseDateObj } from "@/lib/utils";
 
 //
 // Class Schedule Components
@@ -53,25 +53,6 @@ async function Schedule() {
 function RegistrationTemplate({ config }: { config: ScheduleSettings }) {
   const today = new Date();
 
-  const classEnded =
-    (config.classStartDate &&
-      config.registrationStartDate &&
-      today < config.classStartDate &&
-      today < config.registrationStartDate) ||
-    (config.classEndDate && today > config.classEndDate) ||
-    (!config.classStartDate &&
-      !config.classInSession &&
-      !config.registrationOpen);
-
-  const classUpcoming =
-    config.classStartDate && config.registrationStartDate
-      ? today < config.classStartDate && today >= config.registrationStartDate
-      : !config.classInSession && config.registrationOpen;
-
-  const classFutureUncertain = config.classEndDate
-    ? today > config.classEndDate
-    : true;
-
   const registrationOpen =
     config.registrationOpen ||
     (config.registrationStartDate &&
@@ -79,27 +60,52 @@ function RegistrationTemplate({ config }: { config: ScheduleSettings }) {
       today >= config.registrationStartDate &&
       today <= config.classEndDate);
 
+  const classUpcoming =
+    registrationOpen ||
+    (config.classStartDate &&
+      config.registrationStartDate &&
+      today < config.classStartDate &&
+      today >= config.registrationStartDate) ||
+    (!config.classInSession && config.registrationOpen);
+
+  const classEnded =
+    (!classUpcoming &&
+      config.classStartDate &&
+      config.registrationStartDate &&
+      today < config.classStartDate &&
+      today < config.registrationStartDate) ||
+    (config.classEndDate && today > config.classEndDate);
+
+  const classInSession =
+    config.classInSession ||
+    (config.classStartDate &&
+      config.classEndDate &&
+      today >= config.classStartDate &&
+      today <= config.classEndDate);
+
   return (
     <>
-      {classEnded || classUpcoming ? (
+      {!classInSession ? (
         <Callout type={config.registrationOpen ? "success" : "warning"}>
           {/* class ended */}
-          {classEnded && !classFutureUncertain && (
+          {classEnded && (
             <>
-              Class has ended! We will resume on{" "}
-              {parseDate(SCHEDULE_SETTINGS.classStartDate)}.
+              Class has ended!{" "}
+              {config.classStartDate &&
+              config.classEndDate &&
+              today < config.classEndDate
+                ? `We will resume on ${parseDateObj(config.classStartDate)}.`
+                : "We will resume next semester."}
             </>
           )}
           {/* class upcoming */}
           {classUpcoming && (
             <>
-              Registration is open! Classes start on{" "}
-              {parseDate(SCHEDULE_SETTINGS.classStartDate)}.
+              Registration is open!{" "}
+              {config.classStartDate
+                ? `Classes start ${parseDateObj(config.classStartDate)}.`
+                : "Classes start soon."}
             </>
-          )}
-          {/* class ended, future start uncertain */}
-          {classEnded && classFutureUncertain && (
-            <>Classes have ended! We will resume next semester.</>
           )}
         </Callout>
       ) : null}
