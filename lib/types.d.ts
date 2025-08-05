@@ -55,6 +55,19 @@ interface ScheduleItem {
   Alternative?: string;
 }
 
+interface ConfigItem {
+  Key: keyof ScheduleSettings;
+  Assumed: string;
+}
+
+interface ScheduleSettings {
+  registrationStartDate?: Date;
+  classStartDate?: Date;
+  classEndDate?: Date;
+  classInSession?: boolean;
+  registrationOpen: boolean;
+}
+
 // database objects
 
 type PopulatedBlog = Awaited<ReturnType<typeof getBlogByBlogId>>[0];

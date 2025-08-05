@@ -41,12 +41,20 @@ export const nth = (d: number) => {
   }
 };
 
+export const newUTCDate = (date: string) => {
+  return new Date(`${date}T00:00`);
+};
+
 /**
  * Parses a date string into a more readable format.
  * Example: "2025-02-01" -> "Feb 1, 2025"
  */
 export const parseDate = (date: string) => {
-  const dateObj = new Date(`${date}T00:00:00`);
+  const dateObj = newUTCDate(date);
+  return parseDateObj(dateObj);
+};
+
+export const parseDateObj = (dateObj: Date) => {
   const year = dateObj.getFullYear();
   const month = dateObj.toLocaleDateString("en", { month: "short" });
   const day = dateObj.getDate();
