@@ -1,12 +1,11 @@
 import { checkAdmin } from "@/api/db";
+import { NextRequest } from "next/server";
 
 if (!process.env.ADMIN_KEY) {
   throw new Error("Admin key not included in environment variables.");
 }
 
-export const dynamic = "force-static";
-
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   // check if request has the correct admin key
   const key = request.headers.get("Authorization");
   if (!key || key !== process.env.ADMIN_KEY) {
