@@ -28,8 +28,9 @@ const PRACTICE_SCHEDULE = [
 ];
 
 export const SCHEDULE_SETTINGS = {
-  classInSession: false,
-  classStartDate: "2025-09-03"
+  registrationStartDate: "2025-08-30",
+  classStartDate: "2025-09-03",
+  classEndDate: "2025-12-12"
 };
 
 export default PRACTICE_SCHEDULE;
