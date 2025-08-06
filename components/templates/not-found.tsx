@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ImageConfusedCat from "@/assets/graphics/confused_cat.jpg";
+import ImageConfusedCat from "@/assets/graphics/confused_cat.webp";
 import { LinkButtonPrimary } from "@/components/ui/button";
 import errorStyles from "@/app/error.module.scss";
 

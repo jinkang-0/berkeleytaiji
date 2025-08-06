@@ -1,12 +1,17 @@
 import { CompendiumItem } from "@/lib/types";
-import Fan from "@/assets/compendium/fan.webp";
-import ThirteenWords from "@/assets/compendium/thirteen_words.webp";
-import BafaWubu from "@/assets/compendium/bafawubu.webp";
-import SunGuangbo from "@/assets/compendium/guangbo.webp";
-import Ruler from "@/assets/compendium/ruler.webp";
-import Yang24 from "@/assets/compendium/yang24.webp";
-import Sun12 from "@/assets/compendium/sun12.webp";
-import Yang32 from "@/assets/compendium/yang32.webp";
+import ImageFan from "@/assets/compendium/fan.webp";
+import ImageThirteenWords from "@/assets/compendium/thirteen_words.webp";
+import ImageBafaWubu from "@/assets/compendium/bafawubu.webp";
+import ImageSunGuangbo from "@/assets/compendium/guangbo.webp";
+import ImageRuler from "@/assets/compendium/ruler.webp";
+import ImageYang24 from "@/assets/compendium/yang24.webp";
+import ImageSun12 from "@/assets/compendium/sun12.webp";
+import ImageYang32 from "@/assets/compendium/yang32.webp";
+import ImageSpiralingExercises from "@/assets/compendium/spiraling.webp";
+import ImageTaoistYoga from "@/assets/compendium/taoist_yoga.webp";
+import ImageChenHunyuan from "@/assets/compendium/hunyuan.webp";
+import ImageEightBrocades from "@/assets/compendium/eight_brocades.webp";
+import ImageTempleGuardian from "@/assets/compendium/temple_guardian.webp";
 
 //
 // exercises
@@ -18,8 +23,7 @@ const spiralingExercises: CompendiumItem = {
   description:
     "A curated set of exercises to loosen up and prepare for practice. Trains body awareness, coordination, and spiraling techniques.",
   category: "Exercises",
-  image:
-    "https://images.unsplash.com/photo-1631556269791-fff05a526613?q=80&w=1000&auto=format&fit=crop",
+  image: ImageSpiralingExercises,
   otherNames: ["缠丝功", "Chan Si Gong", "Reeling Silk Exercises"]
 };
 
@@ -28,7 +32,7 @@ const taoistYogaStretches: CompendiumItem = {
   title: "Taoist Yoga Stretches",
   description:
     "A series of stretches taken from Taoist yoga, dating back to the Han dynasty.",
-  image: "https://images.unsplash.com/photo-1661308411865-4fce7576bef8",
+  image: ImageTaoistYoga,
   category: "Exercises",
   otherNames: ["导引", "Daoyin"]
 };
@@ -38,7 +42,7 @@ const templeGuardianExercises: CompendiumItem = {
   title: "Temple Guardian Exercises",
   description:
     "A set of exercises practiced by Shaolin temple monks to develop strength, flexibility, and balance.",
-  image: "https://images.unsplash.com/photo-1619400521895-d17d2f7be1cc",
+  image: ImageTempleGuardian,
   category: "Exercises",
   otherNames: ["金刚如意功"]
 };
@@ -58,7 +62,7 @@ const chenHunyuanQigong: CompendiumItem = {
   title: "Chen Hunyuan Qigong",
   description:
     "A qigong practice that integrates the full body, focusing on cultivating sensitivity towards internal energy.",
-  image: "https://images.unsplash.com/photo-1647039726235-bc7dbbc9a681",
+  image: ImageChenHunyuan,
   category: "Qigong",
   otherNames: ["陈氏混元太极气功"]
 };
@@ -68,7 +72,7 @@ const thirteenWords: CompendiumItem = {
   title: "Thirteen Words",
   description:
     "A qigong practice that regulates breathing, improves physique, and strengthens the body.",
-  image: ThirteenWords,
+  image: ImageThirteenWords,
   category: "Qigong",
   otherNames: ["十三字"]
 };
@@ -78,8 +82,7 @@ const eightBrocades: CompendiumItem = {
   title: "Eight Brocades",
   description:
     "A set of eight movements designed to improve health and vitality, also used to cultivate internal energy.",
-  image:
-    "https://images.unsplash.com/photo-1659434567251-c98f02eb47a0?q=80&w=1173&auto=format&fit=crop",
+  image: ImageEightBrocades,
   category: "Exercises",
   otherNames: ["八段锦", "Baduanjin"]
 };
@@ -95,7 +98,7 @@ const sun12: CompendiumItem = {
   title: "Sun 12",
   description:
     "A simplified form of Sun-style tai chi, focused on developing footwork.",
-  image: Sun12,
+  image: ImageSun12,
   category: "Core Compulsory",
   otherNames: ["孙氏十二式"]
 };
@@ -105,7 +108,7 @@ const bafaWubu: CompendiumItem = {
   title: "Bafa Wubu",
   description:
     "The foundational form of tai chi, covers all eight powers and their expressions in five different directions.",
-  image: BafaWubu,
+  image: ImageBafaWubu,
   category: "Core Compulsory",
   otherNames: ["八法五步", "太极十三式", "Thirteen Postures"]
 };
@@ -115,7 +118,7 @@ const sunGuangbo: CompendiumItem = {
   title: "Sun Guangbo",
   description:
     "A concise form of Sun-style tai chi, covering a plethora of common Sun style techniques.",
-  image: SunGuangbo,
+  image: ImageSunGuangbo,
   category: "Core Compulsory",
   otherNames: ["孙氏太极广播操"]
 };
@@ -131,7 +134,7 @@ const yang24: CompendiumItem = {
   title: "Yang 24",
   description:
     "The yang style 24-form, a quintessential form used in competitions to demonstrate physical aptitude and skill.",
-  image: Yang24,
+  image: ImageYang24,
   category: "Intermediate Compulsory",
   otherNames: ["杨氏二十四式"]
 };
@@ -141,7 +144,7 @@ const taijiBaguaFan: CompendiumItem = {
   title: "Taiji Bagua Fan",
   description:
     "A distilled fan set from the Bagua Kun Lun Fan forms, combining elements of bagua and tai chi.",
-  image: Fan,
+  image: ImageFan,
   category: "Intermediate Compulsory",
   otherNames: ["太极八卦扇"]
 };
@@ -150,7 +153,7 @@ const chenHunyuanRuler10: CompendiumItem = {
   id: "chen-hunyuan-ruler-10",
   title: "Chen Hunyuan Ruler 10",
   description: "The 10 form ruler set from Chen Hunyuan tai chi.",
-  image: Ruler,
+  image: ImageRuler,
   category: "Intermediate Compulsory",
   otherNames: ["陈氏混元太极棒十式"]
 };
@@ -159,7 +162,7 @@ const yang32Sword: CompendiumItem = {
   id: "yang32-sword",
   title: "Yang 32 Straight Sword",
   description: "A traditional Yang-style sword form.",
-  image: Yang32,
+  image: ImageYang32,
   category: "Intermediate Compulsory",
   otherNames: ["杨氏三十二式剑"]
 };

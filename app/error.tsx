@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ImageSorryCat from "@/assets/graphics/sorry_cat.jpg";
+import ImageSorryCat from "@/assets/graphics/sorry_cat.webp";
 import styles from "./error.module.scss";
 import Footer from "@/components/ui/footer";
 

@@ -5,7 +5,7 @@ import FacebookIcon from "@/icons/facebook";
 import YoutubeIcon from "@/icons/youtube";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
-import HeroImage from "@/assets/hero.jpg";
+import HeroImage from "@/assets/hero.webp";
 
 export default function Hero() {
   return (
