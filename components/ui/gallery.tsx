@@ -5,8 +5,6 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel } from "swiper/modules";
 
-import "swiper/scss";
-import "swiper/scss/mousewheel";
 import styles from "./gallery.module.scss";
 
 interface GalleryProps {

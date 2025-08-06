@@ -7,13 +7,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ChevronLeft from "@/icons/chevron-left";
 import ChevronRight from "@/icons/chevron-right";
 import CatalogCard from "./catalog-card";
-
-import "swiper/scss";
-import "swiper/scss/mousewheel";
-import "swiper/scss/pagination";
-import "swiper/scss/effect-fade";
-import styles from "./catalog.module.scss";
 import { CatalogContextProvider } from "./catalog-context";
+import styles from "./catalog.module.scss";
 
 const alignments = [
   ["middle"],

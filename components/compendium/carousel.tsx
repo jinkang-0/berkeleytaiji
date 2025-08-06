@@ -4,17 +4,11 @@ import Image from "next/image";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Mousewheel, Pagination } from "swiper/modules";
 import { CompendiumItem } from "@/lib/types";
-
-import "swiper/scss";
-import "swiper/scss/mousewheel";
-import "swiper/scss/pagination";
-import "swiper/scss/effect-fade";
-
-import styles from "./carousel.module.scss";
 import { useRef } from "react";
 import ChevronLeft from "@/icons/chevron-left";
 import ChevronRight from "@/icons/chevron-right";
 import Link from "next/link";
+import styles from "./carousel.module.scss";
 
 export default function CompendiumCarousel({
   items
