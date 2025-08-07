@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Kaushan_Script, Sen } from "next/font/google";
-import "./globals.scss";
 import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
 import ProgressBarProvider from "@/components/ui/progress-bar";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+
+// load global styles
+import "./globals.scss";
+import "swiper/scss";
+import "swiper/scss/mousewheel";
+import "swiper/scss/pagination";
+import "swiper/scss/effect-fade";
 
 // ensure environmental variables are imported
 if (!process.env.AUTH_GOOGLE_ID)

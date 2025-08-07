@@ -3,12 +3,14 @@ import styles from "./about-section.module.scss";
 import YinYang from "@/icons/yinyang";
 import Link from "next/link";
 import { LINKS } from "@/data/links";
+import IntroVideo from "./intro-video";
 
 export default function AboutSection() {
   return (
     <section className={styles.section}>
       <h3>About</h3>
       <div className={styles.about}>
+        <IntroVideo />
         <YinYang className={styles.yinyang} />
         <p>
           Berkeley Taiji is the official tai chi club at UC Berkeley, as part of

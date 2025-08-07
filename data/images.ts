@@ -1,9 +1,12 @@
-import PhotoBanquet from "@/assets/community_photos/banquet.jpg";
-import PhotoGuangbo from "@/assets/community_photos/clark_kerr_sun_guangbo.jpg";
-import PhotoClub from "@/assets/community_photos/club_photo.jpg";
-import PhotoLunch from "@/assets/community_photos/lunch_after_practice.jpg";
-import PhotoSifu from "@/assets/community_photos/sf_kungfu_festival_sifu.jpg";
-import PhotoRuler from "@/assets/community_photos/tenderloin_ruler.jpg";
+import PhotoBanquet from "@/assets/community_photos/banquet.webp";
+import PhotoGuangbo from "@/assets/community_photos/clark_kerr_sun_guangbo.webp";
+import PhotoClub from "@/assets/community_photos/club_photo.webp";
+import PhotoLunch from "@/assets/community_photos/lunch_after_practice.webp";
+import PhotoSifu from "@/assets/community_photos/sf_kungfu_festival_sifu.webp";
+import PhotoRuler from "@/assets/community_photos/tenderloin_ruler.webp";
+import PhotoYMCA from "@/assets/community_photos/ymca.webp";
+import PhotoCrabCove from "@/assets/community_photos/crabcove.webp";
+import PhotoHuining from "@/assets/community_photos/huining.webp";
 import { GalleryItem } from "@/lib/types";
 
 export const COMMUNITY_PHOTOS: GalleryItem[] = [
@@ -30,5 +33,17 @@ export const COMMUNITY_PHOTOS: GalleryItem[] = [
   {
     image: PhotoClub,
     caption: "End of year group photo"
+  },
+  {
+    image: PhotoHuining,
+    caption: "Celebration of lineage ancestors"
+  },
+  {
+    image: PhotoYMCA,
+    caption: "Performance at the San Francisco YMCA"
+  },
+  {
+    image: PhotoCrabCove,
+    caption: "Outdoors practice in Alameda"
   }
 ];

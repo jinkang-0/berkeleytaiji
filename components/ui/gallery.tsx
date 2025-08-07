@@ -4,20 +4,28 @@ import { GalleryItem } from "@/lib/types";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel } from "swiper/modules";
-import "swiper/scss";
-import "swiper/scss/mousewheel";
+
 import styles from "./gallery.module.scss";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 interface GalleryProps {
   items: GalleryItem[];
 }
 
 export default function Gallery({ items }: GalleryProps) {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setIsReady(true);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Swiper
         modules={[Autoplay, Mousewheel]}
-        className={styles.carousel}
+        className={clsx(styles.carousel, !isReady && styles.adjusted)}
         spaceBetween={42}
         slidesPerView="auto"
         centeredSlides

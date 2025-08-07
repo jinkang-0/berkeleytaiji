@@ -1,6 +1,6 @@
 import Image from "next/image";
-import SifuFong from "@/assets/instructors/sifu_fong.jpg";
-import Mason from "@/assets/instructors/mason.jpg";
+import SifuFong from "@/assets/instructors/sifu_fong.webp";
+import Mason from "@/assets/instructors/mason.webp";
 import styles from "./instructors-section.module.scss";
 import InstructorDescription from "./instructor-desc";
 
