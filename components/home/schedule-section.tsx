@@ -1,4 +1,4 @@
-import { LINKS } from "@/data/links";
+import { EMAIL, LINKS } from "@/data/links";
 import styles from "./schedule-section.module.scss";
 import Link from "next/link";
 import { LinkButtonOutline, LinkButtonPrimary } from "../ui/button";
@@ -122,7 +122,7 @@ function RegistrationTemplate({ config }: { config: ScheduleSettings }) {
           href={LINKS.registration_online_only}
           target="_blank"
         >
-          Register for Online-only <ExternalIcon />
+          Register for Online-only* <ExternalIcon />
         </LinkButtonOutline>
       </div>
     </>
@@ -161,6 +161,11 @@ export default function ScheduleSection() {
             Online-only members and UC Berkeley students, alumni, and faculty
             can receive discounts. Regular members can attend both in person and
             online classes.
+          </p>
+          <p className={styles.note}>
+            * For online-only members, please email us at{" "}
+            <Link href={`mailto:${EMAIL}`}>{EMAIL}</Link> for the Zoom
+            information after signing up.
           </p>
         </footer>
       </div>
