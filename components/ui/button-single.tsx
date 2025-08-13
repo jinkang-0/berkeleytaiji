@@ -7,11 +7,7 @@ import LoadingIcon from "@/icons/loading";
 interface ButtonSingleProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
-}
-
-interface ButtonSingleInternalProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon: React.ReactNode | null;
+  afterClick?: () => void;
 }
 
 function ButtonSingle({
@@ -20,16 +16,19 @@ function ButtonSingle({
   className,
   onClick,
   disabled,
+  afterClick,
   ...rest
-}: ButtonSingleInternalProps) {
+}: ButtonSingleProps) {
   const [isDisabled, setDisabled] = useState(disabled);
 
   const clickFunction = useCallback(
-    (args: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
+    async (args: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (isDisabled) return;
 
-      onClick?.(args);
       setDisabled(true);
+      await onClick?.(args);
+      setDisabled(false);
+      afterClick?.();
     },
     [onClick, isDisabled]
   );
@@ -51,15 +50,11 @@ export function ButtonSinglePrimary({
   icon,
   children,
   className,
-  onClick,
-  disabled,
   ...rest
 }: ButtonSingleProps) {
   return (
     <ButtonSingle
       className={`${styles.buttonPrimary} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
       icon={icon ?? null}
       {...rest}
     >
@@ -72,15 +67,11 @@ export function ButtonSingleSecondary({
   icon,
   children,
   className,
-  onClick,
-  disabled,
   ...rest
 }: ButtonSingleProps) {
   return (
     <ButtonSingle
       className={`${styles.buttonSecondary} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
       icon={icon ?? null}
       {...rest}
     >

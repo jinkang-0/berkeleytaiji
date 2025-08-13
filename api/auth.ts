@@ -168,11 +168,8 @@ export async function getSession() {
       return { success: false, message: "Not authorized" };
     }
 
-    // check and refresh tokens if needed
-    const refreshedUser = await checkAndRefresh(user);
-
     // report success
-    return { success: true, user: refreshedUser };
+    return { success: true, user };
   } catch (err) {
     console.error("Error verifying session:", err);
     return { success: false, message: String(err) };
@@ -198,7 +195,7 @@ export async function logout() {
  * @returns The updated user session with new tokens, or the same user if tokens don't need to be refreshed.
  * @throws Error if the refresh token is not found or if the refresh fails.
  */
-async function checkAndRefresh(user: UserSession) {
+export async function refreshUser(user: UserSession) {
   // ensure user has tokens
   if (!user.tokens || !user.tokens.refresh_token) {
     throw new Error("No refresh token found in user session.");

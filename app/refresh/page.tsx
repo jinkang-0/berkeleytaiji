@@ -3,23 +3,27 @@ import styles from "./page.module.scss";
 import { LinkButtonPrimary } from "@/components/ui/button";
 import { revalidatePathInternal } from "@/api/actions";
 import { ButtonSingleSecondary } from "@/components/ui/button-single";
-import { isAdminSession } from "@/api/auth";
+import { getSession, isAdminSession } from "@/api/auth";
 import { notFound } from "next/navigation";
+import SessionRefresher from "@/components/auth/session-refresher";
 
 export default async function RefreshPage() {
-  const isAdmin = await isAdminSession();
-  if (!isAdmin) {
+  const session = await getSession();
+  if (!session.user) {
     return notFound();
   }
 
   return (
     <main className={styles.container}>
+      <SessionRefresher user={session.user} />
       <article>
         <ButtonSingleSecondary
           onClick={async () => {
             "use server";
-            revalidatePathInternal("/");
-            revalidatePathInternal("/blog");
+            await Promise.all([
+              revalidatePathInternal("/"),
+              revalidatePathInternal("/blog")
+            ]);
           }}
         >
           Refresh content data
@@ -27,7 +31,7 @@ export default async function RefreshPage() {
         <ButtonSingleSecondary
           onClick={async () => {
             "use server";
-            revalidatePathInternal("check-admin");
+            await revalidatePathInternal("check-admin");
           }}
         >
           Refresh admin list
