@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 import { LinkButtonPrimary } from "@/components/ui/button";
 import { revalidatePathInternal } from "@/api/actions";
 import { ButtonSingleSecondary } from "@/components/ui/button-single";
-import { getSession, isAdminSession } from "@/api/auth";
+import { getSession } from "@/api/auth";
 import { notFound } from "next/navigation";
 import SessionRefresher from "@/components/auth/session-refresher";
 
