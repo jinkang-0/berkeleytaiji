@@ -1,14 +1,10 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
-/**
- * Revalidates a path
- */
-export async function revalidatePathInternal(path: string) {
-  revalidatePath(path);
-}
-
-export async function revalidateTagInternal(tag: string) {
-  revalidateTag(tag);
+export async function revalidateContent() {
+  await Promise.all([
+    revalidatePath("/(main)", "page"),
+    revalidatePath("/(main)/blog", "page")
+  ]);
 }
