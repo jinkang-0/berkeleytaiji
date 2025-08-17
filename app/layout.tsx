@@ -4,6 +4,7 @@ import CONFIG from "@/data/config";
 import { jsonLd } from "@/data/json-ld";
 import ProgressBarProvider from "@/components/ui/progress-bar";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // load global styles
 import "./globals.scss";
@@ -104,6 +105,7 @@ export default function RootLayout({
           <ProgressBarProvider>{children}</ProgressBarProvider>
         </GoogleOAuthProvider>
       </body>
+      <GoogleAnalytics gaId="G-3TN3Q2XMMR" />
     </html>
   );
 }
