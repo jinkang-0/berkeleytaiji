@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@bprogress/next": "^3.2.10",
+    "@next/third-parties": "^15.4.6",
     "@react-oauth/google": "^0.12.1",
     "@udecode/plate": "^48.0.5",
     "@udecode/plate-alignment": "^48.0.0",
@@ -28,7 +29,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.1",
     "motion": "^12.23.3",
-    "next": ">=15.3.3",
+    "next": "^15.4.6",
     "radix-ui": "^1.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
