@@ -19,7 +19,7 @@ export default function Yang24() {
         <h4>Videos</h4>
         <ContentEmbed
           id="Cr0Tv7DNWbc"
-          title="2025 NCCCAF Taiji Championship, Mason's Yang 24"
+          title="2025 NCCCAF Championship, Mason's Yang 24"
         />
         <br />
         <ContentEmbed
