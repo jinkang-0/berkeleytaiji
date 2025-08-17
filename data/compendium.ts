@@ -12,6 +12,7 @@ import ImageTaoistYoga from "@/assets/compendium/taoist_yoga.webp";
 import ImageChenHunyuan from "@/assets/compendium/hunyuan.webp";
 import ImageEightBrocades from "@/assets/compendium/eight_brocades.webp";
 import ImageTempleGuardian from "@/assets/compendium/temple_guardian.webp";
+import ImageXingyiDrills from "@/assets/compendium/xingyi_drills.webp";
 
 //
 // exercises
@@ -167,11 +168,22 @@ const yang32Sword: CompendiumItem = {
   otherNames: ["杨氏三十二式剑"]
 };
 
+export const xingyiFiveElements: CompendiumItem = {
+  id: "xingyi-five-elements-drills",
+  title: "Xingyi Five Elements Drills",
+  description:
+    "A set of drills from Xingyi to express five energies with weapons or fist.",
+  image: ImageXingyiDrills,
+  category: "Intermediate Compulsory",
+  otherNames: ["形意五行功"]
+};
+
 export const intermediateCompulsory = [
   yang24,
   taijiBaguaFan,
   chenHunyuanRuler10,
-  yang32Sword
+  yang32Sword,
+  xingyiFiveElements
 ];
 
 // featured items for carousel

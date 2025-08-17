@@ -20,7 +20,7 @@ export default function Yang32StraightSword() {
         <br />
         <ContentEmbed
           id="5q2gIH3H5do"
-          title="2025 NCCCAF Taiji Championship, Mason's Yang 32 Sword"
+          title="2025 NCCCAF Championship, Mason's Yang 32 Sword"
         />
       </section>
     </article>
