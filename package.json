@@ -26,7 +26,7 @@
     "google-auth-library": "^9.15.0",
     "google-spreadsheet": "^5.0.2",
     "html-to-text": "^9.0.5",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.13.1",
     "motion": "^12.23.3",
     "next": "^15.4.8",
