@@ -1,11 +1,12 @@
 import CompendiumCarousel from "@/components/compendium/carousel";
 import styles from "./page.module.scss";
 import {
-  coreCompulsory,
+  coreExercises,
   exercises,
   featuredCompendiumItems,
-  intermediateCompulsory,
-  qigong
+  competitionTrack,
+  qigong,
+  projectForms
 } from "@/data/compendium";
 import CompendiumCatalog from "@/components/compendium/catalog";
 import { Metadata } from "next";
@@ -45,13 +46,18 @@ export default async function CompendiumPage({
       </div>
 
       <div className={styles.catalog}>
-        <h3>Core Compulsory</h3>
-        <CompendiumCatalog items={coreCompulsory} />
+        <h3>Core</h3>
+        <CompendiumCatalog items={coreExercises} />
       </div>
 
       <div className={styles.catalog}>
-        <h3>Intermediate Compulsory</h3>
-        <CompendiumCatalog items={intermediateCompulsory} />
+        <h3>Competition</h3>
+        <CompendiumCatalog items={competitionTrack} />
+      </div>
+
+      <div className={styles.catalog}>
+        <h3>Projects</h3>
+        <CompendiumCatalog items={projectForms} />
       </div>
     </div>
   );

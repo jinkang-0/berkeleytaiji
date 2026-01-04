@@ -27,7 +27,8 @@ export default function TaijiBaguaFan() {
       </section>
       <section>
         <h4>Videos</h4>
-        <ContentEmbed id="K72qsZavBN0" />
+        <ContentEmbed id="K72qsZavBN0" title="Group Performance" />
+        <ContentEmbed id="a2I1_OwcLI0" title="Front and Back View" />
       </section>
     </article>
   );
