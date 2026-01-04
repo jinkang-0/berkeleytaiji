@@ -53,34 +53,19 @@ async function Schedule() {
 function RegistrationTemplate({ config }: { config: ScheduleSettings }) {
   const today = new Date();
 
+  const classUpcoming = config.classStartDate && today < config.classStartDate;
+  const classEnded = config.classEndDate && today > config.classEndDate;
+  const classInSession =
+    config.classStartDate &&
+    config.classEndDate &&
+    today > config.classStartDate &&
+    today < config.classEndDate;
+
   const registrationOpen =
     config.registrationOpen ||
     (config.registrationStartDate &&
       config.classEndDate &&
       today >= config.registrationStartDate &&
-      today <= config.classEndDate);
-
-  const classUpcoming =
-    registrationOpen ||
-    (config.classStartDate &&
-      config.registrationStartDate &&
-      today < config.classStartDate &&
-      today >= config.registrationStartDate) ||
-    (!config.classInSession && config.registrationOpen);
-
-  const classEnded =
-    (!classUpcoming &&
-      config.classStartDate &&
-      config.registrationStartDate &&
-      today < config.classStartDate &&
-      today < config.registrationStartDate) ||
-    (config.classEndDate && today > config.classEndDate);
-
-  const classInSession =
-    config.classInSession ||
-    (config.classStartDate &&
-      config.classEndDate &&
-      today >= config.classStartDate &&
       today <= config.classEndDate);
 
   return (
@@ -111,14 +96,14 @@ function RegistrationTemplate({ config }: { config: ScheduleSettings }) {
       ) : null}
       <div className={styles.buttonGroup}>
         <LinkButtonPrimary
-          className={registrationOpen ? "" : "disabled"}
+          className={registrationOpen && !classEnded ? "" : "disabled"}
           href={LINKS.registration}
           target="_blank"
         >
           Register <ExternalIcon />
         </LinkButtonPrimary>
         <LinkButtonOutline
-          className={registrationOpen ? "" : "disabled"}
+          className={registrationOpen && !classEnded ? "" : "disabled"}
           href={LINKS.registration_online_only}
           target="_blank"
         >
