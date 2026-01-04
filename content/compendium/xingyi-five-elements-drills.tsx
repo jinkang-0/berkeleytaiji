@@ -19,10 +19,8 @@ export default function XingyiDrills() {
           <br /> <br />
           We usually practice these drills with wooden <i>miao daos</i> (Chinese
           long sabers) (苗刀) and <i>bokkens</i> (Japanese wooden sword) to
-          develop sword skills alongside our practice. However, these drills can
-          also be practiced empty-handed if you do not have access to a sword at
-          home, or with other weapons, such as a staff or a spear, if you prefer
-          to work with those instead.
+          develop <i>yi</i> (intention) and use of <i>qi</i> through the
+          implements.
         </p>
       </section>
       <section>

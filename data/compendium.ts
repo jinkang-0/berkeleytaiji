@@ -13,6 +13,10 @@ import ImageChenHunyuan from "@/assets/compendium/hunyuan.webp";
 import ImageEightBrocades from "@/assets/compendium/eight_brocades.webp";
 import ImageTempleGuardian from "@/assets/compendium/temple_guardian.webp";
 import ImageXingyiDrills from "@/assets/compendium/xingyi_drills.webp";
+import ImageChenHunyuan24 from "@/assets/compendium/chenhunyuan24.webp";
+import ImageYangStaff13 from "@/assets/compendium/yang-staff-13.webp";
+import ImageBaguaFan1 from "@/assets/compendium/bagua-fan-1.webp";
+import ImageTigerTamingCane from "@/assets/compendium/tiger-taming-cane.webp";
 
 //
 // exercises
@@ -84,14 +88,14 @@ const eightBrocades: CompendiumItem = {
   description:
     "A set of eight movements designed to improve health and vitality, also used to cultivate internal energy.",
   image: ImageEightBrocades,
-  category: "Exercises",
+  category: "Qigong",
   otherNames: ["八段锦", "Baduanjin"]
 };
 
 export const qigong = [chenHunyuanQigong, thirteenWords, eightBrocades];
 
 //
-// core compulsory
+// core exercises
 //
 
 const sun12: CompendiumItem = {
@@ -100,7 +104,7 @@ const sun12: CompendiumItem = {
   description:
     "A simplified form of Sun-style tai chi, focused on developing footwork.",
   image: ImageSun12,
-  category: "Core Compulsory",
+  category: "Core",
   otherNames: ["孙氏十二式"]
 };
 
@@ -110,7 +114,7 @@ const bafaWubu: CompendiumItem = {
   description:
     "The foundational form of tai chi, covers all eight powers and their expressions in five different directions.",
   image: ImageBafaWubu,
-  category: "Core Compulsory",
+  category: "Core",
   otherNames: ["八法五步", "太极十三式", "Thirteen Postures"]
 };
 
@@ -120,14 +124,14 @@ const sunGuangbo: CompendiumItem = {
   description:
     "A concise form of Sun-style tai chi, covering a plethora of common Sun style techniques.",
   image: ImageSunGuangbo,
-  category: "Core Compulsory",
+  category: "Core",
   otherNames: ["孙氏太极广播操"]
 };
 
-export const coreCompulsory = [sun12, bafaWubu, sunGuangbo];
+export const coreExercises = [sun12, bafaWubu, sunGuangbo];
 
 //
-// intermediate compulsory
+// performance/competition forms
 //
 
 const yang24: CompendiumItem = {
@@ -136,7 +140,7 @@ const yang24: CompendiumItem = {
   description:
     "The yang style 24-form, a quintessential form used in competitions to demonstrate physical aptitude and skill.",
   image: ImageYang24,
-  category: "Intermediate Compulsory",
+  category: "Competition",
   otherNames: ["杨氏二十四式"]
 };
 
@@ -146,7 +150,7 @@ const taijiBaguaFan: CompendiumItem = {
   description:
     "A distilled fan set from the Bagua Kun Lun Fan forms, combining elements of bagua and tai chi.",
   image: ImageFan,
-  category: "Intermediate Compulsory",
+  category: "Competition",
   otherNames: ["太极八卦扇"]
 };
 
@@ -155,7 +159,7 @@ const chenHunyuanRuler10: CompendiumItem = {
   title: "Chen Hunyuan Ruler 10",
   description: "The 10 form ruler set from Chen Hunyuan tai chi.",
   image: ImageRuler,
-  category: "Intermediate Compulsory",
+  category: "Competition",
   otherNames: ["陈氏混元太极棒十式"]
 };
 
@@ -164,26 +168,76 @@ const yang32Sword: CompendiumItem = {
   title: "Yang 32 Straight Sword",
   description: "A traditional Yang-style sword form.",
   image: ImageYang32,
-  category: "Intermediate Compulsory",
+  category: "Competition",
   otherNames: ["杨氏三十二式剑"]
 };
 
+export const competitionTrack = [
+  yang24,
+  taijiBaguaFan,
+  yang32Sword,
+  chenHunyuanRuler10
+];
+
+//
+// project forms
+//
+
 export const xingyiFiveElements: CompendiumItem = {
   id: "xingyi-five-elements-drills",
-  title: "Xingyi Five Elements Drills",
+  title: "Xingyi Five Element Dao",
   description:
-    "A set of drills from Xingyi to express five energies with weapons or fist.",
+    "A set of drills for the five element Dao from Xingyi, which can be linked together to create a form.",
   image: ImageXingyiDrills,
-  category: "Intermediate Compulsory",
+  category: "Project",
   otherNames: ["形意五行功"]
 };
 
-export const intermediateCompulsory = [
-  yang24,
-  taijiBaguaFan,
-  chenHunyuanRuler10,
-  yang32Sword,
-  xingyiFiveElements
+export const chenHunyuan24: CompendiumItem = {
+  id: "chen-hunyuan-24",
+  title: "Chen Hunyuan 24",
+  description:
+    "The 24 movement set of techniques and transitions from the Chen Hunyuan tai chi style.",
+  image: ImageChenHunyuan24,
+  category: "Project",
+  otherNames: ["陈氏混元太极二十四式"]
+};
+
+export const tigerTamingCane: CompendiumItem = {
+  id: "tiger-taming-cane",
+  title: "Tiger Taming Dragon Cane",
+  description:
+    "A rare cane form in the tai chi praying mantis style, associated with Northern Shaolin.",
+  image: ImageTigerTamingCane,
+  category: "Project",
+  otherNames: ["伏虎神龙杖"]
+};
+
+export const yangStaff13: CompendiumItem = {
+  id: "yang-staff-13",
+  title: "Yang Thirteen Staff",
+  description: "A set of 13 movements in Yang style tai chi staff.",
+  image: ImageYangStaff13,
+  category: "Project",
+  otherNames: ["杨氏太极棍十三式"]
+};
+
+export const baguaFan1: CompendiumItem = {
+  id: "bagua-fan-1",
+  title: "Kun Lun Fan",
+  description:
+    "The first of three Bagua fan forms, also called the Kun Lun Fan.",
+  image: ImageBaguaFan1,
+  category: "Project",
+  otherNames: ["昆仑扇"]
+};
+
+export const projectForms = [
+  xingyiFiveElements,
+  chenHunyuan24,
+  tigerTamingCane,
+  yangStaff13,
+  baguaFan1
 ];
 
 // featured items for carousel
@@ -201,8 +255,9 @@ export const featuredCompendiumItems: CompendiumItem[] = [
 export const allCompendiumItems = [
   ...exercises,
   ...qigong,
-  ...coreCompulsory,
-  ...intermediateCompulsory
+  ...coreExercises,
+  ...competitionTrack,
+  ...projectForms
 ];
 
 export const compendiumIndex = allCompendiumItems.reduce((acc, item) => {

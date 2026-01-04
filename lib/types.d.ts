@@ -19,9 +19,9 @@ interface UserSession {
 type CompendiumCategory =
   | "Exercises"
   | "Qigong"
-  | "Core Compulsory"
-  | "Intermediate Compulsory"
-  | "Projects";
+  | "Core"
+  | "Competition"
+  | "Project";
 
 interface CompendiumItem {
   id: string;
