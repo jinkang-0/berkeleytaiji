@@ -12,7 +12,8 @@ export default function SunGuangbo() {
       </section>
       <section>
         <h4>Videos</h4>
-        <ContentEmbed id="U6fGm8ungYg" />
+        <ContentEmbed id="U6fGm8ungYg" title="Version 1 of Sun Guangbo" />
+        <ContentEmbed id="uFr6aFwMw1E" title="Version 2 of Sun Guangbo" />
       </section>
     </article>
   );
