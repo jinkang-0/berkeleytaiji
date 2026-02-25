@@ -244,9 +244,9 @@ export const projectForms = [
 
 export const featuredCompendiumItems: CompendiumItem[] = [
   spiralingExercises,
-  templeGuardianExercises,
-  chenHunyuanQigong,
+  taoistYogaStretches,
   taijiBaguaFan,
+  yang32Sword,
   bafaWubu
 ];
 
@@ -260,7 +260,10 @@ export const allCompendiumItems = [
   ...projectForms
 ];
 
-export const compendiumIndex = allCompendiumItems.reduce((acc, item) => {
-  acc[item.id] = item;
-  return acc;
-}, {} as Record<string, CompendiumItem>);
+export const compendiumIndex = allCompendiumItems.reduce(
+  (acc, item) => {
+    acc[item.id] = item;
+    return acc;
+  },
+  {} as Record<string, CompendiumItem>
+);
