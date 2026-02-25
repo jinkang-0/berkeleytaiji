@@ -8,10 +8,10 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 // load global styles
 import "./globals.scss";
-import "swiper/scss";
-import "swiper/scss/mousewheel";
-import "swiper/scss/pagination";
-import "swiper/scss/effect-fade";
+import "swiper/css";
+import "swiper/css/mousewheel";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 // ensure environmental variables are imported
 if (!process.env.AUTH_GOOGLE_ID)
