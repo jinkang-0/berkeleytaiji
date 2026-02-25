@@ -247,6 +247,7 @@ export const featuredCompendiumItems: CompendiumItem[] = [
   taoistYogaStretches,
   taijiBaguaFan,
   yang32Sword,
+  yang24,
   bafaWubu
 ];
 
