@@ -16,7 +16,7 @@ import CompendiumDialogContent from "@/components/compendium/compendium-dialog-c
 export const metadata: Metadata = {
   title: "Compendium",
   description:
-    "Explore what we practice at Berkeley Taiji, including exercises, qigong, and compulsory forms."
+    "Explore what we practice at CalTaiji, including exercises, qigong, and compulsory forms."
 };
 
 export default async function CompendiumPage({

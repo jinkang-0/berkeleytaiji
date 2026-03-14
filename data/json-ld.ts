@@ -1,9 +1,9 @@
 export const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Berkeley Taiji",
-  url: "https://berkeleytaiji.vercel.app",
-  logo: "https://berkeleytaiji.vercel.app/favicon.ico",
+  name: "CalTaiji",
+  url: "https://caltaiji.org",
+  logo: "https://caltaiji.org/favicon.ico",
   sameAs: [
     "https://www.facebook.com/UCBTaiji",
     "https://youtube.com/@TsanoVideos/",

@@ -13,8 +13,7 @@ export default function AboutSection() {
         <IntroVideo />
         <YinYang className={styles.yinyang} />
         <p>
-          Berkeley Taiji is the official tai chi club at UC Berkeley, as part of
-          the{" "}
+          CalTaiji is the official tai chi club at UC Berkeley, as part of the{" "}
           <Link href={LINKS.ucmap} about="_blank">
             UC Martial Arts Program (UCMAP)
           </Link>
