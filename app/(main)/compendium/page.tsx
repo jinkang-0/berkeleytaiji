@@ -9,15 +9,24 @@ import {
   projectForms
 } from "@/data/compendium";
 import CompendiumCatalog from "@/components/compendium/catalog";
-import { Metadata } from "next";
 import CompendiumDialog from "@/components/compendium/compendium-dialog";
 import CompendiumDialogContent from "@/components/compendium/compendium-dialog-content";
+import { GenerateMetadataProps } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "Compendium",
-  description:
-    "Explore what we practice at Berkeley Taiji, including exercises, qigong, and compulsory forms."
-};
+export async function generateMetadata({
+  searchParams
+}: GenerateMetadataProps) {
+  const { id } = await searchParams;
+
+  return {
+    title: "Compendium",
+    description:
+      "Explore what we practice at CalTaiji, including exercises, qigong, and compulsory forms.",
+    alternates: {
+      canonical: id ? `/compendium?id=${id}` : "/compendium"
+    }
+  };
+}
 
 export default async function CompendiumPage({
   searchParams

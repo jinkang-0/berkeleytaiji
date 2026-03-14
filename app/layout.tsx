@@ -65,7 +65,10 @@ export const metadata: Metadata = {
     "uc martial arts program taiji",
     "uc martial arts program tai chi",
     "uc martial arts taiji",
-    "uc martial arts tai chi"
+    "uc martial arts tai chi",
+    "caltaiji",
+    "cal taiji",
+    "cal tai chi"
   ],
   metadataBase: new URL(CONFIG.siteUrl),
   openGraph: {

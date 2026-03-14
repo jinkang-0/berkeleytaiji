@@ -6,6 +6,12 @@ import type {
 } from "mongoose";
 import { getBlogByBlogId } from "@/api/db";
 
+// nextjs metadata generation props
+interface GenerateMetadataProps {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
 // auth
 interface UserSession {
   email: string;

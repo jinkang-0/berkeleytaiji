@@ -200,10 +200,7 @@ export default function FAQSection() {
             <br /> <br />
             For a compendium of forms practiced by students currently or in the
             recent past, you can check out our{" "}
-            <Link href="https://berkeleytaiji.vercel.app/compendium">
-              Compendium page
-            </Link>
-            .
+            <Link href="/compendium">Compendium page</Link>.
           </FAQCard>
           <FAQCard question="What happens if I miss a class?">
             Don&apos;t worry! We understand that life (especially as a student)

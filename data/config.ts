@@ -4,9 +4,9 @@ if (!process.env.NODE_ENV)
 const CONFIG = {
   siteUrl:
     process.env.NODE_ENV === "production"
-      ? "https://berkeleytaiji.vercel.app"
+      ? "https://caltaiji.org"
       : "http://localhost:3000",
-  siteName: "Berkeley Taiji",
+  siteName: "CalTaiji",
   siteDescription: "The official tai chi club at UC Berkeley"
 };
 
