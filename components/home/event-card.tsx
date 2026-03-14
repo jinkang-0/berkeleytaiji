@@ -9,23 +9,54 @@ interface EventCardProps {
   event: Event;
 }
 
-export default function EventCard({ event }: EventCardProps) {
-  const month = getMonth(event.date);
-  const date = getDate(event.date);
+function EventDate({ event }: EventCardProps) {
+  const fromMonth = getMonth(event.fromDate);
+  const fromDate = getDate(event.fromDate);
+  const toMonth = event.toDate ? getMonth(event.toDate) : "";
+  const toDate = event.toDate ? getDate(event.toDate) : "";
+
+  if (!event.toDate)
+    return (
+      <div className={styles.cardHeader}>
+        <p>{fromMonth}</p>
+        <span>{fromDate}</span>
+      </div>
+    );
+
+  if (fromMonth === toMonth)
+    return (
+      <div className={styles.cardHeader}>
+        <p>{fromMonth}</p>
+        <span>{fromDate}</span>
+        <div className={styles.dateRangeDivider} />
+        <span>{toDate}</span>
+      </div>
+    );
 
   return (
+    <div className={styles.cardHeader}>
+      <p>{fromMonth}</p>
+      <span>{fromDate}</span>
+      <div className={styles.dateRangeDivider} />
+      <p>{toMonth}</p>
+      <span>{toDate}</span>
+    </div>
+  );
+}
+
+export default function EventCard({ event }: EventCardProps) {
+  return (
     <div className={styles.card}>
-      <div className={styles.cardHeader}>
-        <p>{month}</p>
-        <span>{date}</span>
-      </div>
+      <EventDate event={event} />
       <div className={styles.cardBody}>
         <div className={styles.cardDetails}>
           <b>{event.name}</b>
           <span>
-            {event.from} - {event.to}
+            {event.from === event.to
+              ? event.from
+              : `${event.from} - ${event.to}`}
           </span>
-          <div>
+          <div className={styles.locationBox}>
             <div>
               <MapIcon />
             </div>

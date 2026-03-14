@@ -35,7 +35,8 @@ interface CompendiumItem {
 // types for home page data
 interface Event {
   name: string;
-  date: string;
+  fromDate: string;
+  toDate?: string;
   from: string;
   to: string;
   location: string;
@@ -74,22 +75,22 @@ type PopulatedBlog = Awaited<ReturnType<typeof getBlogByBlogId>>[0];
 
 // utility types
 
-type ModelTypeFromSchema<S> = S extends SchemaType<unknown, infer Model>
-  ? Model
-  : never;
+type ModelTypeFromSchema<S> =
+  S extends SchemaType<unknown, infer Model> ? Model : never;
 
-type TypeFromSchema<S> = S extends SchemaType<
-  unknown,
-  ModelTypeFromSchema<S>,
-  object,
-  object,
-  object,
-  object,
-  DefaultSchemaOptions,
-  infer DocType
->
-  ? DocType
-  : never;
+type TypeFromSchema<S> =
+  S extends SchemaType<
+    unknown,
+    ModelTypeFromSchema<S>,
+    object,
+    object,
+    object,
+    object,
+    DefaultSchemaOptions,
+    infer DocType
+  >
+    ? DocType
+    : never;
 
 type Prettify<T> = {} & {
   [K in keyof T]: T[K];
@@ -99,8 +100,8 @@ type Serialize<T> = {
   [K in keyof T]: T[K] extends Types.ObjectId
     ? string
     : T[K] extends Array<infer U>
-    ? Array<Serialize<U>>
-    : T[K] extends object
-    ? Serialize<T[K]>
-    : T[K];
+      ? Array<Serialize<U>>
+      : T[K] extends object
+        ? Serialize<T[K]>
+        : T[K];
 };
