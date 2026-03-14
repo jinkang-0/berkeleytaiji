@@ -23,7 +23,7 @@ export async function generateMetadata({
     description:
       "Explore what we practice at CalTaiji, including exercises, qigong, and compulsory forms.",
     alternates: {
-      canonical: `/compendium?id=${id}`
+      canonical: id ? `/compendium?id=${id}` : "/compendium"
     }
   };
 }
