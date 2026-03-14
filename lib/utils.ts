@@ -62,21 +62,26 @@ export const parseDateObj = (dateObj: Date) => {
 };
 
 /**
- * Returns true if A comes before the date of B and time of T.
- * a: Date object
- * b: "Jan 1, 2024"
- * t: "11:00 PM"
+ * Returns true if a provided date
+ * comes before a provided date range
+ * and a provided time.
  */
-export const compareDate = (a: Date, b: string, t: string) => {
-  const d = new Date(`${b} ${t}`);
-  if (isNaN(d.getTime())) {
-    const dFallback = new Date(b);
-    if (isNaN(dFallback.getTime())) {
-      return false; // Invalid date, cannot compare
-    }
-    return a < dFallback;
-  }
-  return a < d;
+export const compareDate = (
+  base: Date,
+  fromDate: string,
+  toDate: string | undefined,
+  t: string
+) => {
+  // try with date and time
+  const d = new Date(`${toDate ? toDate : fromDate} ${t}`);
+  if (!isNaN(d.getTime())) return base < d;
+
+  // try with date only
+  const dDate = new Date(toDate ? toDate : fromDate);
+  if (!isNaN(dDate.getTime())) return base < dDate;
+
+  // invalid date
+  return false;
 };
 
 /**
@@ -165,10 +170,10 @@ export const serializeLeanDoc = <T>(
 ): T extends Types.ObjectId
   ? string
   : T extends Array<infer U>
-  ? Array<Serialize<U>>
-  : T extends object
-  ? Serialize<T>
-  : T => {
+    ? Array<Serialize<U>>
+    : T extends object
+      ? Serialize<T>
+      : T => {
   if (doc instanceof Array) return doc.map((d) => serializeLeanDoc(d)) as never;
 
   if (doc instanceof Types.ObjectId) return doc.toString() as never;

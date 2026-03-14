@@ -21,15 +21,16 @@ export default async function EventList() {
   const today = new Date();
   const events: Event[] = eventsData
     .map((ev) => ({
-      date: ev.Date,
+      fromDate: ev.Date,
+      toDate: ev["To Date"],
       from: ev.From,
       to: ev.To,
       location: ev.Location,
       name: ev.Name,
       attachments: ev.Attachments ? ev.Attachments.split("\n") : []
     }))
-    .filter((ev) => compareDate(today, ev.date, ev.to))
-    .sort((e1, e2) => getTime(e1.date) - getTime(e2.date))
+    .filter((ev) => compareDate(today, ev.fromDate, ev.toDate, ev.to))
+    .sort((e1, e2) => getTime(e1.fromDate) - getTime(e2.fromDate))
     .slice(0, 10);
   const hasOverflow = events.length > 3;
 
