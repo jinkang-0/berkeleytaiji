@@ -17,6 +17,7 @@ import ImageChenHunyuan24 from "@/assets/compendium/chenhunyuan24.webp";
 import ImageYangStaff13 from "@/assets/compendium/yang-staff-13.webp";
 import ImageBaguaFan1 from "@/assets/compendium/bagua-fan-1.webp";
 import ImageTigerTamingCane from "@/assets/compendium/tiger-taming-cane.webp";
+import ImageYangStationaryQigong from "@/assets/compendium/yang-stationary-qigong.webp";
 
 //
 // exercises
@@ -62,6 +63,16 @@ export const exercises = [
 // qigong
 //
 
+const yangStationaryQigong: CompendiumItem = {
+  id: "yang-stationary-qigong",
+  title: "Yang Style Stationary Taiji Qigong",
+  description:
+    "A curated set of Yang style stationary tai chi qigong exercises.",
+  image: ImageYangStationaryQigong,
+  category: "Qigong",
+  otherNames: ["杨氏立体太极气功"]
+};
+
 const chenHunyuanQigong: CompendiumItem = {
   id: "chen-hunyuan-qigong",
   title: "Chen Hunyuan Qigong",
@@ -92,7 +103,12 @@ const eightBrocades: CompendiumItem = {
   otherNames: ["八段锦", "Baduanjin"]
 };
 
-export const qigong = [chenHunyuanQigong, thirteenWords, eightBrocades];
+export const qigong = [
+  yangStationaryQigong,
+  chenHunyuanQigong,
+  thirteenWords,
+  eightBrocades
+];
 
 //
 // core exercises
@@ -248,6 +264,8 @@ export const featuredCompendiumItems: CompendiumItem[] = [
   taijiBaguaFan,
   yang32Sword,
   yang24,
+  chenHunyuan24,
+  yangStationaryQigong,
   bafaWubu
 ];
 
