@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { refreshUser } from "@/api/auth";
+import { refreshUser } from "@/actions/auth";
 import { UserSession } from "@/lib/types";
 
 export default function useSessionRefresh(user: UserSession) {

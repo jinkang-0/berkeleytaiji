@@ -1,4 +1,4 @@
-import { getDrafts } from "@/api/db";
+import { getDrafts } from "@/actions/db";
 import BlogCard from "./blog-card";
 
 export default async function DraftBlogFeed() {

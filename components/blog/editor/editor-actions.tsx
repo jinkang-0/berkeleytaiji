@@ -7,7 +7,7 @@ import BookOpen from "@/icons/editor/book-open";
 import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";
 import { useRouter } from "next/navigation";
-import { deleteDraft, numSameIdBlogs, updateBlog } from "@/api/db";
+import { deleteDraft, numSameIdBlogs, updateBlog } from "@/actions/db";
 import styles from "./editor-actions.module.scss";
 import dialogStyles from "@/components/ui/dialog.module.scss";
 import { useCallback } from "react";

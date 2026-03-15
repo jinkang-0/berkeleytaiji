@@ -4,7 +4,7 @@ import Link from "next/link";
 import { LinkButtonOutline, LinkButtonPrimary } from "../ui/button";
 import ExternalIcon from "@/icons/external";
 import PRACTICE_SCHEDULE from "@/data/schedule";
-import { getSchedule, loadScheduleSettings } from "@/api/spreadsheet";
+import { getSchedule, loadScheduleSettings } from "@/actions/spreadsheet";
 import { Suspense } from "react";
 import { ScheduleItem, ScheduleSettings } from "@/lib/types";
 import Callout from "../ui/callout";

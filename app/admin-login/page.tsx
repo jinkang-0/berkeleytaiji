@@ -1,7 +1,7 @@
 import { ButtonGoogleSignIn } from "@/components/auth/button-google";
 import styles from "./login.module.scss";
 import Footer from "@/components/ui/footer";
-import { getSession } from "@/api/auth";
+import { getSession } from "@/actions/auth";
 import { redirect } from "next/navigation";
 import SessionRefresher from "@/components/auth/session-refresher";
 

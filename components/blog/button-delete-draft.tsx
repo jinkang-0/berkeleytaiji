@@ -3,7 +3,7 @@
 import TrashIcon from "@/icons/trash";
 import { ButtonGhost, ButtonPrimary } from "@/components/ui/button";
 import { useCallback } from "react";
-import { deleteDraft } from "@/api/db";
+import { deleteDraft } from "@/actions/db";
 import { useRouter } from "next/navigation";
 import { Dialog } from "radix-ui";
 import dialogStyles from "@/components/ui/dialog.module.scss";

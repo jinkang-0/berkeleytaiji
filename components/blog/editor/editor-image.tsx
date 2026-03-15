@@ -9,7 +9,7 @@ import { useBlogContext } from "../context-blog";
 import { useMemo, useState } from "react";
 import CancelIcon from "@/icons/cancel";
 import Checkmark from "@/icons/checkmark";
-import { searchFiles, updateImage, uploadImage } from "@/api/files";
+import { searchFiles, updateImage, uploadImage } from "@/actions/files";
 import { gDriveToDownload } from "@/lib/utils";
 
 export default function EditorImage() {

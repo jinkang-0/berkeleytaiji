@@ -3,7 +3,7 @@
 import NewBlogIcon from "@/icons/new-blog";
 import { useRouter } from "next/navigation";
 import { ButtonSingleSecondary } from "@/components/ui/button-single";
-import { createDraft } from "@/api/db";
+import { createDraft } from "@/actions/db";
 import { useCallback } from "react";
 
 export default function ButtonCreateBlog() {

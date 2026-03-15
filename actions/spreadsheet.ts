@@ -1,7 +1,7 @@
 "use server";
 
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { serviceAccountAuth } from "@/api/setup/google";
+import { serviceAccountAuth } from "@/actions/setup/google";
 import { ConfigItem, ScheduleSettings } from "@/lib/types";
 import { newUTCDate } from "@/lib/utils";
 
@@ -42,10 +42,13 @@ export const getEvents = async () => {
 
 export const loadScheduleSettings = async () => {
   const configRows = (await getSheet("Config")) as ConfigItem[];
-  const configMap = configRows.reduce((acc, row) => {
-    acc[row.Key] = row.Assumed;
-    return acc;
-  }, {} as Record<string, string>);
+  const configMap = configRows.reduce(
+    (acc, row) => {
+      acc[row.Key] = row.Assumed;
+      return acc;
+    },
+    {} as Record<string, string>
+  );
 
   const classStartDate = configMap.CLASS_START_DATE
     ? newUTCDate(configMap.CLASS_START_DATE)

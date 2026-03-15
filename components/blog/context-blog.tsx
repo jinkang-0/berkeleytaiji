@@ -1,7 +1,7 @@
 "use client";
 
-import { updateBlog } from "@/api/db";
-import { BlogType } from "@/api/setup/mongoose";
+import { updateBlog } from "@/actions/db";
+import { BlogType } from "@/actions/setup/mongoose";
 import { PopulatedBlog } from "@/lib/types";
 import {
   createContext,

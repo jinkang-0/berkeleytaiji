@@ -1,7 +1,7 @@
-import { getBlogByBlogId } from "@/api/db";
+import { getBlogByBlogId } from "@/actions/db";
 import { notFound } from "next/navigation";
 import BlogReader from "@/components/blog/blog-reader";
-import { isAdminSession } from "@/api/auth";
+import { isAdminSession } from "@/actions/auth";
 import { GenerateMetadataProps } from "@/lib/types";
 
 export async function generateMetadata({ params }: GenerateMetadataProps) {
