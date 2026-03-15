@@ -1,6 +1,6 @@
 "use client";
 
-import { logout } from "@/api/auth";
+import { logout } from "@/actions/auth";
 import { ButtonGhost } from "../ui/button";
 
 export default function ButtonLogout() {

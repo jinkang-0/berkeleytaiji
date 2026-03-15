@@ -1,7 +1,7 @@
-import { getBlogByObjectId } from "@/api/db";
+import { getBlogByObjectId } from "@/actions/db";
 import { notFound } from "next/navigation";
 import BlogReader from "@/components/blog/blog-reader";
-import { isAdminSession } from "@/api/auth";
+import { isAdminSession } from "@/actions/auth";
 
 export default async function DraftBlogPage({
   params

@@ -1,4 +1,4 @@
-import { getEvents } from "@/api/spreadsheet";
+import { getEvents } from "@/actions/spreadsheet";
 import EventListClient from "./event-list-client";
 import { Event } from "@/lib/types";
 import styles from "./events-section.module.scss";

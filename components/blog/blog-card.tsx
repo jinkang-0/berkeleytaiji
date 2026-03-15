@@ -5,7 +5,7 @@ import { formatList } from "@/lib/utils";
 import ButtonDeleteBlog from "./button-delete-draft";
 import ButtonVisibilityToggle from "./button-visibility-toggle";
 import { PopulatedBlog } from "@/lib/types";
-import { isAdminSession } from "@/api/auth";
+import { isAdminSession } from "@/actions/auth";
 
 export default async function BlogCard({ blog }: { blog: PopulatedBlog }) {
   const link = blog.published

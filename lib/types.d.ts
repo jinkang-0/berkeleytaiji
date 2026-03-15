@@ -4,7 +4,7 @@ import type {
   Schema as SchemaType,
   Types
 } from "mongoose";
-import { getBlogByBlogId } from "@/api/db";
+import { getBlogByBlogId } from "@/actions/db";
 
 // nextjs metadata generation props
 interface GenerateMetadataProps {

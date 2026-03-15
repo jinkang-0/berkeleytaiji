@@ -1,4 +1,4 @@
-import { getEmail } from "@/api/auth";
+import { getEmail } from "@/actions/auth";
 import styles from "./auth-status.module.scss";
 import ButtonLogout from "./button-logout";
 

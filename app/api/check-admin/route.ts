@@ -1,4 +1,4 @@
-import { checkAdmin } from "@/api/db";
+import { checkAdmin } from "@/actions/db";
 import { NextRequest } from "next/server";
 
 if (!process.env.ADMIN_KEY) {

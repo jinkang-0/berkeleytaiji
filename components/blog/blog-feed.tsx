@@ -1,6 +1,6 @@
-import { getBlogs } from "@/api/db";
+import { getBlogs } from "@/actions/db";
 import BlogCard from "./blog-card";
-import { isAdminSession } from "@/api/auth";
+import { isAdminSession } from "@/actions/auth";
 import InkAndQuill from "@/icons/ink-and-quill";
 import styles from "@/app/(main)/blog/feed.module.scss";
 

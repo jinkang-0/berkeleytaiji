@@ -6,7 +6,7 @@ import {
   User,
   UserType,
   getConnection
-} from "@/api/setup/mongoose";
+} from "@/actions/setup/mongoose";
 import { getRandomImage } from "./unsplash";
 import { isValidObjectId, Types } from "mongoose";
 import { serializeLeanDoc } from "@/lib/utils";

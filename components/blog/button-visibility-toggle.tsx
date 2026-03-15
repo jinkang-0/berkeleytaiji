@@ -1,6 +1,6 @@
 "use client";
 
-import { updateBlog } from "@/api/db";
+import { updateBlog } from "@/actions/db";
 import { ButtonGhost, ButtonPrimary } from "@/components/ui/button";
 import NotVisible from "@/icons/not-visible";
 import VisibleIcon from "@/icons/visible";

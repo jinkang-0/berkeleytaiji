@@ -1,6 +1,6 @@
 "use client";
 
-import { loginWithGoogle } from "@/api/auth";
+import { loginWithGoogle } from "@/actions/auth";
 import { CodeResponse, useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import { ButtonPrimary } from "@/components/ui/button";

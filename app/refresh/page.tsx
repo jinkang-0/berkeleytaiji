@@ -2,10 +2,10 @@ import Footer from "@/components/ui/footer";
 import styles from "./page.module.scss";
 import { LinkButtonPrimary } from "@/components/ui/button";
 import { ButtonSingleSecondary } from "@/components/ui/button-single";
-import { getSession } from "@/api/auth";
+import { getSession } from "@/actions/auth";
 import { notFound } from "next/navigation";
 import SessionRefresher from "@/components/auth/session-refresher";
-import { revalidateContent } from "@/api/actions";
+import { revalidateContent } from "@/actions/actions";
 
 export default async function RefreshPage() {
   const session = await getSession();
