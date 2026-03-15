@@ -31,7 +31,7 @@ export default async function EventList() {
     }))
     .filter((ev) => compareDate(today, ev.fromDate, ev.toDate, ev.to))
     .sort((e1, e2) => getTime(e1.fromDate) - getTime(e2.fromDate))
-    .slice(0, 10);
+    .slice(0, 15);
   const hasOverflow = events.length > 3;
 
   return events.length > 0 ? (
